@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammad Asim Haidari | Portfolio & CV</title>
+    <style>
+        :root {
+            /* Dark Mode (Default Hacker Theme) */
+            --bg-color: #050505;
+            --panel-bg: #111111;
+            --accent-primary: #3B0A6B;
+            --accent-terminal: #00E5FF;
+            --text-main: #FFFFFF;
+            --text-muted: #A0A0A0;
+            --border-color: #222222;
+        }
+
+        [data-theme="light"] {
+            /* Light Mode */
+            --bg-color: #C0C0C0;
+            --panel-bg: #FFFFFF;
+            --accent-primary: #2A2A2A;
+            --accent-terminal: #E10600;
+            --text-main: #1A1A1A;
+            --text-muted: #555555;
+            --border-color: #A0A0A0;
+        }
+
+        * {
+            box-sizing: border-border;
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            padding-bottom: 60px;
+        }
+
+        /* Matrix Rain Background Animation Effect */
+        #canvas-ambient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 2px solid var(--accent-terminal);
+            background-color: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--accent-terminal);
+            text-shadow: 0 0 8px var(--accent-terminal);
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: 2px solid var(--accent-terminal);
+            color: var(--accent-terminal);
+            padding: 8px 16px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 0 5px var(--accent-terminal);
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--accent-terminal);
+            color: var(--bg-color);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .terminal-window {
+            background-color: var(--panel-bg);
+            border: 2px solid var(--border-color);
+            border-top: 25px solid var(--accent-primary);
+            position: relative;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            padding: 30px;
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .terminal-window::before {
+            content: "● ● ●";
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            color: rgba(255,255,255,0.4);
+            font-size: 12px;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .image-placeholder {
+                margin: 0 auto;
+            }
+        }
+
+        .image-placeholder {
+            width: 220px;
+            height: 220px;
+            border: 3px dashed var(--accent-terminal);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0,0,0,0.2);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Target image element inside placeholder */
+        .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        h1 {
+            color: var(--accent-terminal);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            border-right: 2px solid var(--accent-terminal);
+            width: fit-content;
+            animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .section-title {
+            color: var(--accent-terminal);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-size: 1.3rem;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .stats-list {
+            list-style: none;
+        }
+
+        .stats-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .stats-list li::before {
+            content: "> ";
+            color: var(--accent-terminal);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .btn-email {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 24px;
+            border: 2px solid var(--accent-terminal);
+            color: var(--accent-terminal);
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+        }
+
+        .btn-email:hover {
+            background-color: var(--accent-terminal);
+            color: var(--bg-color);
+            box-shadow: 0 0 20px var(--accent-terminal);
+            transform: scale(1.02);
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent-terminal); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas-ambient"></canvas>
+
+    <header>
+        <div class="logo">M_A_HAIDARI //</div>
+        <button class="theme-toggle" onclick="toggleTheme()">Toggle System UI</button>
+    </header>
+
+    <div class="container">
+        
+        <!-- MAIN PROFILE SECTION -->
+        <div class="terminal-window">
+            <div class="profile-grid">
+                <div class="image-placeholder">
+                    <!-- Insert your local profile image file name in the src attribute below -->
+                    <img src="your-photo-here.jpg" alt="Mohammad Asim Haidari">
+                    <span>[ User Image Space ]</span>
+                </div>
+                <div>
+                    <h1>Mohammad Asim Haidari</h1>
+                    <div class="subtitle">Software Engineer & Cyber Security Intern</div>
+                    <p>
+                        Welcome to my secure node. I built this central index to serve as an interactive, living curriculum vitae (CV), allowing recruiters, peers, and collaborators to monitor my current operations, verify my engineering track record, and explore opportunities for production-ready deployments.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ABOUT & METRICS SECTION -->
+        <div class="terminal-window">
+            <div class="section-title">Root Profile_</div>
+            <p>
+                I am a highly analytical software engineer and an actively practicing cybersecurity intern. Over the past 3 years, I have engineered reliable software patterns, built functional architectures, and specialized in monitoring security perimeters, evaluating code vulnerabilities, and optimizing overall structural integrity.
+            </p>
+
+            <div class="section-title">Core Specifications_</div>
+            <ul class="stats-list">
+                <li><strong>Development Lifecycle Experience:</strong> 3 Years Full-Stack Application Programming</li>
+                <li><strong>Current Node Objective:</strong> Cybersecurity Auditing, Threat Detection, & Penetration Testing Internships</li>
+                <li><strong>Interface Adaptation:</strong> Native Support for Dark-Mode Terminal Environments & Clean Light-Mode Matrices</li>
+            </ul>
+        </div>
+
+        <!-- COMMS / CONTACT SECTION -->
+        <div class="terminal-window" style="text-align: center;">
+            <div class="section-title" style="border: none;">Secure Communication Link_</div>
+            <p>My communication channels are highly filtered. For contract acquisition, security consultation, or standard employment inquiries, dispatch your parameters directly to my verified email node.</p>
+            <a href="mailto:Haidariasim65@gmail.com" class="btn-email">Contact: Haidariasim65@gmail.com</a>
+        </div>
+
+    </div>
+
+    <script>
+        // Theme Switching Logic using Custom Color Configurations
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+if (currentTheme === 'light') {
+body.removeAttribute('data-theme');
+} else {
+body.setAttribute('data-theme', 'light');
+}
+}
+// Animated Interactive Hacker Canvas Effect
+const canvas = document.getElementById('canvas-ambient');
+const ctx = canvas.getContext('2d');
+function resizeCanvas() {
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+const characters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789<>///_";
+const fontSize = 14;
+let columns = canvas.width / fontSize;
+let drops = Array(Math.floor(columns)).fill(1);
+function drawMatrix() {
+// Determine active accent color depending on Light/Dark Mode
+const isLight = document.body.getAttribute('data-theme') === 'light';
+ctx.fillStyle = isLight ? 'rgba(192, 192, 192, 0.2)' : 'rgba(5, 5, 5, 0.2)';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+ctx.fillStyle = isLight ? '#E10600' : '#00E5FF';
+ctx.font = fontSize + 'px monospace';
+for (let i = 0; i < drops.length; i++) {
+const text = characters.charAt(Math.floor(Math.random() * characters.length));
+ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+drops[i] = 0;
+}
+drops[i]++;
+}
+}
