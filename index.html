@@ -3,35 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#f5ecd9">
+    <meta name="theme-color" content="#0d0a0a">
     <title id="meta-title">Mohammad Asim Haidari | Portfolio & CV</title>
     <style>
-        /* ============ THEME ============ */
+        /* ============ HALLOWEEN THEME ============ */
         :root {
-            --paper:      #f5ecd9;
-            --paper-soft: #efe3cc;
-            --ink:        #2b1d12;
-            --ink-soft:   #6b5440;
-            --gold:       #b8860b;
-            --gold-soft:  #d4af37;
-            --maroon:     #6b1f1f;
-            --line:       #cdb98f;
-            --card-bg:    #fbf6ea;
-            --shadow:     rgba(74, 44, 26, 0.18);
-            --skew:       -2deg;
+            --paper:      #0f0b0b;
+            --paper-soft: #1a1210;
+            --ink:        #e8d5b5;
+            --ink-soft:   #b09070;
+            --gold:       #d4a017;
+            --gold-soft:  #f0c860;
+            --maroon:     #c0392b;
+            --line:       #3d2a1a;
+            --card-bg:    #160f0d;
+            --shadow:     rgba(0, 0, 0, 0.7);
+            --skew:       -1.5deg;
+            --blood:      #8b0000;
+            --pumpkin:    #e67e22;
         }
 
         [data-theme="dark"] {
-            --paper:      #1c1510;
-            --paper-soft: #241a12;
-            --ink:        #ede0c4;
-            --ink-soft:   #b8a480;
-            --gold:       #d4af37;
-            --gold-soft:  #f0d06a;
-            --maroon:     #c25c5c;
-            --line:       #4a3826;
-            --card-bg:    #241a12;
-            --shadow:     rgba(0, 0, 0, 0.55);
+            --paper:      #0a0707;
+            --paper-soft: #140e0c;
+            --ink:        #d4b896;
+            --ink-soft:   #8a7050;
+            --gold:       #c9a227;
+            --gold-soft:  #e6c060;
+            --maroon:     #a93226;
+            --line:       #2a1a10;
+            --card-bg:    #110b09;
+            --shadow:     rgba(0, 0, 0, 0.85);
+            --blood:      #6b0000;
+            --pumpkin:    #d35400;
         }
 
         /* ============ RESET ============ */
@@ -46,7 +50,7 @@
 
         /* ============ BASE ============ */
         body {
-            font-family: 'Inter', 'Segoe UI', system-ui, Georgia, serif;
+            font-family: 'Georgia', 'Times New Roman', serif;
             font-size: 16px;
             line-height: 1.7;
             background-color: var(--paper);
@@ -65,7 +69,7 @@
             text-align: right;
         }
         body[dir="rtl"] p { text-align: right; }
-        body[dir="rtl"] .stats-list li { padding: 12px 24px 12px 0; }
+        body[dir="rtl"] .stats-list li { padding: 14px 28px 14px 0; }
         body[dir="rtl"] .stats-list li::before { left: auto; right: 0; }
         body[dir="rtl"] .subtitle::after { left: 50%; transform: translateX(50%); }
         @media (min-width: 820px) {
@@ -73,16 +77,28 @@
             body[dir="rtl"] .subtitle::after { left: auto; right: 0; transform: none; }
         }
 
-        /* Subtle texture */
+        /* Creepy texture overlay */
         body::before {
             content: "";
             position: fixed;
             inset: 0;
             background:
-                radial-gradient(circle at 20% 10%, rgba(184,134,11,0.06), transparent 45%),
-                radial-gradient(circle at 80% 90%, rgba(107,31,31,0.05), transparent 45%);
+                radial-gradient(ellipse at 15% 20%, rgba(139, 0, 0, 0.12), transparent 50%),
+                radial-gradient(ellipse at 85% 80%, rgba(230, 126, 34, 0.06), transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.4) 100%);
             pointer-events: none;
             z-index: 0;
+        }
+
+        /* Subtle fog */
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.4;
         }
 
         /* ============ HEADER ============ */
@@ -90,7 +106,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: linear-gradient(135deg, var(--paper) 0%, var(--paper-soft) 100%);
+            background: linear-gradient(180deg, var(--paper) 0%, var(--paper-soft) 100%);
             border-bottom: 2px solid var(--gold);
             padding: 12px 16px;
             padding-top: calc(12px + env(safe-area-inset-top));
@@ -104,8 +120,26 @@
             transform-origin: top left;
         }
 
+        /* Blood drip border */
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: repeating-linear-gradient(90deg, 
+                transparent 0px, 
+                transparent 15px, 
+                var(--blood) 15px, 
+                var(--blood) 17px, 
+                transparent 17px, 
+                transparent 30px);
+            opacity: 0.6;
+        }
+
         .logo {
-            font-family: 'Playfair Display', Georgia, serif;
+            font-family: 'Georgia', serif;
             font-size: 0.95rem;
             font-weight: 700;
             letter-spacing: 2px;
@@ -119,19 +153,19 @@
             text-overflow: ellipsis;
             min-width: 0;
             transform: skewX(calc(-1 * var(--skew)));
+            text-shadow: 0 0 15px rgba(192, 57, 43, 0.4);
         }
 
         .logo::before {
-            content: "❦";
-            color: var(--gold);
-            font-size: 1.2em;
+            content: "🎃";
+            font-size: 1.3em;
             flex-shrink: 0;
-            animation: pulseGold 3s ease-in-out infinite;
+            animation: pulsePumpkin 3s ease-in-out infinite;
         }
 
-        @keyframes pulseGold {
-            0%, 100% { opacity: 0.7; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.1); }
+        @keyframes pulsePumpkin {
+            0%, 100% { opacity: 0.7; transform: scale(1) rotate(-5deg); }
+            50% { opacity: 1; transform: scale(1.15) rotate(5deg); }
         }
 
         .header-controls {
@@ -153,7 +187,7 @@
             font-weight: 700;
             text-transform: uppercase;
             cursor: pointer;
-            border-radius: 6px;
+            border-radius: 4px;
             transition: all 0.25s ease;
             -webkit-tap-highlight-color: transparent;
             box-shadow: 3px 3px 0 var(--gold);
@@ -177,7 +211,7 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             cursor: pointer;
-            border-radius: 6px;
+            border-radius: 4px;
             transition: all 0.25s ease;
             white-space: nowrap;
             flex-shrink: 0;
@@ -203,7 +237,7 @@
 
         /* ============ SECTION TITLES ============ */
         .section-title {
-            font-family: 'Playfair Display', Georgia, serif;
+            font-family: 'Georgia', serif;
             font-size: 1.1rem;
             font-weight: 700;
             text-transform: uppercase;
@@ -215,20 +249,22 @@
             padding: 0 36px;
             line-height: 1.4;
             transform: skewX(var(--skew));
+            text-shadow: 0 0 20px rgba(192, 57, 43, 0.3);
         }
 
         .section-title::before,
         .section-title::after {
-            content: "";
+            content: "🕸";
             position: absolute;
             top: 50%;
-            width: 24px;
-            height: 2px;
-            background: linear-gradient(90deg, var(--gold), transparent);
+            transform: translateY(-50%);
+            color: var(--gold);
+            font-size: 0.9rem;
+            opacity: 0.5;
         }
 
         .section-title::before { left: 0; }
-        .section-title::after { right: 0; transform: scaleX(-1); }
+        .section-title::after { right: 0; }
 
         /* Decorative divider */
         .divider {
@@ -239,7 +275,8 @@
             margin: 30px 0;
             user-select: none;
             transform: skewX(var(--skew));
-            opacity: 0.7;
+            opacity: 0.6;
+            text-shadow: 0 0 10px var(--gold);
         }
 
         /* ============ CARD ============ */
@@ -248,7 +285,7 @@
             border: 1px solid var(--line);
             padding: 24px 18px;
             position: relative;
-            box-shadow: 8px 8px 0 var(--shadow), 0 10px 30px -10px var(--shadow);
+            box-shadow: 6px 6px 0 rgba(139, 0, 0, 0.3), 0 10px 30px -10px var(--shadow);
             margin-bottom: 26px;
             transition: all 0.35s ease;
             transform: skewX(var(--skew));
@@ -257,7 +294,7 @@
 
         .card:hover {
             transform: skewX(var(--skew)) translate(-2px, -2px);
-            box-shadow: 12px 12px 0 var(--shadow), 0 14px 36px -10px var(--shadow);
+            box-shadow: 10px 10px 0 rgba(139, 0, 0, 0.4), 0 14px 36px -10px var(--shadow);
         }
 
         .card::before {
@@ -265,9 +302,20 @@
             position: absolute;
             inset: 8px;
             border: 1px solid var(--gold);
-            opacity: 0.25;
+            opacity: 0.15;
             pointer-events: none;
             border-radius: 1px;
+        }
+
+        /* Corner cobwebs */
+        .card::after {
+            content: "🕸";
+            position: absolute;
+            top: 2px;
+            right: 4px;
+            font-size: 1.5rem;
+            opacity: 0.12;
+            pointer-events: none;
         }
 
         .card > * {
@@ -288,19 +336,20 @@
         .portrait {
             width: 140px;
             height: 140px;
-            border: 5px double var(--gold);
+            border: 4px double var(--maroon);
             padding: 5px;
             background: var(--paper-soft);
             border-radius: 50%;
             overflow: hidden;
             position: relative;
-            box-shadow: 0 6px 20px var(--shadow);
+            box-shadow: 0 0 25px rgba(139, 0, 0, 0.5), 0 6px 20px var(--shadow);
             flex-shrink: 0;
-            transition: transform 0.4s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
         .portrait:hover {
-            transform: scale(1.05) rotate(-2deg);
+            transform: scale(1.05) rotate(-3deg);
+            box-shadow: 0 0 40px rgba(192, 57, 43, 0.7), 0 6px 20px var(--shadow);
         }
 
         .portrait img {
@@ -308,7 +357,7 @@
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
-            filter: sepia(10%);
+            filter: sepia(30%) contrast(1.1) brightness(0.85);
             position: relative;
             z-index: 1;
         }
@@ -330,13 +379,14 @@
         .portrait img + span { display: none; }
 
         h1 {
-            font-family: 'Playfair Display', Georgia, serif;
+            font-family: 'Georgia', serif;
             font-size: 1.55rem;
             font-weight: 700;
             color: var(--maroon);
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             line-height: 1.3;
             margin-bottom: 8px;
+            text-shadow: 0 0 25px rgba(192, 57, 43, 0.4);
         }
 
         .subtitle {
@@ -345,12 +395,12 @@
             color: var(--ink-soft);
             margin-bottom: 16px;
             padding-bottom: 14px;
-            border-bottom: 1px solid var(--line);
+            border-bottom: 1px dashed var(--line);
             position: relative;
         }
 
         .subtitle::after {
-            content: "❖";
+            content: "🦇";
             position: absolute;
             bottom: -12px;
             left: 50%;
@@ -358,7 +408,7 @@
             background: var(--card-bg);
             padding: 0 10px;
             color: var(--gold);
-            font-size: 0.8rem;
+            font-size: 0.9rem;
         }
 
         /* ============ TEXT ============ */
@@ -393,12 +443,11 @@
         .stats-list li:last-child { border-bottom: none; }
 
         .stats-list li::before {
-            content: "❧";
+            content: "🕯";
             position: absolute;
             left: 0;
             top: 14px;
-            color: var(--gold);
-            font-size: 1.1rem;
+            font-size: 1rem;
             line-height: 1;
             transition: transform 0.2s ease;
         }
@@ -410,11 +459,12 @@
         .stats-list strong {
             display: block;
             color: var(--maroon);
-            font-family: 'Playfair Display', Georgia, serif;
+            font-family: 'Georgia', serif;
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             margin-bottom: 2px;
+            text-shadow: 0 0 10px rgba(192, 57, 43, 0.3);
         }
 
         /* ============ EMAIL BUTTON ============ */
@@ -425,7 +475,7 @@
             margin-top: 10px;
             border: 2px solid var(--gold);
             background: transparent;
-            color: var(--maroon);
+            color: var(--gold-soft);
             text-decoration: none;
             font-family: inherit;
             font-weight: 700;
@@ -435,7 +485,7 @@
             text-align: center;
             border-radius: 4px;
             transition: all 0.3s ease;
-            box-shadow: 5px 5px 0 var(--gold);
+            box-shadow: 5px 5px 0 rgba(139, 0, 0, 0.5);
             word-break: break-word;
             min-height: 52px;
             align-items: center;
@@ -445,8 +495,8 @@
 
         .btn-email:hover {
             transform: translate(-2px, -2px);
-            box-shadow: 8px 8px 0 var(--gold);
-            background: var(--gold);
+            box-shadow: 8px 8px 0 rgba(139, 0, 0, 0.6);
+            background: var(--maroon);
             color: var(--paper);
         }
 
@@ -474,9 +524,9 @@
             max-width: 560px;
             margin: 0 auto;
             aspect-ratio: 16 / 10;
-            border-radius: 6px;
+            border-radius: 4px;
             overflow: hidden;
-            box-shadow: 10px 10px 0 var(--shadow), 0 15px 40px -12px var(--shadow);
+            box-shadow: 8px 8px 0 rgba(139, 0, 0, 0.4), 0 15px 40px -12px var(--shadow);
             border: 2px solid var(--gold);
             transform: skewX(var(--skew));
             transition: transform 0.35s ease;
@@ -508,12 +558,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: sepia(8%) contrast(1.02);
+            filter: sepia(25%) contrast(1.15) brightness(0.8) saturate(0.8);
             transition: filter 0.4s ease;
         }
 
         .carousel-slide:hover img {
-            filter: sepia(0%) contrast(1.05);
+            filter: sepia(10%) contrast(1.1) brightness(0.9) saturate(1);
         }
 
         .slide-label {
@@ -522,15 +572,16 @@
             left: 0;
             right: 0;
             padding: 10px 16px;
-            background: linear-gradient(transparent, rgba(43, 29, 18, 0.65));
-            color: #f5ecd9;
+            background: linear-gradient(transparent, rgba(10, 7, 7, 0.85));
+            color: var(--gold-soft);
             font-size: 0.75rem;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             font-weight: 600;
             opacity: 0;
             transform: translateY(8px);
             transition: all 0.35s ease;
+            font-family: 'Georgia', serif;
         }
 
         .carousel-slide:hover .slide-label {
@@ -550,7 +601,7 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            border: 2px solid var(--gold);
+            border: 2px solid var(--maroon);
             background: transparent;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -559,13 +610,13 @@
         }
 
         .carousel-dot.active {
-            background: var(--gold);
+            background: var(--maroon);
             transform: scale(1.2);
-            box-shadow: 0 0 12px rgba(184, 134, 11, 0.5);
+            box-shadow: 0 0 15px rgba(192, 57, 43, 0.7);
         }
 
         .carousel-dot:hover {
-            background: var(--gold-soft);
+            background: var(--blood);
             transform: scale(1.15);
         }
 
@@ -622,8 +673,6 @@
             .subtitle::after { left: 0; transform: none; }
             body[dir="rtl"] .subtitle::after { left: auto; right: 0; }
             .section-title { font-size: 1.35rem; letter-spacing: 5px; padding: 0 44px; }
-            .section-title::before,
-            .section-title::after { width: 32px; }
             p { font-size: 1.04rem; }
             .btn-email { font-size: 0.88rem; }
             .carousel-container { max-width: 760px; }
@@ -633,15 +682,15 @@
         #page-curtain {
             position: fixed;
             inset: 0;
-            background-color: var(--ink);
+            background-color: #000;
             z-index: 9999;
             pointer-events: none;
             opacity: 1;
-            clip-path: circle(0% at 0% 0%);
+            clip-path: circle(0% at 50% 50%);
             transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.4s ease 0.9s;
         }
         #page-curtain.loaded {
-            clip-path: circle(150% at 0% 0%);
+            clip-path: circle(150% at 50% 50%);
         }
         #page-curtain.hidden {
             display: none;
@@ -664,12 +713,12 @@
             outline-offset: 3px;
         }
 
-        /* subtle floating decoration */
+        /* Floating spooky decoration */
         .floating-ornament {
             position: absolute;
             font-size: 2rem;
             color: var(--gold);
-            opacity: 0.15;
+            opacity: 0.08;
             pointer-events: none;
             user-select: none;
             animation: floatOrnament 8s ease-in-out infinite;
@@ -730,17 +779,17 @@
                 <div class="carousel-track" id="carouselTrack">
                     <!-- Slide 1 -->
                     <div class="carousel-slide">
-                        <img src="https://picsum.photos/seed/workspace/800/500" alt="Workspace and code" loading="lazy">
+                        <img src="https://picsum.photos/seed/halloween-workspace/800/500" alt="Workspace and code" loading="lazy">
                         <span class="slide-label">Workspace &amp; Code</span>
                     </div>
                     <!-- Slide 2 -->
                     <div class="carousel-slide">
-                        <img src="https://picsum.photos/seed/security/800/500" alt="Security operations" loading="lazy">
+                        <img src="https://picsum.photos/seed/halloween-security/800/500" alt="Security operations" loading="lazy">
                         <span class="slide-label">Security Operations</span>
                     </div>
                     <!-- Slide 3 -->
                     <div class="carousel-slide">
-                        <img src="https://picsum.photos/seed/architecture/800/500" alt="System architecture" loading="lazy">
+                        <img src="https://picsum.photos/seed/halloween-architecture/800/500" alt="System architecture" loading="lazy">
                         <span class="slide-label">System Architecture</span>
                     </div>
                 </div>
@@ -752,7 +801,7 @@
             </div>
         </section>
 
-        <div class="divider" aria-hidden="true">❖ ❖ ❖</div>
+        <div class="divider" aria-hidden="true">🕸 🎃 🕸</div>
 
         <!-- ============ ABOUT ============ -->
         <section class="card">
@@ -785,7 +834,7 @@
             </ul>
         </section>
 
-        <div class="divider" aria-hidden="true">❖ ❖ ❖</div>
+        <div class="divider" aria-hidden="true">🕸 🎃 🕸</div>
 
         <!-- ============ CONTACT ============ -->
         <section class="card contact">
@@ -813,17 +862,14 @@
             const INTERVAL_MS = 3000;
 
             function goToSlide(index) {
-                // wrap around
                 if (index < 0) index = totalSlides - 1;
                 if (index >= totalSlides) index = 0;
                 currentIndex = index;
 
-                // move track (RTL aware)
                 const isRTL = document.body.getAttribute('dir') === 'rtl';
                 const offset = isRTL ? currentIndex * 100 : -currentIndex * 100;
                 track.style.transform = `translateX(${offset}%)`;
 
-                // update dots
                 dots.forEach((dot, i) => {
                     dot.classList.toggle('active', i === currentIndex);
                     dot.setAttribute('aria-selected', i === currentIndex ? 'true' : 'false');
@@ -846,23 +892,20 @@
                 }
             }
 
-            // dot click handlers
             dots.forEach((dot) => {
                 dot.addEventListener('click', () => {
                     const index = parseInt(dot.dataset.index, 10);
                     goToSlide(index);
-                    startAutoPlay(); // reset timer
+                    startAutoPlay();
                 });
             });
 
-            // pause on hover / focus
             const container = document.getElementById('carouselContainer');
             container.addEventListener('mouseenter', stopAutoPlay);
             container.addEventListener('mouseleave', startAutoPlay);
             container.addEventListener('focusin', stopAutoPlay);
             container.addEventListener('focusout', startAutoPlay);
 
-            // handle RTL direction change
             const observer = new MutationObserver((mutations) => {
                 mutations.forEach((m) => {
                     if (m.attributeName === 'dir') {
@@ -872,7 +915,6 @@
             });
             observer.observe(document.body, { attributes: true, attributeFilter: ['dir'] });
 
-            // start
             startAutoPlay();
             goToSlide(0);
         })();
