@@ -3,41 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#0a0a12">
+<meta name="theme-color" content="#f4f5f7">
 <title id="meta-title">Mohammad Asim Haidari | Portfolio & CV</title>
 <style>
-/* ============ LIQUID GLASS THEME (iOS 18 Pro / iOS 27 inspired) ============ */
+/* ============ CLASSIC GLASS THEME (Minimal / Elegant) ============ */
 :root {
-  --bg-deep:      #05060a;
-  --bg-mid:       #0c0e18;
-  --bg-soft:      #12152a;
-  --glass-bg:     rgba(255,255,255,0.06);
-  --glass-bg-2:   rgba(255,255,255,0.10);
-  --glass-border: rgba(255,255,255,0.18);
-  --glass-highlight: rgba(255,255,255,0.35);
-  --ink:          #f0f2f8;
-  --ink-dim:      #8890a8;
-  --accent:       #6ea8fe;
-  --accent-2:     #b48cff;
-  --accent-3:     #ff8a9e;
-  --shadow-deep:  rgba(0,0,0,0.65);
-  --shadow-glass: 0 8px 32px rgba(0,0,0,0.45);
-  --radius-lg:    28px;
-  --radius-md:    20px;
-  --radius-sm:    14px;
+  --bg-deep:      #eef1f5;
+  --bg-mid:       #f6f8fb;
+  --bg-soft:      #ffffff;
+  --glass-bg:     rgba(255,255,255,0.55);
+  --glass-bg-2:   rgba(255,255,255,0.75);
+  --glass-border: rgba(255,255,255,0.85);
+  --glass-highlight: rgba(255,255,255,0.95);
+  --ink:          #1b2230;
+  --ink-dim:      #6b7385;
+  --ink-faint:    #a4abbb;
+  --accent:       #2f4f7a;      /* deep classic navy */
+  --accent-2:     #5a7ba8;
+  --accent-3:     #c9b78e;      /* muted brass / gold */
+  --line:         rgba(27,34,48,0.10);
+  --shadow-deep:  rgba(40,55,80,0.14);
+  --shadow-glass: 0 8px 30px rgba(40,55,80,0.10);
+  --radius-lg:    22px;
+  --radius-md:    16px;
+  --radius-sm:    10px;
 }
 
 [data-theme="dark"] {
-  --bg-deep:      #000000;
-  --bg-mid:       #05060a;
-  --bg-soft:      #0a0c14;
-  --glass-bg:     rgba(255,255,255,0.04);
-  --glass-bg-2:   rgba(255,255,255,0.07);
+  --bg-deep:      #0e1117;
+  --bg-mid:       #131822;
+  --bg-soft:      #1a1f2b;
+  --glass-bg:     rgba(255,255,255,0.045);
+  --glass-bg-2:   rgba(255,255,255,0.075);
   --glass-border: rgba(255,255,255,0.10);
-  --glass-highlight: rgba(255,255,255,0.22);
-  --ink:          #d0d4e0;
-  --ink-dim:      #606880;
-  --shadow-deep:  rgba(0,0,0,0.85);
+  --glass-highlight: rgba(255,255,255,0.20);
+  --ink:          #e6e9f0;
+  --ink-dim:      #8b93a7;
+  --ink-faint:    #5a6274;
+  --accent:       #8fb0d9;
+  --accent-2:     #b8cbe3;
+  --accent-3:     #d4c39a;
+  --line:         rgba(255,255,255,0.08);
+  --shadow-deep:  rgba(0,0,0,0.55);
+  --shadow-glass: 0 8px 30px rgba(0,0,0,0.35);
 }
 
 /* ============ RESET ============ */
@@ -47,7 +55,7 @@ html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 
 /* ============ BASE ============ */
 body {
-  font-family: -apple-system, 'SF Pro Display', 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-family: 'Inter', -apple-system, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.7;
   background: var(--bg-deep);
@@ -57,84 +65,135 @@ body {
   position: relative;
   overflow-x: hidden;
   -webkit-tap-highlight-color: transparent;
-  transition: background .6s ease, color .5s ease;
+  transition: background .5s ease, color .5s ease;
+  font-feature-settings: "ss01","cv11";
 }
 
-/* RTL */
 body[dir="rtl"]{direction:rtl;text-align:right}
-body[dir="rtl"] p{text-align:right}
 body[dir="rtl"] .spec-item{padding:14px 32px 14px 0}
 body[dir="rtl"] .spec-item::before{left:auto;right:0}
-body[dir="rtl"] .subtitle::after{left:50%;transform:translateX(50%)}
-@media(min-width:820px){
-  body[dir="rtl"] .profile-grid{text-align:right}
-  body[dir="rtl"] .subtitle::after{left:auto;right:0;transform:none}
-}
 
-/* ============ ANIMATED GRADIENT BACKGROUND ============ */
+/* ============ SOFT BACKGROUND + CUBIC GRAPH ============ */
 body::before {
   content:"";
   position:fixed;inset:0;
   background:
-    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(110,168,254,0.18), transparent 60%),
-    radial-gradient(ellipse 70% 50% at 80% 30%, rgba(180,140,255,0.14), transparent 55%),
-    radial-gradient(ellipse 60% 60% at 50% 90%, rgba(255,138,158,0.10), transparent 60%),
-    radial-gradient(ellipse 50% 40% at 10% 80%, rgba(110,168,254,0.08), transparent 50%);
+    radial-gradient(ellipse 70% 50% at 15% 5%, rgba(90,123,168,0.14), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 100%, rgba(201,183,142,0.10), transparent 65%);
   pointer-events:none;z-index:0;
-  animation: auroraShift 18s ease-in-out infinite alternate;
+  transition: opacity .5s;
 }
 
-@keyframes auroraShift {
-  0%   { opacity: 1; transform: scale(1) rotate(0deg); }
-  50%  { opacity: 0.7; transform: scale(1.05) rotate(1deg); }
-  100% { opacity: 1; transform: scale(1) rotate(-1deg); }
+[data-theme="dark"] body::before,
+body[data-theme="dark"]::before {
+  background:
+    radial-gradient(ellipse 70% 50% at 15% 5%, rgba(143,176,217,0.10), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 100%, rgba(212,195,154,0.07), transparent 65%);
 }
 
-/* Subtle noise for texture */
+/* Subtle grid texture */
 body::after {
   content:"";
   position:fixed;inset:0;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-  pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, black 30%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, black 30%, transparent 85%);
+  opacity: 0.5;
+  pointer-events:none;
+  z-index: 0;
 }
 
-/* ============ HEADER (Floating Glass Bar) ============ */
+/* ============ CUBIC FUNCTION GRAPH ============ */
+.cubic-graph {
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+  transition: opacity .5s;
+}
+.cubic-graph svg { width: 100%; height: 100%; display: block; }
+
+.cubic-graph path.line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 6px rgba(47,79,122,0.18));
+}
+
+[data-theme="dark"] .cubic-graph path.line {
+  stroke: var(--accent);
+  filter: drop-shadow(0 0 8px rgba(143,176,217,0.35));
+}
+
+.cubic-graph path.axis {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+}
+
+.cubic-graph circle.dot {
+  fill: var(--accent-3);
+  stroke: var(--bg-deep);
+  stroke-width: 1.5;
+}
+
+/* Top-right graph (behind header area) */
+.cubic-graph.top-right {
+  top: 40px; right: -80px;
+  width: 520px; height: 380px;
+  opacity: 0.35;
+}
+
+/* Bottom-left graph (background accent) */
+.cubic-graph.bottom-left {
+  bottom: -60px; left: -100px;
+  width: 560px; height: 400px;
+  opacity: 0.28;
+}
+
+@media (max-width: 640px) {
+  .cubic-graph.top-right { width: 320px; height: 240px; right: -100px; opacity: 0.25; }
+  .cubic-graph.bottom-left { width: 340px; height: 260px; opacity: 0.20; }
+}
+
+/* ============ HEADER ============ */
 header {
   position: sticky;
-  top: 10px;
+  top: 12px;
   z-index: 100;
-  margin: 10px 12px 0;
-  padding: 12px 18px;
+  margin: 12px 14px 0;
+  padding: 12px 20px;
   padding-top: calc(12px + env(safe-area-inset-top));
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   background: var(--glass-bg);
-  backdrop-filter: blur(24px) saturate(1.8);
-  -webkit-backdrop-filter: blur(24px) saturate(1.8);
+  backdrop-filter: blur(22px) saturate(1.6);
+  -webkit-backdrop-filter: blur(22px) saturate(1.6);
   border: 1px solid var(--glass-border);
   box-shadow:
     inset 0 1px 0 var(--glass-highlight),
-    inset 0 -1px 0 rgba(255,255,255,0.04),
-    0 8px 32px var(--shadow-deep),
-    0 2px 8px rgba(0,0,0,0.3);
-  transition: background .4s, box-shadow .4s;
+    0 6px 24px var(--shadow-deep),
+    0 1px 2px rgba(0,0,0,0.04);
+  transition: background .35s, box-shadow .35s;
 }
 
 header:hover {
   background: var(--glass-bg-2);
-  box-shadow:
-    inset 0 1px 0 var(--glass-highlight),
-    inset 0 -1px 0 rgba(255,255,255,0.06),
-    0 12px 40px var(--shadow-deep);
 }
 
 .logo {
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
   color: var(--ink);
   text-transform: uppercase;
   display: flex;
@@ -146,107 +205,91 @@ header:hover {
   min-width: 0;
 }
 
+/* Minimal geometric logo mark (cubic-inspired) */
 .logo::before {
   content: "";
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent-3), var(--accent));
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: var(--accent);
   flex-shrink: 0;
-  box-shadow: 0 0 16px rgba(110,168,254,0.6);
-  animation: orbSpin 6s linear infinite;
-}
-
-@keyframes orbSpin {
-  to { transform: rotate(360deg); }
+  position: relative;
+  box-shadow: inset 0 -3px 0 rgba(0,0,0,0.12);
 }
 
 .header-controls {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   flex-shrink: 0;
 }
 
-/* Glass pill select */
 .lang-select {
-  background: var(--glass-bg-2);
-  border: 1px solid var(--glass-border);
+  background: transparent;
+  border: 1px solid var(--line);
   color: var(--ink);
-  padding: 0 14px;
-  height: 38px;
+  padding: 0 12px;
+  height: 36px;
   font-family: inherit;
   font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
   cursor: pointer;
   border-radius: 100px;
-  transition: all .3s ease;
-  -webkit-tap-highlight-color: transparent;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  transition: all .25s ease;
 }
 
 .lang-select:hover {
-  background: rgba(255,255,255,0.14);
-  border-color: rgba(255,255,255,0.3);
+  background: var(--glass-bg-2);
+  border-color: var(--accent);
 }
 
-.lang-select option { background: var(--bg-mid); color: var(--ink); }
+.lang-select option { background: var(--bg-soft); color: var(--ink); }
 
-/* Glass circle theme toggle */
 .theme-toggle {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  border: 1px solid var(--glass-border);
-  background: var(--glass-bg-2);
+  border: 1px solid var(--line);
+  background: transparent;
   color: var(--ink);
-  font-size: 1.1rem;
+  font-size: 1rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all .3s ease;
-  -webkit-tap-highlight-color: transparent;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: inset 0 1px 0 var(--glass-highlight);
+  transition: all .25s ease;
 }
 
-.theme-toggle::before { content: "☀️"; }
-[data-theme="dark"] .theme-toggle::before { content: "🌙"; }
+.theme-toggle::before { content: "◐"; font-size: 1.15rem; }
+[data-theme="dark"] .theme-toggle::before { content: "◑"; }
 
 .theme-toggle:hover {
-  background: rgba(255,255,255,0.18);
-  transform: scale(1.08);
-  box-shadow: 0 0 20px rgba(110,168,254,0.3), inset 0 1px 0 var(--glass-highlight);
+  background: var(--glass-bg-2);
+  border-color: var(--accent);
 }
-
-.theme-toggle:active { transform: scale(0.94); }
 
 /* ============ CONTAINER ============ */
 .container {
   max-width: 880px;
   margin: 0 auto;
-  padding: 28px 16px 40px;
+  padding: 32px 18px 48px;
   position: relative;
   z-index: 1;
 }
 
 /* ============ SECTION TITLES ============ */
 .section-title {
-  font-size: 1.05rem;
+  font-size: 0.82rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 4px;
-  color: var(--ink);
+  color: var(--ink-dim);
   text-align: center;
-  margin: 0 0 24px;
+  margin: 0 0 22px;
   position: relative;
-  padding: 0 40px;
+  padding: 0 50px;
   line-height: 1.4;
-  opacity: 0.9;
 }
 
 .section-title::before,
@@ -254,64 +297,46 @@ header:hover {
   content: "";
   position: absolute;
   top: 50%;
-  width: 24px;
+  width: 32px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--glass-border));
+  background: var(--line);
 }
 .section-title::before { left: 0; }
-.section-title::after { right: 0; transform: scaleX(-1); }
+.section-title::after { right: 0; }
 
 /* ============ DIVIDER ============ */
 .divider {
   text-align: center;
-  color: var(--ink-dim);
-  font-size: 0.8rem;
-  letter-spacing: 12px;
+  color: var(--ink-faint);
+  font-size: 0.7rem;
+  letter-spacing: 10px;
   margin: 32px 0;
   user-select: none;
-  opacity: 0.5;
 }
 
 /* ============ GLASS CARD ============ */
 .card {
   background: var(--glass-bg);
-  backdrop-filter: blur(24px) saturate(1.6);
-  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
-  padding: 28px 20px;
+  padding: 30px 24px;
   position: relative;
   box-shadow:
     inset 0 1px 0 var(--glass-highlight),
-    inset 0 -1px 0 rgba(255,255,255,0.04),
-    0 8px 32px var(--shadow-deep),
-    0 2px 12px rgba(0,0,0,0.3);
-  margin-bottom: 24px;
-  transition: all .4s cubic-bezier(.25,.46,.45,.94);
+    0 4px 20px var(--shadow-deep);
+  margin-bottom: 22px;
+  transition: transform .35s cubic-bezier(.25,.46,.45,.94), box-shadow .35s, background .35s;
   overflow: hidden;
-}
-
-/* Top specular highlight streak */
-.card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 10%;
-  right: 10%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-  pointer-events: none;
 }
 
 .card:hover {
   background: var(--glass-bg-2);
-  border-color: rgba(255,255,255,0.26);
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.4),
-    inset 0 -1px 0 rgba(255,255,255,0.06),
-    0 16px 48px var(--shadow-deep),
-    0 0 40px rgba(110,168,254,0.08);
+    inset 0 1px 0 var(--glass-highlight),
+    0 10px 32px var(--shadow-deep);
 }
 
 /* ============ PROFILE ============ */
@@ -320,42 +345,31 @@ header:hover {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 22px;
+  gap: 24px;
 }
 
 .portrait {
-  width: 140px;
-  height: 140px;
+  width: 132px;
+  height: 132px;
   border-radius: 50%;
   overflow: hidden;
   position: relative;
   flex-shrink: 0;
-  transition: transform .5s cubic-bezier(.25,.46,.45,.94);
+  transition: transform .4s cubic-bezier(.25,.46,.45,.94);
   box-shadow:
-    0 0 0 2px var(--glass-border),
-    0 0 0 4px rgba(255,255,255,0.06),
-    0 0 30px rgba(110,168,254,0.25),
-    0 0 60px rgba(180,140,255,0.15);
+    0 0 0 1px var(--line),
+    0 0 0 6px var(--glass-bg-2),
+    0 8px 30px var(--shadow-deep);
 }
 
-.portrait:hover {
-  transform: scale(1.08);
-  box-shadow:
-    0 0 0 2px rgba(255,255,255,0.3),
-    0 0 0 4px rgba(255,255,255,0.1),
-    0 0 40px rgba(110,168,254,0.45),
-    0 0 80px rgba(180,140,255,0.25);
-}
+.portrait:hover { transform: scale(1.04); }
 
 .portrait img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(1.1) contrast(1.05);
-  transition: filter .4s;
+  filter: saturate(1.02) contrast(1.02);
 }
-
-.portrait:hover img { filter: saturate(1.2) contrast(1.1) brightness(1.05); }
 
 .portrait span {
   position: absolute;
@@ -364,7 +378,7 @@ header:hover {
   align-items: center;
   justify-content: center;
   color: var(--ink-dim);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   text-align: center;
   padding: 8px;
   z-index: 0;
@@ -373,46 +387,32 @@ header:hover {
 .portrait img + span { display: none; }
 
 h1 {
-  font-size: 1.65rem;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  line-height: 1.2;
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  line-height: 1.25;
   margin-bottom: 8px;
-  background: linear-gradient(135deg, var(--ink) 0%, var(--accent) 60%, var(--accent-2) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--ink);
 }
 
 .subtitle {
   font-size: 0.9rem;
   color: var(--ink-dim);
-  margin-bottom: 18px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
   position: relative;
   font-weight: 500;
 }
 
-.subtitle::after {
-  content: "";
-  position: absolute;
-  bottom: -1px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-}
-
 /* ============ TEXT ============ */
 p {
-  font-size: 0.95rem;
+  font-size: 0.94rem;
   color: var(--ink);
   text-align: left;
   margin-bottom: 14px;
-  line-height: 1.8;
-  opacity: 0.9;
+  line-height: 1.75;
+  opacity: 0.92;
 }
 p:last-child{margin-bottom:0}
 
@@ -421,106 +421,88 @@ p:last-child{margin-bottom:0}
 
 .spec-item {
   position: relative;
-  padding: 14px 0 14px 32px;
+  padding: 16px 0 16px 30px;
   font-size: 0.92rem;
   line-height: 1.6;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  transition: padding-left .25s;
+  border-bottom: 1px solid var(--line);
+  transition: padding-left .2s;
 }
 .spec-item:last-child { border-bottom: none; }
-.spec-item:hover { padding-left: 38px; }
+.spec-item:hover { padding-left: 34px; }
 
 .spec-item::before {
   content: "";
   position: absolute;
   left: 0;
-  top: 20px;
-  width: 8px;
-  height: 8px;
+  top: 24px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  box-shadow: 0 0 10px rgba(110,168,254,0.5);
-  transition: transform .25s, box-shadow .25s;
+  background: var(--accent-3);
+  box-shadow: 0 0 0 3px rgba(201,183,142,0.18);
+  transition: transform .2s, box-shadow .2s;
 }
 
 .spec-item:hover::before {
-  transform: scale(1.4);
-  box-shadow: 0 0 16px rgba(110,168,254,0.8);
+  transform: scale(1.3);
+  box-shadow: 0 0 0 5px rgba(201,183,142,0.22);
 }
 
 .spec-item strong {
   display: block;
   color: var(--accent);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin-bottom: 3px;
+  letter-spacing: 1.6px;
+  margin-bottom: 4px;
   font-weight: 700;
 }
 
-/* ============ GLASS EMAIL BUTTON ============ */
+/* ============ EMAIL BUTTON ============ */
 .btn-email {
   display: flex;
   width: 100%;
-  padding: 16px 24px;
-  margin-top: 14px;
-  border: 1px solid var(--glass-border);
+  padding: 15px 24px;
+  margin-top: 16px;
+  border: 1px solid var(--line);
   background: var(--glass-bg-2);
-  backdrop-filter: blur(16px) saturate(1.5);
-  -webkit-backdrop-filter: blur(16px) saturate(1.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: var(--ink);
   text-decoration: none;
   font-family: inherit;
   font-weight: 600;
   font-size: 0.85rem;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
   text-align: center;
   border-radius: 100px;
-  transition: all .35s cubic-bezier(.25,.46,.45,.94);
-  box-shadow:
-    inset 0 1px 0 var(--glass-highlight),
-    0 4px 16px rgba(0,0,0,0.3);
+  transition: all .3s ease;
   word-break: break-word;
-  min-height: 54px;
+  min-height: 52px;
   align-items: center;
   justify-content: center;
-  -webkit-tap-highlight-color: transparent;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-email::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-  transition: left .6s ease;
 }
 
 .btn-email:hover {
-  background: rgba(255,255,255,0.16);
-  border-color: rgba(255,255,255,0.35);
-  transform: translateY(-2px);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.4),
-    0 8px 24px rgba(0,0,0,0.4),
-    0 0 30px rgba(110,168,254,0.2);
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(47,79,122,0.25);
 }
 
-.btn-email:hover::before { left: 100%; }
-
-.btn-email:active {
-  transform: translateY(0) scale(.98);
+[data-theme="dark"] .btn-email:hover {
+  color: var(--bg-deep);
+  box-shadow: 0 8px 22px rgba(143,176,217,0.25);
 }
+
+.btn-email:active { transform: translateY(0) scale(.98); }
 
 .card.contact p { text-align: center; font-size: 0.92rem; }
 body[dir="rtl"] .card.contact p { text-align: center; }
 
-/* ============ GLASS CAROUSEL ============ */
-.carousel-section { margin-bottom: 24px; }
+/* ============ CAROUSEL ============ */
+.carousel-section { margin-bottom: 22px; }
 
 .carousel-container {
   position: relative;
@@ -532,27 +514,20 @@ body[dir="rtl"] .card.contact p { text-align: center; }
   overflow: hidden;
   border: 1px solid var(--glass-border);
   background: var(--glass-bg);
-  backdrop-filter: blur(24px) saturate(1.6);
-  -webkit-backdrop-filter: blur(24px) saturate(1.6);
   box-shadow:
     inset 0 1px 0 var(--glass-highlight),
-    0 8px 32px var(--shadow-deep),
-    0 0 40px rgba(110,168,254,0.08);
-  transition: box-shadow .4s, border-color .4s;
+    0 6px 24px var(--shadow-deep);
+  transition: box-shadow .3s, border-color .3s;
 }
 
 .carousel-container:hover {
-  border-color: rgba(255,255,255,0.3);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.4),
-    0 16px 48px var(--shadow-deep),
-    0 0 60px rgba(110,168,254,0.15);
+  border-color: var(--accent-2);
 }
 
 .carousel-track {
   display: flex;
   height: 100%;
-  transition: transform .9s cubic-bezier(.6,0,.2,1);
+  transition: transform .8s cubic-bezier(.6,0,.2,1);
   will-change: transform;
 }
 
@@ -567,25 +542,17 @@ body[dir="rtl"] .card.contact p { text-align: center; }
   overflow: hidden;
 }
 
-/* ============ BILLIE EILISH IMAGE PLACEHOLDERS ============ */
-/* 
-   ⚠️ تصاویر بیلی آیلیش را در اینجا جایگزین کن:
-   - لینک مستقیم عکس اول را در src تصویر اسلاید ۱ قرار بده
-   - لینک مستقیم عکس دوم را در src تصویر اسلاید ۲ قرار بده
-   - لینک مستقیم عکس سوم را در src تصویر اسلاید ۳ قرار بده
-*/
-
 .carousel-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(1.05) contrast(1.02);
-  transition: filter .5s, transform .5s;
+  filter: saturate(1.02) contrast(1.02);
+  transition: filter .4s, transform .4s;
 }
 
 .carousel-slide:hover img {
-  filter: saturate(1.15) contrast(1.06) brightness(1.03);
-  transform: scale(1.03);
+  filter: saturate(1.08) contrast(1.04);
+  transform: scale(1.02);
 }
 
 .slide-label {
@@ -593,16 +560,16 @@ body[dir="rtl"] .card.contact p { text-align: center; }
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 14px 18px;
-  background: linear-gradient(transparent, rgba(5,6,10,0.9));
-  color: var(--ink);
-  font-size: 0.72rem;
-  letter-spacing: 1.5px;
+  padding: 12px 16px;
+  background: linear-gradient(transparent, rgba(14,17,23,0.85));
+  color: #fff;
+  font-size: 0.68rem;
+  letter-spacing: 1.4px;
   text-transform: uppercase;
   font-weight: 600;
   opacity: 0;
-  transform: translateY(8px);
-  transition: all .4s;
+  transform: translateY(6px);
+  transition: all .35s;
 }
 
 .carousel-slide:hover .slide-label {
@@ -610,96 +577,84 @@ body[dir="rtl"] .card.contact p { text-align: center; }
   transform: translateY(0);
 }
 
-/* Glass pill dots */
 .carousel-dots {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   margin-top: 18px;
 }
 
 .carousel-dot {
-  width: 28px;
-  height: 6px;
+  width: 24px;
+  height: 4px;
   border-radius: 100px;
   border: none;
-  background: rgba(255,255,255,0.15);
+  background: var(--line);
   cursor: pointer;
-  transition: all .4s cubic-bezier(.25,.46,.45,.94);
+  transition: all .35s ease;
   padding: 0;
-  -webkit-tap-highlight-color: transparent;
-  position: relative;
-  overflow: hidden;
 }
 
 .carousel-dot.active {
   background: var(--accent);
-  box-shadow: 0 0 12px rgba(110,168,254,0.6);
-  width: 36px;
+  width: 32px;
 }
 
-.carousel-dot:hover {
-  background: rgba(255,255,255,0.3);
-}
-
-.carousel-dot.active:hover {
-  background: var(--accent-2);
-}
+.carousel-dot:hover { background: var(--accent-2); }
+.carousel-dot.active:hover { background: var(--accent); }
 
 /* ============ TABLET ============ */
 @media(min-width:600px){
-  .container{padding:36px 24px 48px}
-  .card{padding:34px 28px;margin-bottom:28px}
-  h1{font-size:2rem}
+  .container{padding:40px 24px 56px}
+  .card{padding:36px 30px;margin-bottom:26px}
+  h1{font-size:1.9rem}
   .subtitle{font-size:1rem}
-  .portrait{width:170px;height:170px}
-  .btn-email{width:auto;display:inline-flex;padding:16px 36px}
-  .section-title{font-size:1.15rem;letter-spacing:5px}
-  .spec-item{font-size:0.98rem}
-  p{font-size:0.98rem}
+  .portrait{width:160px;height:160px}
+  .btn-email{width:auto;display:inline-flex;padding:15px 36px}
+  .section-title{font-size:0.9rem;letter-spacing:5px}
+  .spec-item{font-size:0.96rem}
+  p{font-size:0.97rem}
   .carousel-container{max-width:680px}
 }
 
 /* ============ DESKTOP ============ */
 @media(min-width:820px){
-  header{padding:14px 28px;margin:14px 24px 0;border-radius:32px}
-  .logo{font-size:1.1rem;letter-spacing:2px}
-  .theme-toggle{width:42px;height:42px;font-size:1.2rem}
-  .lang-select{height:42px;font-size:0.78rem;padding:0 18px}
-  .container{padding:44px 28px 60px}
-  .card{padding:40px;margin-bottom:32px;border-radius:32px}
+  header{padding:14px 28px;margin:14px 24px 0;border-radius:18px}
+  .logo{font-size:1.02rem;letter-spacing:1.6px}
+  .theme-toggle{width:40px;height:40px}
+  .lang-select{height:40px;font-size:0.76rem;padding:0 16px}
+  .container{padding:48px 28px 64px}
+  .card{padding:44px;margin-bottom:30px;border-radius:24px}
   .divider{margin:44px 0}
 
   .profile-grid{
     display:grid;
-    grid-template-columns: 220px 1fr;
-    gap:40px;
+    grid-template-columns: 200px 1fr;
+    gap:42px;
     align-items:center;
     text-align:left;
   }
-  body[dir="rtl"] .profile-grid{grid-template-columns:1fr 220px}
+  body[dir="rtl"] .profile-grid{grid-template-columns:1fr 200px}
 
-  .portrait{width:200px;height:200px}
-  h1{font-size:2.3rem}
-  .subtitle{font-size:1.05rem;padding-bottom:18px}
-  .subtitle::after{left:0;transform:none}
-  body[dir="rtl"] .subtitle::after{left:auto;right:0}
-  .section-title{font-size:1.25rem;letter-spacing:6px;padding:0 60px}
+  .portrait{width:180px;height:180px}
+  h1{font-size:2.15rem}
+  .subtitle{font-size:1.02rem;padding-bottom:16px}
+  .section-title{font-size:0.95rem;letter-spacing:6px;padding:0 70px}
   p{font-size:1rem}
-  .btn-email{font-size:0.88rem;padding:18px 44px}
-  .carousel-container{max-width:760px;border-radius:32px}
+  .btn-email{font-size:0.88rem;padding:16px 40px}
+  .carousel-container{max-width:760px;border-radius:24px}
 }
 
 /* ============ CURTAIN ============ */
 #page-curtain {
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle, var(--bg-mid), var(--bg-deep));
+  background: var(--bg-deep);
   z-index: 9999;
   pointer-events: none;
   opacity: 1;
   clip-path: circle(0% at 50% 50%);
-  transition: clip-path 1.2s cubic-bezier(.77,0,.175,1), opacity .4s ease .9s;
+  transition: clip-path 1s cubic-bezier(.77,0,.175,1), opacity .4s ease .8s;
 }
 #page-curtain.loaded{clip-path: circle(150% at 50% 50%)}
 #page-curtain.hidden{display:none}
@@ -709,29 +664,11 @@ body[dir="rtl"] .card.contact p { text-align: center; }
   *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
   #page-curtain{display:none}
   .carousel-track{transition:none!important}
-  body::before{animation:none}
 }
 
 button:focus-visible,a:focus-visible,select:focus-visible{
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-}
-
-/* Floating glass orbs */
-.orb {
-  position: fixed;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-  filter: blur(60px);
-  opacity: 0.15;
-  animation: orbFloat 20s ease-in-out infinite;
-}
-
-@keyframes orbFloat {
-  0%,100% { transform: translate(0,0) scale(1); }
-  33%     { transform: translate(30px,-40px) scale(1.1); }
-  66%     { transform: translate(-20px,30px) scale(0.9); }
 }
 </style>
 </head>
@@ -739,10 +676,41 @@ button:focus-visible,a:focus-visible,select:focus-visible{
 
 <div id="page-curtain" aria-hidden="true"></div>
 
-<!-- Floating glass orbs -->
-<div class="orb" style="width:300px;height:300px;background:var(--accent);top:10%;left:-5%;animation-delay:0s"></div>
-<div class="orb" style="width:250px;height:250px;background:var(--accent-2);top:60%;right:-5%;animation-delay:-7s"></div>
-<div class="orb" style="width:200px;height:200px;background:var(--accent-3);bottom:10%;left:30%;animation-delay:-14s"></div>
+<!-- ============ CUBIC FUNCTION GRAPH (Decor) ============ -->
+<div class="cubic-graph top-right" aria-hidden="true">
+  <svg viewBox="0 0 520 380" preserveAspectRatio="xMidYMid meet">
+    <path class="axis" d="M 40 190 L 480 190" />
+    <path class="axis" d="M 260 30 L 260 350" />
+    <!-- y = (x^3)/k + linear term; scaled nicely -->
+    <path class="line"
+      d="M 60 320
+         C 120 320, 150 300, 190 240
+         S 240 150, 260 190
+         S 300 260, 340 220
+         S 400 120, 460 60"
+    />
+    <circle class="dot" cx="260" cy="190" r="3.5" />
+    <circle class="dot" cx="190" cy="240" r="2.5" />
+    <circle class="dot" cx="340" cy="220" r="2.5" />
+  </svg>
+</div>
+
+<div class="cubic-graph bottom-left" aria-hidden="true">
+  <svg viewBox="0 0 560 400" preserveAspectRatio="xMidYMid meet">
+    <path class="axis" d="M 40 200 L 520 200" />
+    <path class="axis" d="M 280 30 L 280 370" />
+    <path class="line"
+      d="M 60 340
+         C 130 340, 170 310, 210 240
+         S 260 140, 280 200
+         S 320 290, 360 240
+         S 430 100, 500 50"
+    />
+    <circle class="dot" cx="280" cy="200" r="3.5" />
+    <circle class="dot" cx="210" cy="240" r="2.5" />
+    <circle class="dot" cx="360" cy="240" r="2.5" />
+  </svg>
+</div>
 
 <header>
   <div class="logo">M. A. Haidari</div>
@@ -779,37 +747,28 @@ button:focus-visible,a:focus-visible,select:focus-visible{
     </div>
   </section>
 
-  <!-- ============ BILLIE EILISH CAROUSEL ============ -->
+  <!-- ============ CAROUSEL ============ -->
   <section class="carousel-section">
     <h2 class="section-title" id="t-gallery-title">Gallery</h2>
     <div class="carousel-container" id="carouselContainer">
       <div class="carousel-track" id="carouselTrack">
 
-        <!-- اسلاید ۱ — تصویر اول بیلی آیلیش را اینجا قرار بده -->
         <div class="carousel-slide">
           <img src="https://picsum.photos/seed/billie-1/800/500"
-               alt="Billie Eilish — Portrait 1"
-               loading="lazy"
-               id="billie-img-1">
-          <span class="slide-label">Billie Eilish — Portrait</span>
+               alt="Portrait 1" loading="lazy" id="billie-img-1">
+          <span class="slide-label">Portrait</span>
         </div>
 
-        <!-- اسلاید ۲ — تصویر دوم بیلی آیلیش را اینجا قرار بده -->
         <div class="carousel-slide">
           <img src="https://picsum.photos/seed/billie-2/800/500"
-               alt="Billie Eilish — Portrait 2"
-               loading="lazy"
-               id="billie-img-2">
-          <span class="slide-label">Billie Eilish — Editorial</span>
+               alt="Portrait 2" loading="lazy" id="billie-img-2">
+          <span class="slide-label">Editorial</span>
         </div>
 
-        <!-- اسلاید ۳ — تصویر سوم بیلی آیلیش را اینجا قرار بده -->
         <div class="carousel-slide">
           <img src="https://picsum.photos/seed/billie-3/800/500"
-               alt="Billie Eilish — Portrait 3"
-               loading="lazy"
-               id="billie-img-3">
-          <span class="slide-label">Billie Eilish — Vogue</span>
+               alt="Portrait 3" loading="lazy" id="billie-img-3">
+          <span class="slide-label">Vogue</span>
         </div>
 
       </div>
@@ -821,7 +780,7 @@ button:focus-visible,a:focus-visible,select:focus-visible{
     </div>
   </section>
 
-  <div class="divider" aria-hidden="true">◇ ◇ ◇</div>
+  <div class="divider" aria-hidden="true">· · ·</div>
 
   <!-- ============ ABOUT ============ -->
   <section class="card">
@@ -854,7 +813,7 @@ button:focus-visible,a:focus-visible,select:focus-visible{
     </ul>
   </section>
 
-  <div class="divider" aria-hidden="true">◇ ◇ ◇</div>
+  <div class="divider" aria-hidden="true">· · ·</div>
 
   <!-- ============ CONTACT ============ -->
   <section class="card contact">
@@ -878,7 +837,7 @@ button:focus-visible,a:focus-visible,select:focus-visible{
   const slides = track.querySelectorAll('.carousel-slide');
   const total = slides.length;
   let idx = 0, timer = null;
-  const MS = 3500;
+  const MS = 4000;
 
   function go(i){
     if(i<0) i = total-1;
@@ -1043,8 +1002,8 @@ window.addEventListener('DOMContentLoaded', ()=>{
   }catch(e){}
   setTimeout(()=>{
     const c = document.getElementById('page-curtain');
-    if(c){ c.classList.add('loaded'); setTimeout(()=>c.classList.add('hidden'),1300); }
-  },100);
+    if(c){ c.classList.add('loaded'); setTimeout(()=>c.classList.add('hidden'),1200); }
+  },80);
 });
 </script>
 </body>
