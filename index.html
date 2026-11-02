@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#f5ecd9">
-    <title>Mohammad Asim Haidari | Portfolio & CV</title>
+    <title id="meta-title">Mohammad Asim Haidari | Portfolio & CV</title>
     <style>
         /* ============ THEME ============ */
         :root {
@@ -46,7 +46,6 @@
         /* ============ BASE (MOBILE-FIRST) ============ */
         body {
             font-family: Georgia, 'Times New Roman', 'Palatino Linotype', serif;
-            /* 16px minimum to prevent iOS auto-zoom on inputs */
             font-size: 16px;
             line-height: 1.75;
             background-color: var(--paper);
@@ -57,6 +56,36 @@
             position: relative;
             overflow-x: hidden;
             -webkit-tap-highlight-color: transparent;
+        }
+
+        /* RTL adjustments for Arabic, Pashto, Dari */
+        body[dir="rtl"] {
+            direction: rtl;
+            text-align: right;
+        }
+        body[dir="rtl"] p {
+            text-align: right;
+        }
+        body[dir="rtl"] .stats-list li {
+            padding: 12px 24px 12px 0;
+        }
+        body[dir="rtl"] .stats-list li::before {
+            left: auto;
+            right: 0;
+        }
+        body[dir="rtl"] .subtitle::after {
+            left: 50%;
+            transform: translateX(50%);
+        }
+        @media (min-width: 820px) {
+            body[dir="rtl"] .profile-grid {
+                text-align: right;
+            }
+            body[dir="rtl"] .subtitle::after {
+                left: auto;
+                right: 0;
+                transform: none;
+            }
         }
 
         /* Subtle paper texture */
@@ -110,6 +139,34 @@
             flex-shrink: 0;
         }
 
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .lang-select {
+            background: transparent;
+            border: 1.5px solid var(--gold);
+            color: var(--maroon);
+            padding: 0 10px;
+            height: 40px;
+            font-family: inherit;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .lang-select option {
+            background: var(--paper);
+            color: var(--ink);
+        }
+
         .theme-toggle {
             background: transparent;
             border: 1.5px solid var(--gold);
@@ -124,13 +181,13 @@
             text-transform: uppercase;
             cursor: pointer;
             border-radius: 2px;
-           : background-color 0.2s ease, color 0.2s ease;
+            transition: background-color 0.2s ease, color 0.2s ease;
             white-space: nowrap;
             flex-shrink: 0;
             -webkit-tap-highlight-color: transparent;
         }
 
-        .theme-toggle:active {
+        .theme-toggle:active, .lang-select:active {
             background: var(--gold);
             color: var(--paper);
         }
@@ -193,7 +250,6 @@
             transition: background-color 0.35s ease, border-color 0.35s ease;
         }
 
-        /* Inner double frame */
         .card::before {
             content: "";
             position: absolute;
@@ -203,7 +259,6 @@
             pointer-events: none;
         }
 
-        /* Corner dots */
         .card::after {
             content: "";
             position: absolute;
@@ -218,7 +273,7 @@
 
         .card > * { position: relative; z-index: 1; }
 
-        /* ============ PROFILE (MOBILE LAYOUT) ============ */
+        /* ============ PROFILE ============ */
         .profile-grid {
             display: flex;
             flex-direction: column;
@@ -364,7 +419,6 @@
             transition: background-color 0.25s ease, color 0.25s ease;
             box-shadow: 0 2px 8px var(--shadow);
             word-break: break-word;
-            /* Minimum touch target */
             min-height: 48px;
             display: flex;
             align-items: center;
@@ -377,10 +431,12 @@
             color: var(--paper);
         }
 
-        /* Contact paragraph centered */
         .card.contact p {
             text-align: center;
             font-size: 0.92rem;
+        }
+        body[dir="rtl"] .card.contact p {
+            text-align: center;
         }
 
         /* ============ TABLET ============ */
@@ -388,19 +444,19 @@
             .container { padding: 32px 22px; }
             .card { padding: 28px 26px; margin-bottom: 28px; }
             h1 { font-size: 1.9rem; }
-            .subtitle { font /*-size: 1rem; }
+            .subtitle { font-size: 1rem; }
             .portrait { width: 170px; height: 170px; }
-            .btn-email { width: auto; display: inline =-flex; padding: 14px 28px; }
+            .btn-email { width: auto; display: inline-flex; padding: 14px 28px; }
             .section-title { font-size: 1.15rem; letter-spacing: 3px; }
-            .stats-list li { font-size: 1========rem; }
+            .stats-list li { font-size: 1rem; }
             p { font-size: 1rem; }
         }
 
-       === DESKTOP ============ */
+        /* ============ DESKTOP ============ */
         @media (min-width: 820px) {
             header { padding: 16px 40px; padding-top: calc(16px + env(safe-area-inset-top)); }
             .logo { font-size: 1.4rem; letter-spacing: 2px; }
-            .theme-toggle { height: 44px; font-size: 0.85rem; padding: 0 20px; }
+            .theme-toggle, .lang-select { height: 44px; font-size: 0.85rem; padding: 0 16px; }
             .container { padding: 48px 24px; }
             .card { padding: 40px; margin-bottom: 32px; }
             .divider { margin: 40px 0; }
@@ -411,6 +467,9 @@
                 gap: 36px;
                 align-items: center;
                 text-align: left;
+            }
+            body[dir="rtl"] .profile-grid {
+                grid-template-columns: 1fr 220px;
             }
 
             .portrait {
@@ -427,11 +486,30 @@
             h1 { font-size: 2.3rem; }
             .subtitle { font-size: 1.1rem; padding-bottom: 14px; }
             .subtitle::after { left: 0; transform: none; }
+            body[dir="rtl"] .subtitle::after { left: auto; right: 0; }
             .section-title { font-size: 1.3rem; letter-spacing: 4px; padding: 0 40px; }
             .section-title::before,
             .section-title::after { width: 28px; }
             p { font-size: 1.02rem; }
             .btn-email { font-size: 0.85rem; }
+        }
+
+        /* ============ CURTAIN / PAGE-LOAD ANIMATION ============ */
+        #page-curtain {
+            position: fixed;
+            inset: 0;
+            background-color: var(--ink);
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 1;
+            clip-path: circle(0% at 0% 0%);
+            transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.4s ease 0.9s;
+        }
+        #page-curtain.loaded {
+            clip-path: circle(150% at 0% 0%);
+        }
+        #page-curtain.hidden {
+            display: none;
         }
 
         /* ============ ACCESSIBILITY ============ */
@@ -440,11 +518,12 @@
                 transition-duration: 0.01ms !important;
                 animation-duration: 0.01ms !important;
             }
+            #page-curtain { display: none; }
         }
 
-        /* Focus visible for keyboard users */
         button:focus-visible,
-        a:focus-visible {
+        a:focus-visible,
+        select:focus-visible {
             outline: 2px solid var(--maroon);
             outline-offset: 3px;
         }
@@ -452,11 +531,23 @@
 </head>
 <body>
 
+    <!-- Curtain overlay for dynamic curve reveal -->
+    <div id="page-curtain" aria-hidden="true"></div>
+
     <header>
         <div class="logo">M. A. Haidari</div>
-        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle color theme">
-            Theme
-        </button>
+        <div class="header-controls">
+            <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)" aria-label="Select Language">
+                <option value="en">English</option>
+                <option value="fa">دری</option>
+                <option value="ps">پښتو</option>
+                <option value="ar">العربية</option>
+                <option value="tr">Türkçe</option>
+            </select>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle color theme">
+                Theme
+            </button>
+        </div>
     </header>
 
     <main class="container">
@@ -466,12 +557,12 @@
             <div class="profile-grid">
                 <div class="portrait">
                     <img src="your-photo-here.jpg" alt="Mohammad Asim Haidari">
-                    <span>Your<br>Photo</span>
+                    <span id="photo-fallback">Your<br>Photo</span>
                 </div>
                 <div>
-                    <h1>Mohammad Asim Haidari</h1>
-                    <div class="subtitle">Software Engineer &amp; Cyber Security Intern</div>
-                    <p>
+                    <h1 id="t-name">Mohammad Asim Haidari</h1>
+                    <div class="subtitle" id="t-subtitle">Software Engineer &amp; Cyber Security Intern</div>
+                    <p id="t-welcome">
                         Welcome to my personal index — an interactive, living curriculum vitae
                         built for recruiters, peers, and collaborators to explore my engineering
                         track record and current operations.
@@ -484,8 +575,8 @@
 
         <!-- ============ ABOUT ============ -->
         <section class="card">
-            <h2 class="section-title">Profile</h2>
-            <p>
+            <h2 class="section-title" id="t-profile-title">Profile</h2>
+            <p id="t-profile-text">
                 I am a highly analytical software engineer and an actively practicing
                 cybersecurity intern. Over the past three years, I have engineered reliable
                 software patterns, built functional architectures, and specialized in
@@ -496,19 +587,19 @@
 
         <!-- ============ SPECIFICATIONS ============ -->
         <section class="card">
-            <h2 class="section-title">Specifications</h2>
+            <h2 class="section-title" id="t-specs-title">Specifications</h2>
             <ul class="stats-list">
                 <li>
-                    <strong>Experience</strong>
-                    3 Years of Full-Stack Application Programming
+                    <strong id="t-exp-label">Experience</strong>
+                    <span id="t-exp-text">3 Years of Full-Stack Application Programming</span>
                 </li>
                 <li>
-                    <strong>Current Focus</strong>
-                    Cybersecurity Auditing, Threat Detection &amp; Penetration Testing
+                    <strong id="t-focus-label">Current Focus</strong>
+                    <span id="t-focus-text">Cybersecurity Auditing, Threat Detection &amp; Penetration Testing</span>
                 </li>
                 <li>
-                    <strong>Interface</strong>
-                    Native support for dark and light reading environments
+                    <strong id="t-interface-label">Interface</strong>
+                    <span id="t-interface-text">Native support for dark and light reading environments</span>
                 </li>
             </ul>
         </section>
@@ -517,8 +608,8 @@
 
         <!-- ============ CONTACT ============ -->
         <section class="card contact">
-            <h2 class="section-title">Correspondence</h2>
-            <p>
+            <h2 class="section-title" id="t-contact-title">Correspondence</h2>
+            <p id="t-contact-text">
                 For contract acquisition, security consultation, or employment inquiries,
                 please dispatch your message directly to my verified email.
             </p>
@@ -530,6 +621,139 @@
     </main>
 
     <script>
+        /* ============ MULTI-LANGUAGE DICTIONARY ============ */
+        const translations = {
+            en: {
+                dir: 'ltr',
+                title: 'Mohammad Asim Haidari | Portfolio & CV',
+                name: 'Mohammad Asim Haidari',
+                subtitle: 'Software Engineer & Cyber Security Intern',
+                welcome: 'Welcome to my personal index — an interactive, living curriculum vitae built for recruiters, peers, and collaborators to explore my engineering track record and current operations.',
+                profileTitle: 'Profile',
+                profileText: 'I am a highly analytical software engineer and an actively practicing cybersecurity intern. Over the past three years, I have engineered reliable software patterns, built functional architectures, and specialized in monitoring security perimeters, evaluating code vulnerabilities, and optimizing overall structural integrity.',
+                specsTitle: 'Specifications',
+                expLabel: 'Experience',
+                expText: '3 Years of Full-Stack Application Programming',
+                focusLabel: 'Current Focus',
+                focusText: 'Cybersecurity Auditing, Threat Detection & Penetration Testing',
+                interfaceLabel: 'Interface',
+                interfaceText: 'Native support for dark and light reading environments',
+                contactTitle: 'Correspondence',
+                contactText: 'For contract acquisition, security consultation, or employment inquiries, please dispatch your message directly to my verified email.',
+                photoText: 'Your<br>Photo'
+            },
+            fa: {
+                dir: 'rtl',
+                title: 'محمد عاصم حیدری | پورتفولیو و رزومه',
+                name: 'محمد عاصم حیدری',
+                subtitle: 'مهندس نرم‌افزار و کارآموز امنیت سایبری',
+                welcome: 'به نمایه شخصی من خوش آمدید — یک رزومه تعاملی و پویا که برای استخدام‌کنندگان، همکاران و شرکا ساخته شده است تا سوابق مهندسی و فعالیت‌های جاری من را بررسی کنند.',
+                profileTitle: 'پروفایل',
+                profileText: 'من یک مهندس نرم‌افزار تحلیل‌گر و کارآموز فعال امنیت سایبری هستم. طی سه سال گذشته، الگوهای نرم‌افزاری قابل اعتمادی را مهندسی کرده‌ام، معماری‌های کاربردی ساخته‌ام و در زمینه نظارت بر حوزه‌های امنیتی، ارزیابی آسیب‌پذیری کدهای برنامه‌نویسی و بهینه‌سازی یکپارچگی ساختاری تخصص دارم.',
+                specsTitle: 'مشخصات',
+                expLabel: 'تجربه',
+                expText: '۳ سال برنامه‌نویسی اپلیکیشن‌های فول‌استک',
+                focusLabel: 'تمرکز فعلی',
+                focusText: 'حسابرسی امنیت سایبری، تشخیص تهدیدات و تست نفوذ',
+                interfaceLabel: 'رابط کاربری',
+                interfaceText: 'پشتیبانی بومی از محیط‌های مطالعه تاریک و روشن',
+                contactTitle: 'ارتباطات',
+                contactText: 'جهت قراردادهای کاری، مشاوره امنیتی یا درخواست‌های استخدام، لطفاً پیام خود را مستقیماً به ایمیل تأیید شده من ارسال کنید.',
+                photoText: 'عکس<br>شما'
+            },
+            ps: {
+                dir: 'rtl',
+                title: 'محمد عاصم حیدری | پورټفولیو او سوانح (CV)',
+                name: 'محمد عاصم حیدری',
+                subtitle: 'د سافټویر انجنییر او د سایبر امنیت کارآموز',
+                welcome: 'زما شخصي انډیکس ته ښه راغلاست — یو متقابل او ژوندی رزومه چې د استخدام کونکو، همکارانو او شریکانو لپاره جوړ شوی ترڅو زما د انجنییرۍ ریکارډ او اوسني فعالیتونه وپلټي.',
+                profileTitle: 'پروفایل',
+                profileText: 'زه یو لوړ تحلیلي سافټویر انجنییر او په فعاله توګه د سایبر امنیت کارآموز یم. په تیرو دریو کلونو کې، ما د اعتبار وړ سافټویر الگوونه جوړ کړي، فعال جوړښتونه یې ډیزاین کړي، او د امنیتي پولو په څارلو، د کوډ د نیمګړتیاوو په ارزولو او د عمومي جوړښت په ښه کولو کې تخصص لرم.',
+                specsTitle: 'مشخصات',
+                expLabel: 'تجربه',
+                expText: 'د فول سټک اپلیکیشن پروګرامینګ ۳ کاله',
+                focusLabel: 'اوسنی تمرکز',
+                focusText: 'د سایبر امنیت تفتیش، د ګواښونو کشف او د نفوذ ازموینه',
+                interfaceLabel: 'انٹرفیس',
+                interfaceText: 'د تورو او روښانه لوستلو چاپیریال لپاره بومي ملاتړ',
+                contactTitle: 'ترافیک او اړیکې',
+                contactText: 'د قرارداد اخیستلو، امنیتي مشورې، یا د کارموندنې پوښتنو لپاره، مهرباني وکړئ خپل پیغام مستقیم زما تایید شوي بریښنالیک ته واستوئ.',
+                photoText: 'ستاسو<br>عکس'
+            },
+            ar: {
+                dir: 'rtl',
+                title: 'محمد عاصم حیدري | الملف الشخصي والسيرة الذاتية',
+                name: 'محمد عاصم حیدري',
+                subtitle: 'مهندس برمجيات ومتدرب في الأمن السيبراني',
+                welcome: 'مرحبًا بك في مؤشري الشخصي — سيرة ذاتية تفاعلية وحية مصممة لمسؤولي التوظيف والزملاء والمتعاونين لاستكشاف سجلي الهندسي وعملياتي الحالية.',
+                profileTitle: 'الملف الشخصي',
+                profileText: 'أنا مهندس برمجيات تحليلي للغاية ومتدرب نشط في مجال الأمن السيبراني. خلال السنوات الثلاث الماضية، قمت بتصميم أنماط برمجية موثوقة، وبناء هياكل وظيفية، وتخصصت في مراقبة الحدود الأمنية، وتقييم ثغرات الكود، وتحسين السلامة الهيكلية العامة.',
+                specsTitle: 'المواصفات',
+                expLabel: 'الخبرة',
+                expText: '3 سنوات في برمجة التطبيقات المتكاملة (Full-Stack)',
+                focusLabel: 'التركيز الحالي',
+                focusText: 'تدقيق الأمن السيبراني، كشف التهديدات واختبار الاختراق',
+                interfaceLabel: 'الواجهة',
+                interfaceText: 'دعم أصلي لبيئات القراءة الداكنة والفاتحة',
+                contactTitle: 'المراسلات',
+                contactText: 'للحصول على العقود، أو الاستشارات الأمنية، أو استفسارات التوظيف، يرجى إرسال رسالتك مباشرة إلى بريدي الإلكتروني المتحقق منه.',
+                photoText: 'صورتك'
+            },
+            tr: {
+                dir: 'ltr',
+                title: 'Mohammad Asim Haidari | Portfolyo ve Özgeçmiş',
+                name: 'Mohammad Asim Haidari',
+                subtitle: 'Yazılım Mühendisi & Siber Güvenlik Stajyeri',
+                welcome: 'Kişisel endeksime hoş geldiniz — işe alım uzmanlarının, meslektaşların ve işbirlikçilerin mühendislik geçmişimi ve mevcut operasyonlarımı keşfetmesi için oluşturulmuş etkileşimli, canlı bir özgeçmiş.',
+                profileTitle: 'Profil',
+                profileText: 'Yüksek düzeyde analitik bir yazılım mühendisi ve aktif olarak siber güvenlik stajyeri yapmaktayım. Son üç yıl içinde güvenilir yazılım kalıpları tasarladım, işlevsel mimariler kurdum ve güvenlik çevrelerini izleme, kod açıklarını değerlendirme ve genel yapısal bütünlüğü optimize etme konularında uzmanlaştım.',
+                specsTitle: 'Özellikler',
+                expLabel: 'Deneyim',
+                expText: '3 Yıllık Full-Stack Uygulama Programlama',
+                focusLabel: 'Mevcut Odak',
+                focusText: 'Siber Güvenlik Denetimi, Tehdit Tespiti ve Sızma Testi',
+                interfaceLabel: 'Arayüz',
+                interfaceText: 'Karanlık ve aydınlık okuma ortamları için yerel destek',
+                contactTitle: 'İletişim',
+                contactText: 'Sözleşme edinimi, güvenlik danışmanlığı veya iş teklifleri için lütfen mesajınızı doğrudan onaylanmış e-postاما gönderin.',
+                photoText: 'Fotoğrafınız'
+            }
+        };
+
+        function changeLanguage(lang) {
+            const data = translations[lang];
+            if (!data) return;
+
+            // Update HTML direction and language
+            document.documentElement.setAttribute('lang', lang);
+            document.documentElement.setAttribute('dir', data.dir);
+            document.body.setAttribute('dir', data.dir);
+
+            // Update text contents
+            document.getElementById('meta-title').innerText = data.title;
+            document.getElementById('t-name').innerText = data.name;
+            document.getElementById('t-subtitle').innerText = data.subtitle;
+            document.getElementById('t-welcome').innerText = data.welcome;
+            document.getElementById('t-profile-title').innerText = data.profileTitle;
+            document.getElementById('t-profile-text').innerText = data.profileText;
+            document.getElementById('t-specs-title').innerText = data.specsTitle;
+            document.getElementById('t-exp-label').innerText = data.expLabel;
+            document.getElementById('t-exp-text').innerText = data.expText;
+            document.getElementById('t-focus-label').innerText = data.focusLabel;
+            document.getElementById('t-focus-text').innerText = data.focusText;
+            document.getElementById('t-interface-label').innerText = data.interfaceLabel;
+            document.getElementById('t-interface-text').innerText = data.interfaceText;
+            document.getElementById('t-contact-title').innerText = data.contactTitle;
+            document.getElementById('t-contact-text').innerText = data.contactText;
+            document.getElementById('photo-fallback').innerHTML = data.photoText;
+
+            // Save user preference
+            try {
+                localStorage.setItem('lang', lang);
+            } catch (e) {}
+        }
+
+        /* ============ THEME LOGIC ============ */
         function toggleTheme() {
             const body = document.body;
             const current = body.getAttribute('data-theme');
@@ -538,25 +762,40 @@
             } else {
                 body.setAttribute('data-theme', 'dark');
             }
+            try {
+                const isDark = body.getAttribute('data-theme') === 'dark';
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            } catch (e) {}
         }
 
-        // Auto-restore saved theme
-        (function () {
+        /* ============ INITIALIZATION & CURTAIN ANIMATION ============ */
+        window.addEventListener('DOMContentLoaded', () => {
+            // Restore saved theme
             try {
-                const saved = localStorage.getItem('theme');
-                if (saved === 'dark') document.body.setAttribute('data-theme', 'dark');
-            } catch (e) { /* ignore حالت */ }
-        })();
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'dark') {
+                    document.body.setAttribute('data-theme', 'dark');
+                }
+            } catch (e) {}
 
-        // Save on toggle
-        const origToggle = toggleTheme;
-        window.toggleTheme = function () {
-            origToggle();
+            // Restore saved language or default to English
             try {
-                const isDark = document.body.getAttribute('data-theme') === 'dark';
-                localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            } catch (e) { /* ignore */ }
-        };
+                const savedLang = localStorage.getItem('lang');
+                if (savedLang && translations[savedLang]) {
+                    document.getElementById('langSelect').value = savedLang;
+                    changeLanguage(savedLang);
+                }
+            } catch (e) {}
+
+            // Trigger curved page-load reveal animation
+            setTimeout(() => {
+                const curtain = document.getElementById('page-curtain');
+                if (curtain) {
+                    curtain.classList.add('loaded');
+                    setTimeout(() => curtain.classList.add('hidden'), 1300);
+                }
+            }, 100);
+        });
     </script>
 </body>
 </html>
