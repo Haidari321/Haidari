@@ -28,6 +28,9 @@
   --radius-md:    16px;
   --radius-sm:    10px;
   --wave-color:   #5a7ba8;
+  --graph-color:  #2f4f7a;
+  --graph-color-2:#c9b78e;
+  --graph-color-3:#5a7ba8;
 }
 
 [data-theme="dark"] {
@@ -48,6 +51,9 @@
   --shadow-deep:  rgba(0,0,0,0.55);
   --shadow-glass: 0 8px 30px rgba(0,0,0,0.35);
   --wave-color:   #8fb0d9;
+  --graph-color:  #8fb0d9;
+  --graph-color-2:#d4c39a;
+  --graph-color-3:#b8cbe3;
 }
 
 /* ============ RESET ============ */
@@ -129,7 +135,7 @@ body::after {
   z-index: 0;
 }
 
-/* ============ CUBIC FUNCTION GRAPH ============ */
+/* ============ CUBIC FUNCTION GRAPH (DECOR) ============ */
 .cubic-graph {
   position: fixed;
   pointer-events: none;
@@ -266,7 +272,7 @@ header:hover {
 
 .lang-select option { background: var(--bg-soft); color: var(--ink); }
 
-/* -------- THEME TOGGLE (fixed) -------- */
+/* -------- THEME TOGGLE -------- */
 .theme-toggle {
   width: 36px;
   height: 36px;
@@ -283,7 +289,6 @@ header:hover {
   position: relative;
 }
 
-/* Sun (light mode) / Moon (dark mode) icon via SVG */
 .theme-toggle svg {
   width: 18px;
   height: 18px;
@@ -436,15 +441,204 @@ header:hover {
     0 10px 32px var(--shadow-deep);
 }
 
-/* ============ PROFILE ============ */
+/* ============ SECTION GRAPH DECOR (per section) ============ */
+.section-graph {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.section-graph svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.section-graph path.g-line {
+  fill: none;
+  stroke: var(--graph-color);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 4px rgba(47,79,122,0.25));
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+}
+
+.wave-in .section-graph path.g-line {
+  animation: drawLine 2.4s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+@keyframes drawLine {
+  to { stroke-dashoffset: 0; }
+}
+
+.section-graph path.g-axis {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+  opacity: 0.7;
+}
+
+.section-graph circle.g-dot {
+  fill: var(--graph-color-2);
+  stroke: var(--bg-deep);
+  stroke-width: 1.5;
+  opacity: 0;
+}
+
+.wave-in .section-graph circle.g-dot {
+  animation: popDot .8s cubic-bezier(.22,1,.36,1) 1.6s forwards;
+}
+
+@keyframes popDot {
+  0% { opacity: 0; transform: scale(0); transform-origin: center; }
+  60% { opacity: 1; }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Specific section graphs sizing / position */
+.section-graph.quad { padding: 8px; }
+.section-graph.cubic-sec { padding: 4px; }
+.section-graph.sine-sec { padding: 0; }
+.section-graph.parab-sec { padding: 6px; }
+
+/* ============ PROFILE (with equation solver) ============ */
 .profile-grid {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   gap: 24px;
+  position: relative;
+  z-index: 2;
 }
 
+/* Equation solver panel */
+.equation-solver {
+  width: 100%;
+  background: var(--glass-bg-2);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 2;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: inset 0 1px 0 var(--glass-highlight), 0 4px 14px var(--shadow-deep);
+  transition: opacity .6s ease, transform .6s ease, max-height .6s ease, margin .6s ease, padding .6s ease;
+  overflow: hidden;
+}
+
+.equation-solver.solved {
+  opacity: 0;
+  transform: translateY(-10px) scale(0.98);
+  max-height: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  pointer-events: none;
+}
+
+.eq-title {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--ink-dim);
+  margin-bottom: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.eq-title::before {
+  content: "∑";
+  font-size: 0.9rem;
+  color: var(--accent-3);
+}
+
+.eq-line {
+  font-family: 'SF Mono', 'Consolas', 'Monaco', monospace;
+  font-size: 0.82rem;
+  color: var(--ink);
+  padding: 6px 10px;
+  border-left: 2px solid var(--accent);
+  background: rgba(47,79,122,0.05);
+  border-radius: 4px;
+  margin-bottom: 6px;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity .4s ease, transform .4s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.eq-line.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.eq-line .eq-result {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.eq-line .eq-check {
+  color: #2ea36b;
+  font-weight: 700;
+}
+
+[data-theme="dark"] .eq-line .eq-check { color: #6ee7a5; }
+
+/* Mini graph inside solver */
+.eq-graph {
+  width: 100%;
+  height: 70px;
+  margin-top: 10px;
+  opacity: 0;
+  transition: opacity .6s ease;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.eq-graph.visible { opacity: 1; }
+.eq-graph svg { width: 100%; height: 100%; display: block; }
+.eq-graph path.eq-curve {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+.eq-graph.visible path.eq-curve {
+  animation: drawEq 1.6s cubic-bezier(.22,1,.36,1) forwards;
+}
+@keyframes drawEq { to { stroke-dashoffset: 0; } }
+
+.eq-graph path.eq-axis {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 0.8;
+  stroke-dasharray: 2 3;
+}
+
+.eq-graph circle.eq-dot {
+  fill: var(--accent-3);
+  stroke: var(--bg-deep);
+  stroke-width: 1.5;
+}
+
+/* ============ PORTRAIT (reveal animation) ============ */
 .portrait {
   width: 132px;
   height: 132px;
@@ -452,11 +646,23 @@ header:hover {
   overflow: hidden;
   position: relative;
   flex-shrink: 0;
-  transition: transform .4s cubic-bezier(.25,.46,.45,.94);
+  transition: transform .4s cubic-bezier(.25,.46,.45,.94), opacity .6s ease, filter .6s ease;
   box-shadow:
     0 0 0 1px var(--line),
     0 0 0 6px var(--glass-bg-2),
     0 8px 30px var(--shadow-deep);
+}
+
+.portrait.reveal {
+  opacity: 1;
+  filter: blur(0) saturate(1);
+  transform: scale(1);
+}
+
+.portrait:not(.reveal) {
+  opacity: 0;
+  filter: blur(12px) saturate(0);
+  transform: scale(0.7);
 }
 
 .portrait:hover { transform: scale(1.04); }
@@ -514,7 +720,7 @@ p {
 p:last-child{margin-bottom:0}
 
 /* ============ SPEC LIST ============ */
-.spec-list { list-style: none; }
+.spec-list { list-style: none; position: relative; z-index: 2; }
 
 .spec-item {
   position: relative;
@@ -578,6 +784,8 @@ p:last-child{margin-bottom:0}
   min-height: 52px;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 2;
 }
 
 .btn-email:hover {
@@ -595,11 +803,11 @@ p:last-child{margin-bottom:0}
 
 .btn-email:active { transform: translateY(0) scale(.98); }
 
-.card.contact p { text-align: center; font-size: 0.92rem; }
+.card.contact p { text-align: center; font-size: 0.92rem; position: relative; z-index: 2; }
 body[dir="rtl"] .card.contact p { text-align: center; }
 
 /* ============ CAROUSEL ============ */
-.carousel-section { margin-bottom: 22px; }
+.carousel-section { margin-bottom: 22px; position: relative; }
 
 .carousel-container {
   position: relative;
@@ -615,6 +823,7 @@ body[dir="rtl"] .card.contact p { text-align: center; }
     inset 0 1px 0 var(--glass-highlight),
     0 6px 24px var(--shadow-deep);
   transition: box-shadow .3s, border-color .3s;
+  z-index: 2;
 }
 
 .carousel-container:hover {
@@ -679,6 +888,8 @@ body[dir="rtl"] .card.contact p { text-align: center; }
   justify-content: center;
   gap: 8px;
   margin-top: 18px;
+  position: relative;
+  z-index: 2;
 }
 
 .carousel-dot {
@@ -714,7 +925,6 @@ body[dir="rtl"] .card.contact p { text-align: center; }
   transform: translateY(0) scale(1);
 }
 
-/* Wave ripple overlay */
 .wave-section.wave-in::after {
   content: "";
   position: absolute;
@@ -726,7 +936,7 @@ body[dir="rtl"] .card.contact p { text-align: center; }
     rgba(90,123,168,0.08) 30%,
     transparent 70%);
   animation: waveRipple 1.2s cubic-bezier(.22,1,.36,1) forwards;
-  z-index: 2;
+  z-index: 3;
 }
 
 @keyframes waveRipple {
@@ -735,7 +945,6 @@ body[dir="rtl"] .card.contact p { text-align: center; }
   100% { opacity: 0; transform: scale(1.3); }
 }
 
-/* Decorative wave line that sweeps through */
 .wave-section .wave-line {
   position: absolute;
   left: 0;
@@ -749,7 +958,7 @@ body[dir="rtl"] .card.contact p { text-align: center; }
     transparent 100%);
   opacity: 0;
   pointer-events: none;
-  z-index: 3;
+  z-index: 4;
   border-radius: 100%;
   filter: blur(0.5px);
 }
@@ -765,7 +974,6 @@ body[dir="rtl"] .card.contact p { text-align: center; }
   100% { opacity: 0; transform: translateY(-16px) scaleX(1.1); }
 }
 
-/* Secondary wave (delayed) */
 .wave-section .wave-line.wave-line-2 {
   top: 55%;
   animation-delay: 0.15s;
@@ -795,6 +1003,7 @@ body[dir="rtl"] .card.contact p { text-align: center; }
   .spec-item{font-size:0.96rem}
   p{font-size:0.97rem}
   .carousel-container{max-width:680px}
+  .eq-line{font-size:0.88rem}
 }
 
 /* ============ DESKTOP ============ */
@@ -826,6 +1035,9 @@ body[dir="rtl"] .card.contact p { text-align: center; }
   p{font-size:1rem}
   .btn-email{font-size:0.88rem;padding:16px 40px}
   .carousel-container{max-width:760px;border-radius:24px}
+  .eq-graph{height:90px}
+  .equation-solver{padding:20px 22px}
+  .eq-line{font-size:0.92rem}
 }
 
 /* ============ A11Y ============ */
@@ -835,6 +1047,8 @@ body[dir="rtl"] .card.contact p { text-align: center; }
   .wave-section{opacity:1;transform:none}
   .wave-section::after,
   .wave-section .wave-line{display:none}
+  .section-graph path.g-line{stroke-dashoffset:0}
+  .portrait:not(.reveal){opacity:1;filter:none;transform:none}
 }
 
 button:focus-visible,a:focus-visible,select:focus-visible{
@@ -845,7 +1059,7 @@ button:focus-visible,a:focus-visible,select:focus-visible{
 </head>
 <body>
 
-<!-- ============ CUBIC FUNCTION GRAPH (Decor) ============ -->
+<!-- ============ CUBIC FUNCTION GRAPH (DECOR) ============ -->
 <div class="cubic-graph top-right" aria-hidden="true">
   <svg viewBox="0 0 520 380" preserveAspectRatio="xMidYMid meet">
     <path class="axis" d="M 40 190 L 480 190" />
@@ -918,14 +1132,45 @@ button:focus-visible,a:focus-visible,select:focus-visible{
 
 <main class="container">
 
-  <!-- ============ PROFILE ============ -->
+  <!-- ============ PROFILE (with equation solver + quadratic graph) ============ -->
   <section class="card wave-section" data-wave>
     <div class="wave-line"></div>
     <div class="wave-line wave-line-2"></div>
+
+    <!-- Background graph: upward parabola -->
+    <div class="section-graph parab-sec" aria-hidden="true">
+      <svg viewBox="0 0 600 300" preserveAspectRatio="none">
+        <path class="g-axis" d="M 0 150 L 600 150"/>
+        <path class="g-axis" d="M 300 0 L 300 300"/>
+        <!-- Parabola y = (x/60)^2 + 20 scaled -->
+        <path class="g-line" d="M 40 20 Q 300 320 560 20"/>
+        <circle class="g-dot" cx="300" cy="170" r="4"/>
+      </svg>
+    </div>
+
     <div class="profile-grid">
-      <div class="portrait">
-        <img src="your-photo-here.jpg" alt="Mohammad Asim Haidari">
-        <span id="photo-fallback">Your<br>Photo</span>
+      <div style="width:100%;">
+        <!-- Equation solver panel -->
+        <div class="equation-solver" id="equationSolver">
+          <div class="eq-title" id="eq-title">Solving equations…</div>
+          <div id="eq-lines"></div>
+          <div class="eq-graph" id="eqGraph">
+            <svg viewBox="0 0 300 70" preserveAspectRatio="none">
+              <path class="eq-axis" d="M 0 35 L 300 35"/>
+              <path class="eq-axis" d="M 150 0 L 150 70"/>
+              <path class="eq-curve" d="M 20 60 Q 150 -20 280 60"/>
+              <circle class="eq-dot" cx="150" cy="20" r="3"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Portrait (revealed after solver completes) -->
+        <div style="display:flex; justify-content:center;">
+          <div class="portrait" id="profilePortrait">
+            <img src="your-photo-here.jpg" alt="Mohammad Asim Haidari">
+            <span id="photo-fallback">Your<br>Photo</span>
+          </div>
+        </div>
       </div>
       <div>
         <h1 id="t-name">Mohammad Asim Haidari</h1>
@@ -939,10 +1184,22 @@ button:focus-visible,a:focus-visible,select:focus-visible{
     </div>
   </section>
 
-  <!-- ============ CAROUSEL ============ -->
+  <!-- ============ CAROUSEL (with quadratic graph) ============ -->
   <section class="carousel-section wave-section" data-wave>
     <div class="wave-line"></div>
     <div class="wave-line wave-line-2"></div>
+
+    <!-- Background graph: quadratic (downward parabola) -->
+    <div class="section-graph quad" aria-hidden="true">
+      <svg viewBox="0 0 600 400" preserveAspectRatio="none">
+        <path class="g-axis" d="M 0 200 L 600 200"/>
+        <path class="g-axis" d="M 300 0 L 300 400"/>
+        <!-- y = -(x-300)^2/300 + 350 -->
+        <path class="g-line" d="M 20 40 Q 300 460 580 40"/>
+        <circle class="g-dot" cx="300" cy="250" r="4"/>
+      </svg>
+    </div>
+
     <h2 class="section-title" id="t-gallery-title">Gallery</h2>
     <div class="carousel-container" id="carouselContainer">
       <div class="carousel-track" id="carouselTrack">
@@ -976,10 +1233,23 @@ button:focus-visible,a:focus-visible,select:focus-visible{
 
   <div class="divider" aria-hidden="true">· · ·</div>
 
-  <!-- ============ ABOUT ============ -->
+  <!-- ============ ABOUT (with cubic graph) ============ -->
   <section class="card wave-section" data-wave>
     <div class="wave-line"></div>
     <div class="wave-line wave-line-2"></div>
+
+    <!-- Background graph: cubic -->
+    <div class="section-graph cubic-sec" aria-hidden="true">
+      <svg viewBox="0 0 600 300" preserveAspectRatio="none">
+        <path class="g-axis" d="M 0 150 L 600 150"/>
+        <path class="g-axis" d="M 300 0 L 300 300"/>
+        <!-- Cubic-ish curve -->
+        <path class="g-line" d="M 20 260 C 150 260, 200 40, 300 150 S 450 40, 580 40"/>
+        <circle class="g-dot" cx="300" cy="150" r="4"/>
+        <circle class="g-dot" cx="180" cy="120" r="3"/>
+      </svg>
+    </div>
+
     <h2 class="section-title" id="t-profile-title">Profile</h2>
     <p id="t-profile-text">
       I am a highly analytical software engineer and an actively practicing
@@ -990,10 +1260,23 @@ button:focus-visible,a:focus-visible,select:focus-visible{
     </p>
   </section>
 
-  <!-- ============ SPECIFICATIONS ============ -->
+  <!-- ============ SPECIFICATIONS (with sine wave graph) ============ -->
   <section class="card wave-section" data-wave>
     <div class="wave-line"></div>
     <div class="wave-line wave-line-2"></div>
+
+    <!-- Background graph: sine wave -->
+    <div class="section-graph sine-sec" aria-hidden="true">
+      <svg viewBox="0 0 600 300" preserveAspectRatio="none">
+        <path class="g-axis" d="M 0 150 L 600 150"/>
+        <path class="g-axis" d="M 300 0 L 300 300"/>
+        <!-- Sine wave: y = sin(x) scaled -->
+        <path class="g-line" d="M 0 150 C 75 40, 150 40, 225 150 S 375 260, 450 150 S 525 40, 600 150"/>
+        <circle class="g-dot" cx="150" cy="40" r="3.5"/>
+        <circle class="g-dot" cx="450" cy="260" r="3.5"/>
+      </svg>
+    </div>
+
     <h2 class="section-title" id="t-specs-title">Specifications</h2>
     <ul class="spec-list">
       <li class="spec-item">
@@ -1013,10 +1296,21 @@ button:focus-visible,a:focus-visible,select:focus-visible{
 
   <div class="divider" aria-hidden="true">· · ·</div>
 
-  <!-- ============ CONTACT ============ -->
+  <!-- ============ CONTACT (with exponential / wave graph) ============ -->
   <section class="card contact wave-section" data-wave>
     <div class="wave-line"></div>
     <div class="wave-line wave-line-2"></div>
+
+    <!-- Background graph: exponential-ish curve -->
+    <div class="section-graph" aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;z-index:0;opacity:0.4;overflow:hidden;border-radius:inherit;">
+      <svg viewBox="0 0 600 300" preserveAspectRatio="none" style="width:100%;height:100%;display:block;">
+        <path class="g-axis" d="M 0 250 L 600 250" style="fill:none;stroke:var(--line);stroke-width:1;stroke-dasharray:3 4;"/>
+        <path class="g-axis" d="M 300 0 L 300 300" style="fill:none;stroke:var(--line);stroke-width:1;stroke-dasharray:3 4;"/>
+        <path class="g-line" d="M 20 280 Q 200 270 300 200 T 580 30" style="fill:none;stroke:var(--graph-color);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:2000;stroke-dashoffset:2000;filter:drop-shadow(0 0 4px rgba(47,79,122,0.25));"/>
+        <circle class="g-dot" cx="300" cy="200" r="4" style="fill:var(--graph-color-2);stroke:var(--bg-deep);stroke-width:1.5;opacity:0;"/>
+      </svg>
+    </div>
+
     <h2 class="section-title" id="t-contact-title">Correspondence</h2>
     <p id="t-contact-text">
       For contract acquisition, security consultation, or employment inquiries,
@@ -1074,7 +1368,7 @@ button:focus-visible,a:focus-visible,select:focus-visible{
   start(); go(0);
 })();
 
-/* ============ THEME TOGGLE (FIXED — actually changes background) ============ */
+/* ============ THEME TOGGLE ============ */
 const LIGHT_DEFAULTS = {
   bgDeep: '#eef1f5',
   bgMid:  '#f6f8fb',
@@ -1112,7 +1406,6 @@ function applyThemeVars(isDark) {
     root.style.setProperty('--ink', LIGHT_DEFAULTS.ink);
   }
 
-  // Sync picker display
   const picker = document.getElementById('bgColorPicker');
   if (picker) {
     if (customBg) {
@@ -1148,33 +1441,76 @@ function resetBgColor() {
   if (picker) picker.value = isDark ? DARK_DEFAULTS.bgDeep : LIGHT_DEFAULTS.bgDeep;
 }
 
+/* ============ EQUATION SOLVER (before portrait) ============ */
+(function initEquationSolver() {
+  const solver = document.getElementById('equationSolver');
+  const linesContainer = document.getElementById('eq-lines');
+  const eqGraph = document.getElementById('eqGraph');
+  const portrait = document.getElementById('profilePortrait');
+  if (!solver || !linesContainer) return;
+
+  // Steps with equations and results
+  const steps = [
+    { eq: 'x² − 5x + 6 = 0', res: '→ (x−2)(x−3) = 0' },
+    { eq: '2x + 3y = 12', res: '→ y = (12 − 2x)/3' },
+    { eq: '∫ (3x² + 2x) dx', res: '→ x³ + x² + C' },
+    { eq: 'f(x) = ax² + bx + c', res: '→ Δ = b² − 4ac' }
+  ];
+
+  let i = 0;
+  const totalTime = 3800; // total ms for all steps
+  const stepGap = totalTime / steps.length;
+
+  function showNext() {
+    if (i >= steps.length) {
+      // Show graph, then reveal portrait
+      eqGraph.classList.add('visible');
+      setTimeout(() => {
+        solver.classList.add('solved');
+        portrait.classList.add('reveal');
+      }, 900);
+      return;
+    }
+    const step = steps[i];
+    const line = document.createElement('div');
+    line.className = 'eq-line';
+    line.innerHTML = `${step.eq} <span class="eq-result">${step.res}</span>`;
+    linesContainer.appendChild(line);
+    // trigger transition
+    requestAnimationFrame(() => line.classList.add('visible'));
+    i++;
+    setTimeout(showNext, stepGap);
+  }
+
+  // Start after a tiny delay
+  setTimeout(showNext, 350);
+})();
+
 /* ============ SCROLL WAVE ANIMATION ============ */
 (function initWaveScroll() {
   const sections = document.querySelectorAll('.wave-section');
   if (!sections.length) return;
 
-  // Check reduced motion
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReduced) {
     sections.forEach(s => s.classList.add('wave-in'));
+    // Reveal portrait immediately for reduced motion
+    const portrait = document.getElementById('profilePortrait');
+    if (portrait) portrait.classList.add('reveal');
+    const solver = document.getElementById('equationSolver');
+    if (solver) solver.classList.add('solved');
     return;
   }
 
-  // Set initial hidden state
-  sections.forEach(s => {
-    s.classList.remove('wave-in');
-  });
+  sections.forEach(s => s.classList.remove('wave-in'));
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const el = entry.target;
-        // Set wave origin to section center
         el.style.setProperty('--wave-x', '50%');
         el.style.setProperty('--wave-y', '50%');
-        // Trigger animation
         el.classList.add('wave-in');
-        // Unobserve to avoid re-triggering on small scrolls
         observer.unobserve(el);
       }
     });
@@ -1185,7 +1521,6 @@ function resetBgColor() {
 
   sections.forEach(s => observer.observe(s));
 
-  // Fallback for older browsers
   if (!('IntersectionObserver' in window)) {
     sections.forEach(s => s.classList.add('wave-in'));
   }
@@ -1206,7 +1541,8 @@ const translations = {
     interfaceLabel:'Interface', interfaceText:'Native support for dark and light reading environments',
     contactTitle:'Correspondence',
     contactText:'For contract acquisition, security consultation, or employment inquiries, please dispatch your message directly to my verified email.',
-    photoText:'Your<br>Photo', galleryTitle:'Gallery'
+    photoText:'Your<br>Photo', galleryTitle:'Gallery',
+    eqTitle:'Solving equations…'
   },
   fa: {
     dir:'rtl', title:'محمد عاصم حیدری | پورتفولیو و رزومه',
@@ -1221,7 +1557,8 @@ const translations = {
     interfaceLabel:'رابط کاربری', interfaceText:'پشتیبانی بومی از محیط‌های مطالعه تاریک و روشن',
     contactTitle:'ارتباطات',
     contactText:'جهت قراردادهای کاری، مشاوره امنیتی یا درخواست‌های استخدام، لطفاً پیام خود را مستقیماً به ایمیل تأیید شده من ارسال کنید.',
-    photoText:'عکس<br>شما', galleryTitle:'گالری'
+    photoText:'عکس<br>شما', galleryTitle:'گالری',
+    eqTitle:'حل معادلات…'
   },
   ps: {
     dir:'rtl', title:'محمد عاصم حیدری | پورټفولیو او سوانح',
@@ -1236,7 +1573,8 @@ const translations = {
     interfaceLabel:'انٹرفیس', interfaceText:'د تورو او روښانه لوستلو چاپیریال لپاره بومي ملاتړ',
     contactTitle:'اړیکې',
     contactText:'د قرارداد اخیستلو، امنیتي مشورې، یا د کارموندنې پوښتنو لپاره، مهرباني وکړئ خپل پیغام مستقیم زما تایید شوي بریښنالیک ته واستوئ.',
-    photoText:'ستاسو<br>عکس', galleryTitle:'ګالري'
+    photoText:'ستاسو<br>عکس', galleryTitle:'ګالري',
+    eqTitle:'معادلې حل کول…'
   },
   ar: {
     dir:'rtl', title:'محمد عاصم حیدري | الملف الشخصي والسيرة الذاتية',
@@ -1251,7 +1589,8 @@ const translations = {
     interfaceLabel:'الواجهة', interfaceText:'دعم أصلي لبيئات القراءة الداكنة والفاتحة',
     contactTitle:'المراسلات',
     contactText:'للحصول على العقود، أو الاستشارات الأمنية، أو استفسارات التوظيف، يرجى إرسال رسالتك مباشرة إلى بريدي الإلكتروني المتحقق منه.',
-    photoText:'صورتك', galleryTitle:'معرض الصور'
+    photoText:'صورتك', galleryTitle:'معرض الصور',
+    eqTitle:'حل المعادلات…'
   },
   tr: {
     dir:'ltr', title:'Mohammad Asim Haidari | Portfolyo ve Özgeçmiş',
@@ -1266,7 +1605,8 @@ const translations = {
     interfaceLabel:'Arayüz', interfaceText:'Karanlık ve aydınlık okuma ortamları için yerel destek',
     contactTitle:'İletişim',
     contactText:'Sözleşme edinimi, güvenlik danışmanlığı veya iş teklifleri için lütfen mesajınızı doğrudan onaylanmış e-postama gönderin.',
-    photoText:'Fotoğrafınız', galleryTitle:'Galeri'
+    photoText:'Fotoğrafınız', galleryTitle:'Galeri',
+    eqTitle:'Denklemler çözülüyor…'
   }
 };
 
@@ -1293,6 +1633,8 @@ function changeLanguage(lang){
   document.getElementById('t-contact-text').innerText = d.contactText;
   document.getElementById('photo-fallback').innerHTML = d.photoText;
   document.getElementById('t-gallery-title').innerText = d.galleryTitle;
+  const eqTitle = document.getElementById('eq-title');
+  if (eqTitle) eqTitle.innerText = d.eqTitle;
   try{ localStorage.setItem('lang', lang); }catch(e){}
 }
 
