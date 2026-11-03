@@ -33,6 +33,7 @@
   --graph-color-2:#c9b78e;
   --graph-color-3:#5a7ba8;
   --body-font: 'Inter', -apple-system, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+  --graph-pattern: rgba(47,79,122,0.10);
 }
 
 [data-theme="simple"] {
@@ -57,6 +58,7 @@
   --graph-color:  #6c757d;
   --graph-color-2:#adb5bd;
   --graph-color-3:#495057;
+  --graph-pattern: rgba(108,117,125,0.10);
 }
 
 [data-theme="halloween"] {
@@ -81,6 +83,7 @@
   --graph-color:  #ff7518;
   --graph-color-2:#9b59b6;
   --graph-color-3:#ffb347;
+  --graph-pattern: rgba(255,117,24,0.12);
   --body-font: 'Georgia', 'Times New Roman', serif;
 }
 
@@ -106,6 +109,7 @@
   --graph-color:  #00ff41;
   --graph-color-2:#39ff14;
   --graph-color-3:#00ffaa;
+  --graph-pattern: rgba(0,255,65,0.12);
   --body-font: 'SF Mono', 'Consolas', 'Monaco', 'Courier New', monospace;
 }
 
@@ -137,6 +141,7 @@
   --graph-color:  #ff4d94;
   --graph-color-2:#ffb347;
   --graph-color-3:#4dd0e1;
+  --graph-pattern: rgba(255,77,148,0.12);
   --body-font: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive;
   --radius-lg:    28px;
   --radius-md:    22px;
@@ -166,7 +171,149 @@
   --graph-color:  #8fb0d9;
   --graph-color-2:#d4c39a;
   --graph-color-3:#b8cbe3;
+  --graph-pattern: rgba(143,176,217,0.12);
   --body-font: 'Inter', -apple-system, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+}
+
+/* ============ ✨ NEW: MATH THEME ✨ ============ */
+[data-theme="math"] {
+  --bg-deep:      #0a0e1a;
+  --bg-mid:       #101828;
+  --bg-soft:      #16213e;
+  --glass-bg:     rgba(20,35,70,0.55);
+  --glass-bg-2:   rgba(30,50,95,0.75);
+  --glass-border: rgba(100,200,255,0.35);
+  --glass-highlight: rgba(150,220,255,0.30);
+  --ink:          #e0f2ff;
+  --ink-dim:      #8ab6d6;
+  --ink-faint:    #5a8cb0;
+  --accent:       #00d4ff;
+  --accent-2:     #7afcff;
+  --accent-3:     #ffd93d;
+  --line:         rgba(100,200,255,0.20);
+  --shadow-deep:  rgba(0,20,50,0.75);
+  --shadow-glass: 0 8px 30px rgba(0,180,255,0.20);
+  --wave-color:   #00d4ff;
+  --wave-color-2: #ffd93d;
+  --graph-color:  #00d4ff;
+  --graph-color-2:#ffd93d;
+  --graph-color-3:#7afcff;
+  --graph-pattern: rgba(0,212,255,0.15);
+  --body-font: 'Cambria Math', 'Latin Modern Math', 'STIX Two Math', 'Georgia', serif;
+}
+
+/* Math theme background: animated math symbol matrix */
+[data-theme="math"] body::before {
+  background:
+    radial-gradient(ellipse 70% 50% at 15% 5%, rgba(0,212,255,0.18), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 100%, rgba(255,217,61,0.12), transparent 65%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(122,252,255,0.08), transparent 70%);
+}
+
+[data-theme="math"] body::after {
+  content: "∫ ∂ ∑ ∏ √ ∞ ≈ ≠ ≤ ≥ π θ λ μ σ Δ ∇ ∈ ∉ ⊂ ⊃ ∪ ∩ ∃ ∀ ℏ ∂²";
+  position: fixed;
+  inset: 0;
+  font-family: 'Cambria Math', 'Latin Modern Math', 'Georgia', serif;
+  font-size: 2.2rem;
+  line-height: 2.4;
+  letter-spacing: 1.8rem;
+  word-spacing: 1rem;
+  color: rgba(0,212,255,0.10);
+  background: none;
+  background-image: none;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  text-align: justify;
+  padding: 20px;
+  mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 20%, transparent 95%);
+  -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 20%, transparent 95%);
+  opacity: 1;
+  animation: mathDrift 40s linear infinite;
+}
+
+@keyframes mathDrift {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  50%  { transform: translate(-15px, -10px) rotate(1deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Math theme: grid lines on cards become more geometric */
+[data-theme="math"] .card::before {
+  background-image: 
+    linear-gradient(var(--graph-pattern) 1px, transparent 1px),
+    linear-gradient(90deg, var(--graph-pattern) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, var(--graph-pattern) 1px, transparent 1px);
+  background-size: 40px 40px, 40px 40px, 80px 80px;
+  opacity: 0.6;
+}
+
+/* Math theme: header logo becomes a math symbol */
+[data-theme="math"] .logo::before {
+  content: "∫";
+  background: linear-gradient(135deg, #00d4ff, #7afcff, #ffd93d);
+  color: #0a0e1a;
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cambria Math', Georgia, serif;
+  box-shadow: 0 0 14px rgba(0,212,255,0.6);
+}
+
+/* Math theme: portrait ring glows */
+[data-theme="math"] .portrait {
+  box-shadow: 
+    0 0 0 1px rgba(0,212,255,0.4), 
+    0 0 0 6px rgba(20,35,70,0.7), 
+    0 0 24px rgba(0,212,255,0.35),
+    0 8px 30px rgba(0,0,0,0.5);
+}
+
+/* Math theme: section titles */
+[data-theme="math"] .section-title {
+  color: var(--accent-2);
+  text-shadow: 0 0 12px rgba(0,212,255,0.4);
+}
+
+/* Math theme: buttons */
+[data-theme="math"] .btn-email {
+  border-color: rgba(0,212,255,0.4);
+  background: rgba(0,40,80,0.5);
+  color: var(--accent-2);
+}
+[data-theme="math"] .btn-email:hover {
+  background: linear-gradient(90deg, #00d4ff, #ffd93d);
+  color: #0a0e1a;
+  box-shadow: 0 0 24px rgba(0,212,255,0.6);
+}
+
+[data-theme="math"] .video-badge {
+  background: rgba(0,40,80,0.6);
+  border-color: rgba(0,212,255,0.3);
+}
+
+/* Math theme: selectors */
+[data-theme="math"] select,
+[data-theme="math"] .color-picker-label,
+[data-theme="math"] .color-reset {
+  border-color: rgba(0,212,255,0.4);
+  color: var(--accent-2);
+}
+[data-theme="math"] select option {
+  background: #101828;
+  color: #e0f2ff;
+}
+
+/* Math theme: card border glow */
+[data-theme="math"] .card {
+  border-color: rgba(100,200,255,0.35);
+  box-shadow: 
+    inset 0 1px 0 var(--glass-highlight), 
+    0 4px 24px rgba(0,180,255,0.15),
+    0 0 0 1px rgba(0,212,255,0.08);
 }
 
 /* ============ RESET & BASE ============ */
@@ -340,6 +487,40 @@ select, .color-picker-label, .color-reset {
   overflow: hidden;
 }
 
+/* Graph pattern overlay on all cards */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 20% 30%, var(--graph-pattern) 1.5px, transparent 1.5px),
+    radial-gradient(circle at 80% 70%, var(--graph-pattern) 1.5px, transparent 1.5px),
+    linear-gradient(135deg, transparent 40%, var(--graph-pattern) 40%, var(--graph-pattern) 41%, transparent 41%),
+    linear-gradient(45deg, transparent 60%, var(--graph-pattern) 60%, var(--graph-pattern) 61%, transparent 61%);
+  background-size: 60px 60px, 90px 90px, 120px 120px, 140px 140px;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 20%, transparent 90%);
+  -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 20%, transparent 90%);
+}
+
+/* Graph pattern for carousel section too */
+.carousel-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 20% 30%, var(--graph-pattern) 1.5px, transparent 1.5px),
+    radial-gradient(circle at 80% 70%, var(--graph-pattern) 1.5px, transparent 1.5px);
+  background-size: 60px 60px, 90px 90px;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 20%, transparent 90%);
+  -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 20%, transparent 90%);
+}
+
 /* ============ WAVE CANVAS ============ */
 .wave-wrapper {
   position: relative;
@@ -357,55 +538,6 @@ select, .color-picker-label, .color-reset {
   height: 100%;
   border-radius: var(--radius-md);
 }
-
-/* ============ MATH / GRAPH CARD ============ */
-.math-graph-card {
-  position: relative;
-  overflow: hidden;
-  min-height: 260px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 18px 12px;
-}
-#graphCanvas {
-  display: block;
-  width: 100%;
-  max-width: 720px;
-  height: 220px;
-  border-radius: var(--radius-md);
-  background: rgba(0,0,0,0.04);
-  border: 1px solid var(--line);
-  box-shadow: inset 0 0 24px rgba(0,0,0,0.04);
-}
-.graph-controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  justify-content: center;
-  margin-top: 14px;
-}
-.graph-btn {
-  font-family: inherit;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  padding: 6px 14px;
-  border-radius: 100px;
-  border: 1px solid var(--line);
-  background: var(--glass-bg-2);
-  color: var(--ink);
-  cursor: pointer;
-  transition: all .25s ease;
-}
-.graph-btn.active {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-  box-shadow: 0 4px 14px var(--shadow-deep);
-}
-.graph-btn:hover { transform: translateY(-1px); }
 
 /* ============ PROFILE ============ */
 .profile-grid {
@@ -433,6 +565,73 @@ h1 { font-size: 1.55rem; font-weight: 700; margin-bottom: 8px; color: var(--ink)
 .subtitle { font-size: 0.9rem; color: var(--ink-dim); margin-bottom: 16px; border-bottom: 1px solid var(--line); }
 
 p { font-size: 0.94rem; color: var(--ink); margin-bottom: 14px; line-height: 1.75; opacity: 0.92; }
+
+/* ============ HACKING DECRYPT EFFECT ============ */
+.hack-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  color: #00ff41;
+  font-family: 'SF Mono', 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.78rem;
+  padding: 18px 16px;
+  overflow: hidden;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2px;
+  border-radius: var(--radius-lg);
+  letter-spacing: 0.5px;
+  white-space: pre-wrap;
+  word-break: break-all;
+  line-height: 1.4;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.hack-overlay.hidden {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+}
+.hack-overlay .hack-line {
+  display: block;
+  opacity: 0.9;
+  animation: hackFlicker 0.15s infinite alternate;
+}
+.hack-overlay .hack-line.access {
+  color: #39ff14;
+  font-weight: 700;
+  text-shadow: 0 0 8px #00ff41;
+}
+.hack-overlay .hack-line.warn {
+  color: #ffb347;
+}
+.hack-overlay .hack-line.success {
+  color: #00ffaa;
+  font-weight: 700;
+  text-shadow: 0 0 10px #00ffaa;
+}
+@keyframes hackFlicker {
+  0% { opacity: 0.85; }
+  100% { opacity: 1; }
+}
+
+/* Blur/glitch on profile content while hacking */
+.card.profile-card.hacking .profile-grid {
+  filter: blur(6px) brightness(0.7);
+  transform: scale(0.98);
+  transition: filter 0.5s ease, transform 0.5s ease;
+}
+.card.profile-card.hacking {
+  box-shadow: 0 0 30px rgba(0,255,65,0.4), inset 0 0 20px rgba(0,255,65,0.1);
+}
+.card.profile-card.unlocked {
+  animation: unlockFlash 0.8s ease;
+}
+@keyframes unlockFlash {
+  0% { box-shadow: 0 0 40px rgba(0,255,65,0.8), 0 0 80px rgba(0,255,65,0.4); }
+  100% { box-shadow: inset 0 1px 0 var(--glass-highlight), 0 4px 20px var(--shadow-deep); }
+}
 
 /* ============ SPEC LIST ============ */
 .spec-list { list-style: none; position: relative; z-index: 2; }
@@ -488,6 +687,7 @@ p { font-size: 0.94rem; color: var(--ink); margin-bottom: 14px; line-height: 1.7
   aspect-ratio: 16 / 10; border-radius: var(--radius-lg); overflow: hidden;
   border: 1px solid var(--glass-border); background: var(--glass-bg);
   box-shadow: inset 0 1px 0 var(--glass-highlight), 0 6px 24px var(--shadow-deep);
+  z-index: 1;
 }
 .carousel-track { display: flex; height: 100%; transition: transform .8s cubic-bezier(.6,0,.2,1); }
 .carousel-slide { flex: 0 0 100%; height: 100%; position: relative; }
@@ -497,7 +697,7 @@ p { font-size: 0.94rem; color: var(--ink); margin-bottom: 14px; line-height: 1.7
   background: linear-gradient(transparent, rgba(14,17,23,0.85));
   color: #fff; font-size: 0.68rem; font-weight: 600;
 }
-.carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
+.carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; position: relative; z-index: 1; }
 .carousel-dot {
   width: 24px; height: 4px; border-radius: 100px; border: none;
   background: var(--line); cursor: pointer; transition: all .35s ease;
@@ -512,6 +712,7 @@ p { font-size: 0.94rem; color: var(--ink); margin-bottom: 14px; line-height: 1.7
   .portrait{width:160px;height:160px}
   .btn-email{width:auto;display:inline-flex;}
   .carousel-container{max-width:680px}
+  .hack-overlay{font-size:0.85rem; padding:22px 20px;}
 }
 
 @media(min-width:820px){
@@ -526,6 +727,7 @@ p { font-size: 0.94rem; color: var(--ink); margin-bottom: 14px; line-height: 1.7
   .portrait{width:180px;height:180px}
   h1{font-size:2.15rem}
   .carousel-container{max-width:760px;}
+  .hack-overlay{font-size:0.92rem; padding:28px 26px;}
 }
 </style>
 </head>
@@ -548,6 +750,7 @@ p { font-size: 0.94rem; color: var(--ink); margin-bottom: 14px; line-height: 1.7
       <option value="halloween">🎃 Halloween</option>
       <option value="hacker">💻 Hacker</option>
       <option value="kids">🧸 Kids</option>
+      <option value="math">📐 Math</option>
     </select>
     <div class="color-picker-wrapper" style="display:flex; gap:4px;">
       <label class="color-picker-label" title="Background Color">
@@ -566,17 +769,17 @@ p { font-size: 0.94rem; color: var(--ink); margin-bottom: 14px; line-height: 1.7
     <div class="wave-wrapper">
       <canvas id="waveCanvas" width="1600" height="180"></canvas>
     </div>
-    <p style="text-align:center; font-size:0.75rem; letter-spacing:2px; color:var(--ink-dim); margin-bottom:0;" id="t-wave-caption">
+    <p style="text-align:center; font-size:0.75rem; letter-spacing:2px; color:var(--ink-dim); margin-bottom:0; position:relative; z-index:1;" id="t-wave-caption">
       ~ harmonic wave ~
     </p>
   </section>
 
-  <!-- ============ PROFILE ============ -->
-  <section class="card">
+  <!-- ============ PROFILE (with hacking decrypt intro) ============ -->
+  <section class="card profile-card" id="profileCard">
+    <div class="hack-overlay" id="hackOverlay"></div>
     <div class="profile-grid">
       <div style="display:flex; justify-content:center;">
         <div class="portrait">
-          <!-- عکس پروفایل شما -->
           <img src="your-photo-here.jpg" alt="Mohammad Asim Haidari" onerror="this.style.display='none'">
         </div>
       </div>
@@ -623,25 +826,6 @@ p { font-size: 0.94rem; color: var(--ink); margin-bottom: 14px; line-height: 1.7
   </section>
 
   <div class="divider">· · ·</div>
-
-  <!-- ============ MATH / GRAPH CARD ============ -->
-  <section class="card math-graph-card">
-    <h2 class="section-title" id="t-math-title" style="margin-bottom:14px;">Mathematical Functions</h2>
-    <canvas id="graphCanvas" width="1400" height="440"></canvas>
-    <div class="graph-controls" id="graphControls">
-      <button class="graph-btn active" data-fn="quadratic" data-color="1">x²</button>
-      <button class="graph-btn" data-fn="cubic" data-color="2">x³</button>
-      <button class="graph-btn" data-fn="quartic" data-color="3">x⁴</button>
-      <button class="graph-btn" data-fn="sine" data-color="1">sin(x)</button>
-      <button class="graph-btn" data-fn="cosine" data-color="2">cos(x)</button>
-      <button class="graph-btn" data-fn="exponential" data-color="3">eˣ</button>
-      <button class="graph-btn" data-fn="logistic" data-color="1">σ(x)</button>
-      <button class="graph-btn" data-fn="abs" data-color="2">|x|</button>
-    </div>
-    <p style="text-align:center; font-size:0.72rem; color:var(--ink-dim); margin:10px 0 0; opacity:0.8;" id="t-math-caption">
-      Click a function to plot it on the graph
-    </p>
-  </section>
 
   <!-- ============ ABOUT ============ -->
   <section class="card">
@@ -728,10 +912,10 @@ p { font-size: 0.94rem; color: var(--ink); margin-bottom: 14px; line-height: 1.7
 
 <script>
 /* ============ THEME SYSTEM ============ */
-const THEME_LIST = ['classic','simple','dark','halloween','hacker','kids'];
+const THEME_LIST = ['classic','simple','dark','halloween','hacker','kids','math'];
 const DEFAULT_BG = {
   classic:  '#eef1f5', simple: '#f8f9fa', dark: '#0e1117', 
-  halloween: '#1a0f2e', hacker: '#0a0e0a', kids: '#fff5f9'
+  halloween: '#1a0f2e', hacker: '#0a0e0a', kids: '#fff5f9', math: '#0a0e1a'
 };
 
 function changeTheme(theme) {
@@ -831,7 +1015,6 @@ function resetBgColor() {
 
     ctx.clearRect(0, 0, w, h);
 
-    // wave 1
     const amp1 = h * 0.28;
     const freq1 = 0.012;
     ctx.beginPath();
@@ -845,7 +1028,6 @@ function resetBgColor() {
     ctx.globalAlpha = 0.8;
     ctx.stroke();
 
-    // wave 2
     ctx.beginPath();
     for(let x=0; x<w; x+=2){
       const y = h/2 + Math.sin(x*0.008 - t*0.02) * h*0.18 * Math.cos(t*0.015);
@@ -857,7 +1039,6 @@ function resetBgColor() {
     ctx.globalAlpha = 0.6;
     ctx.stroke();
 
-    // wave 3 (finer)
     ctx.beginPath();
     for(let x=0; x<w; x+=2){
       const y = h/2 + Math.sin(x*0.02 + t*0.04) * h*0.08;
@@ -876,152 +1057,92 @@ function resetBgColor() {
   draw();
 })();
 
-/* ============ GRAPH CANVAS ============ */
+/* ============ HACKING DECRYPT INTRO ============ */
 (function(){
-  const canvas = document.getElementById('graphCanvas');
-  if(!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let w, h;
-  function resize(){
-    const rect = canvas.parentElement.getBoundingClientRect();
-    const maxW = Math.min(rect.width, 720);
-    const dpr = window.devicePixelRatio || 1;
-    w = canvas.width = maxW * dpr;
-    h = canvas.height = 220 * dpr;
-    canvas.style.width = maxW + 'px';
-    canvas.style.height = '220px';
-  }
-  window.addEventListener('resize', () => { resize(); drawSelected(); });
+  const overlay = document.getElementById('hackOverlay');
+  const profileCard = document.getElementById('profileCard');
+  if(!overlay || !profileCard) return;
 
-  const funcs = {
-    quadratic:   { f: (x) => x*x,           range: [-2.5, 2.5] },
-    cubic:       { f: (x) => x*x*x,         range: [-1.8, 1.8] },
-    quartic:     { f: (x) => x*x*x*x,       range: [-1.6, 1.6] },
-    sine:        { f: (x) => Math.sin(x),   range: [-Math.PI*1.5, Math.PI*1.5] },
-    cosine:      { f: (x) => Math.cos(x),   range: [-Math.PI*1.5, Math.PI*1.5] },
-    exponential: { f: (x) => Math.exp(x),   range: [-3, 1.5] },
-    logistic:    { f: (x) => 1/(1+Math.exp(-x)), range: [-6, 6] },
-    abs:         { f: (x) => Math.abs(x),   range: [-3, 3] }
-  };
+  let seen = false;
+  try { seen = sessionStorage.getItem('hackIntroSeen') === '1'; } catch(e) {}
 
-  let currentFn = 'quadratic';
-  let currentColor = '1';
-
-  function getColor(idx){
-    const style = getComputedStyle(document.documentElement);
-    return style.getPropertyValue('--graph-color-' + idx).trim() || 
-           style.getPropertyValue('--graph-color').trim() || '#2f4f7a';
+  if (seen) {
+    overlay.classList.add('hidden');
+    return;
   }
 
-  function drawSelected(){
-    if(!w || !h) return;
-    ctx.clearRect(0, 0, w, h);
-    const style = getComputedStyle(document.documentElement);
-    const lineColor = style.getPropertyValue('--line').trim() || 'rgba(0,0,0,0.1)';
-    const axisColor = style.getPropertyValue('--ink-faint').trim() || '#a4abbb';
+  profileCard.classList.add('hacking');
 
-    const fn = funcs[currentFn];
-    if(!fn) return;
-    const [xMin, xMax] = fn.range;
-    const yVals = [];
-    const steps = 300;
-    const xs = [];
-    for(let i=0; i<=steps; i++){
-      const x = xMin + (xMax - xMin) * i / steps;
-      xs.push(x);
-      yVals.push(fn.f(x));
-    }
-    const yMin = Math.min(...yVals);
-    const yMax = Math.max(...yVals);
-    const yPad = (yMax - yMin) * 0.12 || 1;
+  const hackLines = [
+    { text: '> INITIALIZING SECURE CONNECTION...', cls: '' },
+    { text: '> SCANNING BIOMETRIC HASHES...', cls: '' },
+    { text: '> ACCESSING PROFILE DATABASE [0x7F3A]', cls: 'warn' },
+    { text: '> BYPASSING FIREWALL LAYER 1...', cls: '' },
+    { text: '> BYPASSING FIREWALL LAYER 2...', cls: '' },
+    { text: '> DECRYPTING IDENTITY MATRIX...', cls: 'warn' },
+    { text: '  [████████████████████░░░░] 78%', cls: '' },
+    { text: '> VALIDATING CREDENTIALS...', cls: '' },
+    { text: '> MATCH FOUND: M. A. HAIDARI', cls: 'access' },
+    { text: '> UNLOCKING PROFILE...', cls: 'success' },
+    { text: '> ACCESS GRANTED ✓', cls: 'success' },
+  ];
 
-    const padX = 20 * (window.devicePixelRatio||1);
-    const padY = 20 * (window.devicePixelRatio||1);
-    const plotW = w - padX*2;
-    const plotH = h - padY*2;
+  const scrambleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*<>[]{}!/\\';
 
-    // grid
-    ctx.strokeStyle = lineColor;
-    ctx.lineWidth = 1;
-    const gridCount = 8;
-    for(let i=0; i<=gridCount; i++){
-      const gx = padX + plotW * i / gridCount;
-      ctx.beginPath();
-      ctx.moveTo(gx, padY);
-      ctx.lineTo(gx, padY + plotH);
-      ctx.stroke();
-      const gy = padY + plotH * i / gridCount;
-      ctx.beginPath();
-      ctx.moveTo(padX, gy);
-      ctx.lineTo(padX + plotW, gy);
-      ctx.stroke();
-    }
+  let lineIndex = 0;
+  let charIndex = 0;
+  let currentLineEl = null;
 
-    // axes
-    ctx.strokeStyle = axisColor;
-    ctx.lineWidth = 1.5 * (window.devicePixelRatio||1);
-    // x-axis at y = 0 (if in range)
-    if(yMin - yPad <= 0 && yMax + yPad >= 0){
-      const y0 = padY + plotH * (1 - (0 - (yMin-yPad)) / ((yMax+yPad) - (yMin-yPad)));
-      ctx.beginPath();
-      ctx.moveTo(padX, y0);
-      ctx.lineTo(padX + plotW, y0);
-      ctx.stroke();
-    }
-    // y-axis at x = 0 (if in range)
-    if(xMin <= 0 && xMax >= 0){
-      const x0 = padX + plotW * (0 - xMin) / (xMax - xMin);
-      ctx.beginPath();
-      ctx.moveTo(x0, padY);
-      ctx.lineTo(x0, padY + plotH);
-      ctx.stroke();
-    }
-
-    // curve
-    ctx.beginPath();
-    for(let i=0; i<=steps; i++){
-      const x = xs[i];
-      const y = yVals[i];
-      const px = padX + plotW * (x - xMin) / (xMax - xMin);
-      const py = padY + plotH * (1 - (y - (yMin - yPad)) / ((yMax + yPad) - (yMin - yPad)));
-      if(i===0) ctx.moveTo(px, py);
-      else ctx.lineTo(px, py);
-    }
-    ctx.strokeStyle = getColor(currentColor);
-    ctx.lineWidth = 3 * (window.devicePixelRatio||1);
-    ctx.globalAlpha = 0.9;
-    ctx.stroke();
-    ctx.globalAlpha = 1;
-
-    // label
-    const labels = {
-      quadratic: 'f(x) = x²', cubic: 'f(x) = x³', quartic: 'f(x) = x⁴',
-      sine: 'f(x) = sin(x)', cosine: 'f(x) = cos(x)',
-      exponential: 'f(x) = eˣ', logistic: 'f(x) = 1/(1+e⁻ˣ)', abs: 'f(x) = |x|'
-    };
-    ctx.font = `${11 * (window.devicePixelRatio||1)}px ${getComputedStyle(document.body).fontFamily}`;
-    ctx.fillStyle = axisColor;
-    ctx.textAlign = 'right';
-    ctx.fillText(labels[currentFn] || '', w - padX - 4, padY + 16);
+  function createLineEl(cls) {
+    const el = document.createElement('span');
+    el.className = 'hack-line' + (cls ? ' ' + cls : '');
+    overlay.appendChild(el);
+    return el;
   }
 
-  document.querySelectorAll('#graphControls .graph-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('#graphControls .graph-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentFn = btn.dataset.fn;
-      currentColor = btn.dataset.color;
-      drawSelected();
-    });
-  });
+  function scrambleNext() {
+    if (lineIndex >= hackLines.length) {
+      setTimeout(finishHack, 600);
+      return;
+    }
 
-  // Initial resize & draw
-  setTimeout(() => { resize(); drawSelected(); }, 100);
+    const line = hackLines[lineIndex];
 
-  // Redraw on theme change
-  const observer = new MutationObserver(() => drawSelected());
-  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-  window.addEventListener('resize', () => { resize(); drawSelected(); });
+    if (!currentLineEl) {
+      currentLineEl = createLineEl(line.cls);
+      charIndex = 0;
+    }
+
+    if (charIndex < line.text.length) {
+      const scrambled = scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+      currentLineEl.textContent = line.text.slice(0, charIndex) + scrambled;
+
+      setTimeout(() => {
+        if (currentLineEl) {
+          currentLineEl.textContent = line.text.slice(0, charIndex + 1);
+        }
+        charIndex++;
+        setTimeout(scrambleNext, Math.random() < 0.3 ? 25 : 12);
+      }, 18);
+    } else {
+      lineIndex++;
+      currentLineEl = null;
+      charIndex = 0;
+      setTimeout(scrambleNext, 90);
+    }
+  }
+
+  function finishHack() {
+    overlay.classList.add('hidden');
+    profileCard.classList.remove('hacking');
+    profileCard.classList.add('unlocked');
+    try { sessionStorage.setItem('hackIntroSeen', '1'); } catch(e) {}
+    setTimeout(() => {
+      overlay.remove();
+    }, 800);
+  }
+
+  setTimeout(scrambleNext, 400);
 })();
 
 /* ============ TRANSLATIONS ============ */
@@ -1048,9 +1169,7 @@ const translations = {
     contactTitle:'Correspondence',
     contactText:'For contract acquisition, security consultation, or employment inquiries, please dispatch your message directly to my verified email.',
     galleryTitle:'Gallery',
-    waveCaption:'~ harmonic wave ~',
-    mathTitle:'Mathematical Functions',
-    mathCaption:'Click a function to plot it on the graph'
+    waveCaption:'~ harmonic wave ~'
   },
   fa: {
     dir:'rtl', title:'محمد عاصم حیدری | پورتفولیو و رزومه',
@@ -1074,9 +1193,7 @@ const translations = {
     contactTitle:'ارتباطات',
     contactText:'جهت قراردادهای کاری، مشاوره امنیتی یا درخواست‌های استخدام، لطفاً پیام خود را مستقیماً به ایمیل تأیید شده من ارسال کنید.',
     galleryTitle:'گالری',
-    waveCaption:'~ موج هارمونیک ~',
-    mathTitle:'توابع ریاضی',
-    mathCaption:'برای رسم روی نمودار، یک تابع را انتخاب کنید'
+    waveCaption:'~ موج هارمونیک ~'
   },
   ps: {
     dir:'rtl', title:'محمد عاصم حیدری | پورټفولیو او سوانح',
@@ -1084,7 +1201,7 @@ const translations = {
     subtitle:'د سافټویر انجنییر او د سایبر امنیت کارآموز',
     welcome:'زما شخصي انډیکس ته ښه راغلاست — یو متقابل او ژوندی رزومه چې د استخدام کونکو، همکارانو او شریکانو لپاره جوړ شوی ترڅو زما د انجنییرۍ ریکارډ او اوسني فعالیتونه وپلټي.',
     profileTitle:'پروفایل',
-    profileText:'زه یو لوړ تحلیلي سافټویر انجنییر او په فعاله توګه د سایموبر امنیت کارآز یم. په تیرو دریو کلونو کې، ما د اعتبار وړ سافټویر الگوونه جوړ کړي، فعال جوړښتونه یې ډیزاین کړي، او د امنیتي پولو په څارلو، د کوډ د نیمګړتیاوو په ارزولو او د عمومي جوړښت په ښه کولو کې تخصص لرم.',
+    profileText:'زه یو لوړ تحلیلي سافټویر انجنییر او په فعاله توګه د سایبر امنیت کارآموز یم. په تیرو دریو کلونو کې، ما د اعتبار وړ سافټویر الگوونه جوړ کړي، فعال جوړښتونه یې ډیزاین کړي، او د امنیتي پولو په څارلو، د کوډ د نیمګړتیاوو په ارزولو او د عمومي جوړښت په ښه کولو کې تخصص لرم.',
     specsTitle:'مشخصات',
     expLabel:'تجربه', expText:'د فول سټک اپلیکیشن پروګرامینګ ۱ کال',
     focusLabel:'اوسنی تمرکز', focusText:'د سایبر امنیت تفتیش، د ګواښونو کشف او د نفوذ ازموینه',
@@ -1100,9 +1217,7 @@ const translations = {
     contactTitle:'اړیکې',
     contactText:'د قرارداد اخیستلو، امنیتي مشورې، یا د کارموندنې پوښتنو لپاره، مهرباني وکړئ خپل پیغام مستقیم زما تایید شوي بریښنالیک ته واستوئ.',
     galleryTitle:'ګالري',
-    waveCaption:'~ هارمونیک څپې ~',
-    mathTitle:'ریاضياتي افعال',
-    mathCaption:'د ګراف رسمولو لپاره یو فعالیت کلیک کړئ'
+    waveCaption:'~ هارمونیک څپې ~'
   },
   ar: {
     dir:'rtl', title:'محمد عاصم حیدري | الملف الشخصي والسيرة الذاتية',
@@ -1126,9 +1241,7 @@ const translations = {
     contactTitle:'المراسلات',
     contactText:'للحصول على العقود، أو الاستشارات الأمنية، أو استفسارات التوظيف، يرجى إرسال رسالتك مباشرة إلى بريدي الإلكتروني المتحقق منه.',
     galleryTitle:'معرض الصور',
-    waveCaption:'~ موجة متناغمة ~',
-    mathTitle:'الدوال الرياضية',
-    mathCaption:'انقر على دالة لرسمها على الرسم البياني'
+    waveCaption:'~ موجة متناغمة ~'
   },
   tr: {
     dir:'ltr', title:'Mohammad Asim Haidari | Portfolyo ve Özgeçmiş',
@@ -1152,9 +1265,7 @@ const translations = {
     contactTitle:'İletişim',
     contactText:'Sözleşme edinimi, güvenlik danışmanlığı veya iş teklifleri için lütfen mesajınızı doğrudan onaylanmış e-postama gönderin.',
     galleryTitle:'Galeri',
-    waveCaption:'~ harmonik dalga ~',
-    mathTitle:'Matematiksel Fonksiyonlar',
-    mathCaption:'Grafiğe çizmek için bir fonksiyon seçin'
+    waveCaption:'~ harmonik dalga ~'
   }
 };
 
@@ -1195,8 +1306,6 @@ function changeLanguage(lang){
   updateText('t-contact-text', d.contactText);
   updateText('t-gallery-title', d.galleryTitle);
   updateText('t-wave-caption', d.waveCaption);
-  updateText('t-math-title', d.mathTitle);
-  updateText('t-math-caption', d.mathCaption);
 
   try{ localStorage.setItem('lang', lang); }catch(e){}
 }
