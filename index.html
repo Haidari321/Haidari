@@ -28,6 +28,7 @@
   --radius-md:    16px;
   --radius-sm:    10px;
   --wave-color:   #5a7ba8;
+  --wave-color-2: #c9b78e;
   --graph-color:  #2f4f7a;
   --graph-color-2:#c9b78e;
   --graph-color-3:#5a7ba8;
@@ -52,6 +53,7 @@
   --shadow-deep:  rgba(0,0,0,0.06);
   --shadow-glass: 0 2px 8px rgba(0,0,0,0.06);
   --wave-color:   #6c757d;
+  --wave-color-2: #adb5bd;
   --graph-color:  #6c757d;
   --graph-color-2:#adb5bd;
   --graph-color-3:#495057;
@@ -75,6 +77,7 @@
   --shadow-deep:  rgba(0,0,0,0.55);
   --shadow-glass: 0 8px 30px rgba(255,100,0,0.20);
   --wave-color:   #ff7518;
+  --wave-color-2: #9b59b6;
   --graph-color:  #ff7518;
   --graph-color-2:#9b59b6;
   --graph-color-3:#ffb347;
@@ -99,6 +102,7 @@
   --shadow-deep:  rgba(0,0,0,0.85);
   --shadow-glass: 0 8px 30px rgba(0,255,0,0.15);
   --wave-color:   #00ff41;
+  --wave-color-2: #39ff14;
   --graph-color:  #00ff41;
   --graph-color-2:#39ff14;
   --graph-color-3:#00ffaa;
@@ -129,6 +133,7 @@
   --shadow-deep:  rgba(255,80,150,0.20);
   --shadow-glass: 0 8px 30px rgba(255,105,180,0.20);
   --wave-color:   #ff4d94;
+  --wave-color-2: #4dd0e1;
   --graph-color:  #ff4d94;
   --graph-color-2:#ffb347;
   --graph-color-3:#4dd0e1;
@@ -157,6 +162,7 @@
   --shadow-deep:  rgba(0,0,0,0.55);
   --shadow-glass: 0 8px 30px rgba(0,0,0,0.35);
   --wave-color:   #8fb0d9;
+  --wave-color-2: #d4c39a;
   --graph-color:  #8fb0d9;
   --graph-color-2:#d4c39a;
   --graph-color-3:#b8cbe3;
@@ -334,6 +340,73 @@ select, .color-picker-label, .color-reset {
   overflow: hidden;
 }
 
+/* ============ WAVE CANVAS ============ */
+.wave-wrapper {
+  position: relative;
+  width: 100%;
+  height: 90px;
+  margin: 0 0 18px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: transparent;
+  opacity: 0.9;
+}
+#waveCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-md);
+}
+
+/* ============ MATH / GRAPH CARD ============ */
+.math-graph-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 12px;
+}
+#graphCanvas {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  height: 220px;
+  border-radius: var(--radius-md);
+  background: rgba(0,0,0,0.04);
+  border: 1px solid var(--line);
+  box-shadow: inset 0 0 24px rgba(0,0,0,0.04);
+}
+.graph-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 14px;
+}
+.graph-btn {
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  border: 1px solid var(--line);
+  background: var(--glass-bg-2);
+  color: var(--ink);
+  cursor: pointer;
+  transition: all .25s ease;
+}
+.graph-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 4px 14px var(--shadow-deep);
+}
+.graph-btn:hover { transform: translateY(-1px); }
+
 /* ============ PROFILE ============ */
 .profile-grid {
   display: flex;
@@ -488,6 +561,16 @@ p { font-size: 0.94rem; color: var(--ink); margin-bottom: 14px; line-height: 1.7
 
 <main class="container">
 
+  <!-- ============ WAVE (animated sine wave) ============ -->
+  <section class="card" style="padding-bottom:18px;">
+    <div class="wave-wrapper">
+      <canvas id="waveCanvas" width="1600" height="180"></canvas>
+    </div>
+    <p style="text-align:center; font-size:0.75rem; letter-spacing:2px; color:var(--ink-dim); margin-bottom:0;" id="t-wave-caption">
+      ~ harmonic wave ~
+    </p>
+  </section>
+
   <!-- ============ PROFILE ============ -->
   <section class="card">
     <div class="profile-grid">
@@ -516,19 +599,16 @@ p { font-size: 0.94rem; color: var(--ink); margin-bottom: 14px; line-height: 1.7
       <div class="carousel-track" id="carouselTrack">
 
         <div class="carousel-slide">
-          <!-- عکس گالری ۱ -->
           <img src="gallery1.jpg" alt="Gallery Image 1" onerror="this.src='https://via.placeholder.com/600x400?text=Gallery+1'">
           <span class="slide-label">Portrait</span>
         </div>
 
         <div class="carousel-slide">
-          <!-- عکس گالری ۲ -->
           <img src="gallery2.jpg" alt="Gallery Image 2" onerror="this.src='https://via.placeholder.com/600x400?text=Gallery+2'">
           <span class="slide-label">Editorial</span>
         </div>
 
         <div class="carousel-slide">
-          <!-- عکس گالری ۳ -->
           <img src="gallery3.jpg" alt="Gallery Image 3" onerror="this.src='https://via.placeholder.com/600x400?text=Gallery+3'">
           <span class="slide-label">Vogue</span>
         </div>
@@ -543,6 +623,25 @@ p { font-size: 0.94rem; color: var(--ink); margin-bottom: 14px; line-height: 1.7
   </section>
 
   <div class="divider">· · ·</div>
+
+  <!-- ============ MATH / GRAPH CARD ============ -->
+  <section class="card math-graph-card">
+    <h2 class="section-title" id="t-math-title" style="margin-bottom:14px;">Mathematical Functions</h2>
+    <canvas id="graphCanvas" width="1400" height="440"></canvas>
+    <div class="graph-controls" id="graphControls">
+      <button class="graph-btn active" data-fn="quadratic" data-color="1">x²</button>
+      <button class="graph-btn" data-fn="cubic" data-color="2">x³</button>
+      <button class="graph-btn" data-fn="quartic" data-color="3">x⁴</button>
+      <button class="graph-btn" data-fn="sine" data-color="1">sin(x)</button>
+      <button class="graph-btn" data-fn="cosine" data-color="2">cos(x)</button>
+      <button class="graph-btn" data-fn="exponential" data-color="3">eˣ</button>
+      <button class="graph-btn" data-fn="logistic" data-color="1">σ(x)</button>
+      <button class="graph-btn" data-fn="abs" data-color="2">|x|</button>
+    </div>
+    <p style="text-align:center; font-size:0.72rem; color:var(--ink-dim); margin:10px 0 0; opacity:0.8;" id="t-math-caption">
+      Click a function to plot it on the graph
+    </p>
+  </section>
 
   <!-- ============ ABOUT ============ -->
   <section class="card">
@@ -708,6 +807,223 @@ function resetBgColor() {
   start(); go(0);
 })();
 
+/* ============ WAVE ANIMATION ============ */
+(function(){
+  const canvas = document.getElementById('waveCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w, h;
+  function resize(){
+    const rect = canvas.parentElement.getBoundingClientRect();
+    w = canvas.width = rect.width * (window.devicePixelRatio || 1);
+    h = canvas.height = rect.height * (window.devicePixelRatio || 1);
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = rect.height + 'px';
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  let t = 0;
+  function draw(){
+    const style = getComputedStyle(document.documentElement);
+    const c1 = style.getPropertyValue('--wave-color').trim() || '#5a7ba8';
+    const c2 = style.getPropertyValue('--wave-color-2').trim() || '#c9b78e';
+
+    ctx.clearRect(0, 0, w, h);
+
+    // wave 1
+    const amp1 = h * 0.28;
+    const freq1 = 0.012;
+    ctx.beginPath();
+    for(let x=0; x<w; x+=2){
+      const y = h/2 + Math.sin(x*freq1 + t*0.03) * amp1 * Math.sin(t*0.02 + 1);
+      if(x===0) ctx.moveTo(x,y);
+      else ctx.lineTo(x,y);
+    }
+    ctx.strokeStyle = c1;
+    ctx.lineWidth = 3 * (window.devicePixelRatio||1);
+    ctx.globalAlpha = 0.8;
+    ctx.stroke();
+
+    // wave 2
+    ctx.beginPath();
+    for(let x=0; x<w; x+=2){
+      const y = h/2 + Math.sin(x*0.008 - t*0.02) * h*0.18 * Math.cos(t*0.015);
+      if(x===0) ctx.moveTo(x,y);
+      else ctx.lineTo(x,y);
+    }
+    ctx.strokeStyle = c2;
+    ctx.lineWidth = 2 * (window.devicePixelRatio||1);
+    ctx.globalAlpha = 0.6;
+    ctx.stroke();
+
+    // wave 3 (finer)
+    ctx.beginPath();
+    for(let x=0; x<w; x+=2){
+      const y = h/2 + Math.sin(x*0.02 + t*0.04) * h*0.08;
+      if(x===0) ctx.moveTo(x,y);
+      else ctx.lineTo(x,y);
+    }
+    ctx.strokeStyle = c1;
+    ctx.lineWidth = 1 * (window.devicePixelRatio||1);
+    ctx.globalAlpha = 0.3;
+    ctx.stroke();
+
+    ctx.globalAlpha = 1;
+    t += 1;
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ============ GRAPH CANVAS ============ */
+(function(){
+  const canvas = document.getElementById('graphCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w, h;
+  function resize(){
+    const rect = canvas.parentElement.getBoundingClientRect();
+    const maxW = Math.min(rect.width, 720);
+    const dpr = window.devicePixelRatio || 1;
+    w = canvas.width = maxW * dpr;
+    h = canvas.height = 220 * dpr;
+    canvas.style.width = maxW + 'px';
+    canvas.style.height = '220px';
+  }
+  window.addEventListener('resize', () => { resize(); drawSelected(); });
+
+  const funcs = {
+    quadratic:   { f: (x) => x*x,           range: [-2.5, 2.5] },
+    cubic:       { f: (x) => x*x*x,         range: [-1.8, 1.8] },
+    quartic:     { f: (x) => x*x*x*x,       range: [-1.6, 1.6] },
+    sine:        { f: (x) => Math.sin(x),   range: [-Math.PI*1.5, Math.PI*1.5] },
+    cosine:      { f: (x) => Math.cos(x),   range: [-Math.PI*1.5, Math.PI*1.5] },
+    exponential: { f: (x) => Math.exp(x),   range: [-3, 1.5] },
+    logistic:    { f: (x) => 1/(1+Math.exp(-x)), range: [-6, 6] },
+    abs:         { f: (x) => Math.abs(x),   range: [-3, 3] }
+  };
+
+  let currentFn = 'quadratic';
+  let currentColor = '1';
+
+  function getColor(idx){
+    const style = getComputedStyle(document.documentElement);
+    return style.getPropertyValue('--graph-color-' + idx).trim() || 
+           style.getPropertyValue('--graph-color').trim() || '#2f4f7a';
+  }
+
+  function drawSelected(){
+    if(!w || !h) return;
+    ctx.clearRect(0, 0, w, h);
+    const style = getComputedStyle(document.documentElement);
+    const lineColor = style.getPropertyValue('--line').trim() || 'rgba(0,0,0,0.1)';
+    const axisColor = style.getPropertyValue('--ink-faint').trim() || '#a4abbb';
+
+    const fn = funcs[currentFn];
+    if(!fn) return;
+    const [xMin, xMax] = fn.range;
+    const yVals = [];
+    const steps = 300;
+    const xs = [];
+    for(let i=0; i<=steps; i++){
+      const x = xMin + (xMax - xMin) * i / steps;
+      xs.push(x);
+      yVals.push(fn.f(x));
+    }
+    const yMin = Math.min(...yVals);
+    const yMax = Math.max(...yVals);
+    const yPad = (yMax - yMin) * 0.12 || 1;
+
+    const padX = 20 * (window.devicePixelRatio||1);
+    const padY = 20 * (window.devicePixelRatio||1);
+    const plotW = w - padX*2;
+    const plotH = h - padY*2;
+
+    // grid
+    ctx.strokeStyle = lineColor;
+    ctx.lineWidth = 1;
+    const gridCount = 8;
+    for(let i=0; i<=gridCount; i++){
+      const gx = padX + plotW * i / gridCount;
+      ctx.beginPath();
+      ctx.moveTo(gx, padY);
+      ctx.lineTo(gx, padY + plotH);
+      ctx.stroke();
+      const gy = padY + plotH * i / gridCount;
+      ctx.beginPath();
+      ctx.moveTo(padX, gy);
+      ctx.lineTo(padX + plotW, gy);
+      ctx.stroke();
+    }
+
+    // axes
+    ctx.strokeStyle = axisColor;
+    ctx.lineWidth = 1.5 * (window.devicePixelRatio||1);
+    // x-axis at y = 0 (if in range)
+    if(yMin - yPad <= 0 && yMax + yPad >= 0){
+      const y0 = padY + plotH * (1 - (0 - (yMin-yPad)) / ((yMax+yPad) - (yMin-yPad)));
+      ctx.beginPath();
+      ctx.moveTo(padX, y0);
+      ctx.lineTo(padX + plotW, y0);
+      ctx.stroke();
+    }
+    // y-axis at x = 0 (if in range)
+    if(xMin <= 0 && xMax >= 0){
+      const x0 = padX + plotW * (0 - xMin) / (xMax - xMin);
+      ctx.beginPath();
+      ctx.moveTo(x0, padY);
+      ctx.lineTo(x0, padY + plotH);
+      ctx.stroke();
+    }
+
+    // curve
+    ctx.beginPath();
+    for(let i=0; i<=steps; i++){
+      const x = xs[i];
+      const y = yVals[i];
+      const px = padX + plotW * (x - xMin) / (xMax - xMin);
+      const py = padY + plotH * (1 - (y - (yMin - yPad)) / ((yMax + yPad) - (yMin - yPad)));
+      if(i===0) ctx.moveTo(px, py);
+      else ctx.lineTo(px, py);
+    }
+    ctx.strokeStyle = getColor(currentColor);
+    ctx.lineWidth = 3 * (window.devicePixelRatio||1);
+    ctx.globalAlpha = 0.9;
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+
+    // label
+    const labels = {
+      quadratic: 'f(x) = x²', cubic: 'f(x) = x³', quartic: 'f(x) = x⁴',
+      sine: 'f(x) = sin(x)', cosine: 'f(x) = cos(x)',
+      exponential: 'f(x) = eˣ', logistic: 'f(x) = 1/(1+e⁻ˣ)', abs: 'f(x) = |x|'
+    };
+    ctx.font = `${11 * (window.devicePixelRatio||1)}px ${getComputedStyle(document.body).fontFamily}`;
+    ctx.fillStyle = axisColor;
+    ctx.textAlign = 'right';
+    ctx.fillText(labels[currentFn] || '', w - padX - 4, padY + 16);
+  }
+
+  document.querySelectorAll('#graphControls .graph-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#graphControls .graph-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFn = btn.dataset.fn;
+      currentColor = btn.dataset.color;
+      drawSelected();
+    });
+  });
+
+  // Initial resize & draw
+  setTimeout(() => { resize(); drawSelected(); }, 100);
+
+  // Redraw on theme change
+  const observer = new MutationObserver(() => drawSelected());
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  window.addEventListener('resize', () => { resize(); drawSelected(); });
+})();
+
 /* ============ TRANSLATIONS ============ */
 const translations = {
   en: {
@@ -731,7 +1047,10 @@ const translations = {
     videoYoutubeText:'End-to-end YouTube video production — scripting, editing, thumbnails, and channel branding for 7 years.',
     contactTitle:'Correspondence',
     contactText:'For contract acquisition, security consultation, or employment inquiries, please dispatch your message directly to my verified email.',
-    galleryTitle:'Gallery'
+    galleryTitle:'Gallery',
+    waveCaption:'~ harmonic wave ~',
+    mathTitle:'Mathematical Functions',
+    mathCaption:'Click a function to plot it on the graph'
   },
   fa: {
     dir:'rtl', title:'محمد عاصم حیدری | پورتفولیو و رزومه',
@@ -754,7 +1073,10 @@ const translations = {
     videoYoutubeText:'تولید ویدیوی یوتیوب از ابتدا تا انتها — فیلمنامه، تدوین، تصاویر بندانگشتی و برندسازی کانال برای ۷ سال.',
     contactTitle:'ارتباطات',
     contactText:'جهت قراردادهای کاری، مشاوره امنیتی یا درخواست‌های استخدام، لطفاً پیام خود را مستقیماً به ایمیل تأیید شده من ارسال کنید.',
-    galleryTitle:'گالری'
+    galleryTitle:'گالری',
+    waveCaption:'~ موج هارمونیک ~',
+    mathTitle:'توابع ریاضی',
+    mathCaption:'برای رسم روی نمودار، یک تابع را انتخاب کنید'
   },
   ps: {
     dir:'rtl', title:'محمد عاصم حیدری | پورټفولیو او سوانح',
@@ -762,7 +1084,7 @@ const translations = {
     subtitle:'د سافټویر انجنییر او د سایبر امنیت کارآموز',
     welcome:'زما شخصي انډیکس ته ښه راغلاست — یو متقابل او ژوندی رزومه چې د استخدام کونکو، همکارانو او شریکانو لپاره جوړ شوی ترڅو زما د انجنییرۍ ریکارډ او اوسني فعالیتونه وپلټي.',
     profileTitle:'پروفایل',
-    profileText:'زه یو لوړ تحلیلي سافټویر انجنییر او په فعاله توګه د سایبر امنیت کارآموز یم. په تیرو دریو کلونو کې، ما د اعتبار وړ سافټویر الگوونه جوړ کړي، فعال جوړښتونه یې ډیزاین کړي، او د امنیتي پولو په څارلو، د کوډ د نیمګړتیاوو په ارزولو او د عمومي جوړښت په ښه کولو کې تخصص لرم.',
+    profileText:'زه یو لوړ تحلیلي سافټویر انجنییر او په فعاله توګه د سایموبر امنیت کارآز یم. په تیرو دریو کلونو کې، ما د اعتبار وړ سافټویر الگوونه جوړ کړي، فعال جوړښتونه یې ډیزاین کړي، او د امنیتي پولو په څارلو، د کوډ د نیمګړتیاوو په ارزولو او د عمومي جوړښت په ښه کولو کې تخصص لرم.',
     specsTitle:'مشخصات',
     expLabel:'تجربه', expText:'د فول سټک اپلیکیشن پروګرامینګ ۱ کال',
     focusLabel:'اوسنی تمرکز', focusText:'د سایبر امنیت تفتیش، د ګواښونو کشف او د نفوذ ازموینه',
@@ -777,7 +1099,10 @@ const translations = {
     videoYoutubeText:'له سره تر پایه د یوټیوب ویډیو تولید — سکریپټ، ایډیټینګ، ټامبنیل او د چینل برانډینګ ۷ کاله.',
     contactTitle:'اړیکې',
     contactText:'د قرارداد اخیستلو، امنیتي مشورې، یا د کارموندنې پوښتنو لپاره، مهرباني وکړئ خپل پیغام مستقیم زما تایید شوي بریښنالیک ته واستوئ.',
-    galleryTitle:'ګالري'
+    galleryTitle:'ګالري',
+    waveCaption:'~ هارمونیک څپې ~',
+    mathTitle:'ریاضياتي افعال',
+    mathCaption:'د ګراف رسمولو لپاره یو فعالیت کلیک کړئ'
   },
   ar: {
     dir:'rtl', title:'محمد عاصم حیدري | الملف الشخصي والسيرة الذاتية',
@@ -800,7 +1125,10 @@ const translations = {
     videoYoutubeText:'إنتاج فيديو يوتيوب من البداية إلى النهاية — كتابة، تحرير، صور مصغرة، وعلامة تجارية للقناة لمدة 7 سنوات.',
     contactTitle:'المراسلات',
     contactText:'للحصول على العقود، أو الاستشارات الأمنية، أو استفسارات التوظيف، يرجى إرسال رسالتك مباشرة إلى بريدي الإلكتروني المتحقق منه.',
-    galleryTitle:'معرض الصور'
+    galleryTitle:'معرض الصور',
+    waveCaption:'~ موجة متناغمة ~',
+    mathTitle:'الدوال الرياضية',
+    mathCaption:'انقر على دالة لرسمها على الرسم البياني'
   },
   tr: {
     dir:'ltr', title:'Mohammad Asim Haidari | Portfolyo ve Özgeçmiş',
@@ -823,7 +1151,10 @@ const translations = {
     videoYoutubeText:'Uçtan uca YouTube video prodüksiyonu — senaryo, düzenleme, küçük resimler ve kanal markalama, 7 yıl.',
     contactTitle:'İletişim',
     contactText:'Sözleşme edinimi, güvenlik danışmanlığı veya iş teklifleri için lütfen mesajınızı doğrudan onaylanmış e-postama gönderin.',
-    galleryTitle:'Galeri'
+    galleryTitle:'Galeri',
+    waveCaption:'~ harmonik dalga ~',
+    mathTitle:'Matematiksel Fonksiyonlar',
+    mathCaption:'Grafiğe çizmek için bir fonksiyon seçin'
   }
 };
 
@@ -863,6 +1194,9 @@ function changeLanguage(lang){
   updateText('t-contact-title', d.contactTitle);
   updateText('t-contact-text', d.contactText);
   updateText('t-gallery-title', d.galleryTitle);
+  updateText('t-wave-caption', d.waveCaption);
+  updateText('t-math-title', d.mathTitle);
+  updateText('t-math-caption', d.mathCaption);
 
   try{ localStorage.setItem('lang', lang); }catch(e){}
 }
@@ -892,6 +1226,11 @@ window.addEventListener('DOMContentLoaded', ()=>{
       applyBgColor(customBg);
     }
   }catch(e){}
+
+  // Trigger resize for canvases
+  setTimeout(() => {
+    window.dispatchEvent(new Event('resize'));
+  }, 200);
 });
 </script>
 </body>
