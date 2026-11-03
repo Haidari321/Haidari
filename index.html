@@ -1332,7 +1332,7 @@ button:focus-visible,a:focus-visible,select:focus-visible{
 
         <div style="display:flex; justify-content:center;">
           <div class="portrait" id="profilePortrait">
-            <img src="your-photo-here.jpg" alt="Mohammad Asim Haidari">
+            <!-- عکس خود را در اینجا قرار دهید: <img src="your-photo-here.jpg" alt="Mohammad Asim Haidari"> -->
             <span id="photo-fallback">Your<br>Photo</span>
           </div>
         </div>
@@ -1368,20 +1368,18 @@ button:focus-visible,a:focus-visible,select:focus-visible{
       <div class="carousel-track" id="carouselTrack">
 
         <div class="carousel-slide">
-          <img src="https://picsum.photos/seed/billie-1/800/500"
-               alt="Portrait 1" loading="lazy" id="billie-img-1">
+          <!-- برای جلوگیری از خطا، عکس‌های گالری را با عکس‌های خودتان جایگزین کنید -->
+          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--bg-mid);color:var(--ink-dim);">Gallery Image 1</div>
           <span class="slide-label">Portrait</span>
         </div>
 
         <div class="carousel-slide">
-          <img src="https://picsum.photos/seed/billie-2/800/500"
-               alt="Portrait 2" loading="lazy" id="billie-img-2">
+          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--bg-mid);color:var(--ink-dim);">Gallery Image 2</div>
           <span class="slide-label">Editorial</span>
         </div>
 
         <div class="carousel-slide">
-          <img src="https://picsum.photos/seed/billie-3/800/500"
-               alt="Portrait 3" loading="lazy" id="billie-img-3">
+          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--bg-mid);color:var(--ink-dim);">Gallery Image 3</div>
           <span class="slide-label">Vogue</span>
         </div>
 
@@ -1543,15 +1541,12 @@ const DEFAULT_BG = {
 
 function changeTheme(theme) {
   if (!THEME_LIST.includes(theme)) return;
-  // Clear any custom bg override when switching theme
   try { localStorage.removeItem('customBg'); } catch(e) {}
   document.documentElement.removeAttribute('style');
   document.documentElement.setAttribute('data-theme', theme);
   document.body.setAttribute('data-theme', theme);
-  // Reset color picker
   const picker = document.getElementById('bgColorPicker');
   if (picker) picker.value = DEFAULT_BG[theme] || '#eef1f5';
-  // Sync select
   const sel = document.getElementById('themeSelect');
   if (sel) sel.value = theme;
   try { localStorage.setItem('theme', theme); } catch(e) {}
@@ -1577,6 +1572,7 @@ function resetBgColor() {
 (function(){
   const track = document.getElementById('carouselTrack');
   const dots = document.querySelectorAll('.carousel-dot');
+  if(!track) return;
   const slides = track.querySelectorAll('.carousel-slide');
   const total = slides.length;
   let idx = 0, timer = null;
@@ -1605,10 +1601,12 @@ function resetBgColor() {
   });
 
   const c = document.getElementById('carouselContainer');
-  c.addEventListener('mouseenter', stop);
-  c.addEventListener('mouseleave', start);
-  c.addEventListener('focusin', stop);
-  c.addEventListener('focusout', start);
+  if(c) {
+    c.addEventListener('mouseenter', stop);
+    c.addEventListener('mouseleave', start);
+    c.addEventListener('focusin', stop);
+    c.addEventListener('focusout', start);
+  }
 
   new MutationObserver((muts)=>{
     muts.forEach(m=>{ if(m.attributeName==='dir') go(idx); });
@@ -1623,7 +1621,7 @@ function resetBgColor() {
   const linesContainer = document.getElementById('eq-lines');
   const eqGraph = document.getElementById('eqGraph');
   const portrait = document.getElementById('profilePortrait');
-  if (!solver || !linesContainer) return;
+  if (!solver || !linesContainer || !portrait) return;
 
   const steps = [
     { eq: 'x² − 5x + 6 = 0', res: '→ (x−2)(x−3) = 0' },
@@ -1637,22 +1635,28 @@ function resetBgColor() {
   const stepGap = totalTime / steps.length;
 
   function showNext() {
-    if (i >= steps.length) {
-      eqGraph.classList.add('visible');
-      setTimeout(() => {
-        solver.classList.add('solved');
-        portrait.classList.add('reveal');
-      }, 900);
-      return;
+    try {
+      if (i >= steps.length) {
+        if(eqGraph) eqGraph.classList.add('visible');
+        setTimeout(() => {
+          solver.classList.add('solved');
+          portrait.classList.add('reveal');
+        }, 900);
+        return;
+      }
+      const step = steps[i];
+      const line = document.createElement('div');
+      line.className = 'eq-line';
+      line.innerHTML = `${step.eq} <span class="eq-result">${step.res}</span>`;
+      linesContainer.appendChild(line);
+      requestAnimationFrame(() => line.classList.add('visible'));
+      i++;
+      setTimeout(showNext, stepGap);
+    } catch(e) {
+      // در صورت بروز خطا، بلافاصله عکس را نشان بده
+      solver.classList.add('solved');
+      portrait.classList.add('reveal');
     }
-    const step = steps[i];
-    const line = document.createElement('div');
-    line.className = 'eq-line';
-    line.innerHTML = `${step.eq} <span class="eq-result">${step.res}</span>`;
-    linesContainer.appendChild(line);
-    requestAnimationFrame(() => line.classList.add('visible'));
-    i++;
-    setTimeout(showNext, stepGap);
   }
 
   setTimeout(showNext, 350);
@@ -1851,7 +1855,7 @@ function changeLanguage(lang){
   document.getElementById('t-video-youtube-text').innerText = d.videoYoutubeText;
   // Contact
   document.getElementById('t-contact-title').innerText = d.contactTitle;
-  document.getElementById('t-contact-text').inner colorsText = d.contactText;
+  document.getElementById('t-contact-text').innerText = d.contactText;
   document.getElementById('photo-fallback').innerHTML = d.photoText;
   document.getElementById('t-gallery-title').innerText = d.galleryTitle;
   const eqTitle = document.getElementById('eq-title');
