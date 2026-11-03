@@ -7,7 +7,6 @@
 <title id="meta-title">Mohammad Asim Haidari | Portfolio & CV</title>
 <style>
 /* ============ THEME SYSTEM ============ */
-/* ---- DEFAULT / CLASSIC (light) ---- */
 :root {
   --bg-deep:      #eef1f5;
   --bg-mid:       #f6f8fb;
@@ -33,10 +32,8 @@
   --graph-color-2:#c9b78e;
   --graph-color-3:#5a7ba8;
   --body-font: 'Inter', -apple-system, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
-  --card-decoration: none;
 }
 
-/* ---- SIMPLE (flat, minimal) ---- */
 [data-theme="simple"] {
   --bg-deep:      #f8f9fa;
   --bg-mid:       #ffffff;
@@ -58,10 +55,8 @@
   --graph-color:  #6c757d;
   --graph-color-2:#adb5bd;
   --graph-color-3:#495057;
-  --body-font: 'Inter', -apple-system, 'Segoe UI', system-ui, sans-serif;
 }
 
-/* ---- HALLOWEEN ---- */
 [data-theme="halloween"] {
   --bg-deep:      #1a0f2e;
   --bg-mid:       #2d1b4e;
@@ -86,7 +81,6 @@
   --body-font: 'Georgia', 'Times New Roman', serif;
 }
 
-/* ---- HACKER ---- */
 [data-theme="hacker"] {
   --bg-deep:      #0a0e0a;
   --bg-mid:       #0d130d;
@@ -117,7 +111,6 @@
     linear-gradient(90deg, rgba(0,255,0,0.08) 1px, transparent 1px) !important;
 }
 
-/* ---- KIDS (playful) ---- */
 [data-theme="kids"] {
   --bg-deep:      #fff5f9;
   --bg-mid:       #ffeef8;
@@ -143,17 +136,9 @@
   --radius-lg:    28px;
   --radius-md:    22px;
 }
+[data-theme="kids"] .card { border-width: 2px; }
+[data-theme="kids"] .logo::before { background: linear-gradient(135deg, #ff4d94 0%, #ffb347 50%, #4dd0e1 100%); border-radius: 50%; }
 
-[data-theme="kids"] .card {
-  border-width: 2px;
-}
-
-[data-theme="kids"] .logo::before {
-  background: linear-gradient(135deg, #ff4d94 0%, #ffb347 50%, #4dd0e1 100%);
-  border-radius: 50%;
-}
-
-/* ---- DARK (classic dark) ---- */
 [data-theme="dark"] {
   --bg-deep:      #0e1117;
   --bg-mid:       #131822;
@@ -178,12 +163,11 @@
   --body-font: 'Inter', -apple-system, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
 }
 
-/* ============ RESET ============ */
+/* ============ RESET & BASE ============ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 img{max-width:100%;display:block}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 
-/* ============ BASE ============ */
 body {
   font-family: var(--body-font);
   font-size: 16px;
@@ -196,36 +180,17 @@ body {
   overflow-x: hidden;
   -webkit-tap-highlight-color: transparent;
   transition: background .5s ease, color .5s ease;
-  font-feature-settings: "ss01","cv11";
 }
 
-/* ---------- Persian / Arabic "Mashq" (handwritten) style ---------- */
 body[dir="rtl"] {
   font-family: 'Segoe UI', 'Tahoma', 'Iranian Sans', 'Vazirmatn', 'Noto Naskh Arabic', 'Arial', sans-serif;
   font-style: italic;
-  letter-spacing: 0.3px;
   text-align: right;
-}
-body[dir="rtl"] p,
-body[dir="rtl"] .spec-item,
-body[dir="rtl"] .subtitle,
-body[dir="rtl"] h1,
-body[dir="rtl"] .section-title,
-body[dir="rtl"] .btn-email,
-body[dir="rtl"] .card.contact p {
-  font-style: italic;
-  font-weight: 500;
-  letter-spacing: 0.4px;
-}
-body[dir="rtl"] .spec-item strong,
-body[dir="rtl"] .section-title {
-  font-weight: 700;
-  letter-spacing: 1px;
 }
 body[dir="rtl"] .spec-item{padding:14px 32px 14px 0}
 body[dir="rtl"] .spec-item::before{left:auto;right:0}
 
-/* ============ SOFT BACKGROUND ============ */
+/* ============ BACKGROUND DECOR ============ */
 body::before {
   content:"";
   position:fixed;inset:0;
@@ -233,36 +198,6 @@ body::before {
     radial-gradient(ellipse 70% 50% at 15% 5%, rgba(90,123,168,0.14), transparent 60%),
     radial-gradient(ellipse 60% 50% at 85% 100%, rgba(201,183,142,0.10), transparent 65%);
   pointer-events:none;z-index:0;
-  transition: opacity .5s;
-}
-
-[data-theme="dark"] body::before,
-body[data-theme="dark"]::before {
-  background:
-    radial-gradient(ellipse 70% 50% at 15% 5%, rgba(143,176,217,0.10), transparent 60%),
-    radial-gradient(ellipse 60% 50% at 85% 100%, rgba(212,195,154,0.07), transparent 65%);
-}
-
-[data-theme="halloween"] body::before {
-  background:
-    radial-gradient(ellipse 70% 50% at 15% 5%, rgba(255,117,24,0.15), transparent 60%),
-    radial-gradient(ellipse 60% 50% at 85% 100%, rgba(155,89,182,0.18), transparent 65%);
-}
-
-[data-theme="hacker"] body::before {
-  background:
-    radial-gradient(ellipse 70% 50% at 15% 5%, rgba(0,255,65,0.10), transparent 60%),
-    radial-gradient(ellipse 60% 50% at 85% 100%, rgba(0,255,170,0.08), transparent 65%);
-}
-
-[data-theme="kids"] body::before {
-  background:
-    radial-gradient(ellipse 70% 50% at 15% 5%, rgba(255,77,148,0.18), transparent 60%),
-    radial-gradient(ellipse 60% 50% at 85% 100%, rgba(77,208,225,0.18), transparent 65%);
-}
-
-[data-theme="simple"] body::before {
-  background: none;
 }
 
 body::after {
@@ -279,219 +214,70 @@ body::after {
   z-index: 0;
 }
 
-/* ============ CUBIC FUNCTION GRAPH (DECOR) ============ */
-.cubic-graph {
-  position: fixed;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.55;
-  transition: opacity .5s;
-}
-.cubic-graph svg { width: 100%; height: 100%; display: block; }
-
-.cubic-graph path.line {
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 1.4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  filter: drop-shadow(0 0 6px rgba(47,79,122,0.18));
-}
-
-.cubic-graph path.axis {
-  fill: none;
-  stroke: var(--line);
-  stroke-width: 1;
-  stroke-dasharray: 3 4;
-}
-
-.cubic-graph circle.dot {
-  fill: var(--accent-3);
-  stroke: var(--bg-deep);
-  stroke-width: 1.5;
-}
-
-.cubic-graph.top-right {
-  top: 40px; right: -80px;
-  width: 520px; height: 380px;
-  opacity: 0.35;
-}
-
-.cubic-graph.bottom-left {
-  bottom: -60px; left: -100px;
-  width: 560px; height: 400px;
-  opacity: 0.28;
-}
-
-@media (max-width: 640px) {
-  .cubic-graph.top-right { width: 320px; height: 240px; right: -100px; opacity: 0.25; }
-  .cubic-graph.bottom-left { width: 340px; height: 260px; opacity: 0.20; }
-}
-
 /* ============ HEADER ============ */
 header {
   position: sticky;
   top: 12px;
   z-index: 100;
   margin: 12px 14px 0;
-  padding: 12px 20px;
-  padding-top: calc(12px + env(safe-area-inset-top));
+  padding: 10px 16px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
   border-radius: var(--radius-md);
   background: var(--glass-bg);
   backdrop-filter: blur(22px) saturate(1.6);
   -webkit-backdrop-filter: blur(22px) saturate(1.6);
   border: 1px solid var(--glass-border);
-  box-shadow:
-    inset 0 1px 0 var(--glass-highlight),
-    0 6px 24px var(--shadow-deep),
-    0 1px 2px rgba(0,0,0,0.04);
-  transition: background .35s, box-shadow .35s;
-}
-
-header:hover {
-  background: var(--glass-bg-2);
+  box-shadow: inset 0 1px 0 var(--glass-highlight), 0 6px 24px var(--shadow-deep);
 }
 
 .logo {
   font-size: 0.92rem;
   font-weight: 600;
   letter-spacing: 1.2px;
-  color: var(--ink);
   text-transform: uppercase;
   display: flex;
   align-items: center;
-  gap: 10px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  min-width: 0;
+  gap: 8px;
 }
 
 .logo::before {
   content: "";
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   border-radius: 8px;
   background: var(--accent);
-  flex-shrink: 0;
-  position: relative;
-  box-shadow: inset 0 -3px 0 rgba(0,0,0,0.12);
 }
 
 .header-controls {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 6px;
-  flex-shrink: 0;
 }
 
-.lang-select {
+select, .color-picker-label, .color-reset {
   background: transparent;
   border: 1px solid var(--line);
   color: var(--ink);
   padding: 0 10px;
   height: 34px;
   font-family: inherit;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.6px;
-  cursor: pointer;
   border-radius: 100px;
-  transition: all .25s ease;
-}
-
-.lang-select:hover {
-  background: var(--glass-bg-2);
-  border-color: var(--accent);
-}
-
-.lang-select option { background: var(--bg-soft); color: var(--ink); }
-
-/* -------- THEME DROPDOWN (replaces simple toggle) -------- */
-.theme-select {
-  background: transparent;
-  border: 1px solid var(--line);
-  color: var(--ink);
-  padding: 0 10px;
-  height: 34px;
-  font-family: inherit;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.6px;
-  cursor: pointer;
-  border-radius: 100px;
-  transition: all .25s ease;
-}
-
-.theme-select:hover {
-  background: var(--glass-bg-2);
-  border-color: var(--accent);
-}
-
-.theme-select option { background: var(--bg-soft); color: var(--ink); }
-
-/* ============ COLOR PICKER ============ */
-.color-picker-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.color-picker-label {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: 2px solid var(--glass-border);
-  cursor: pointer;
-  transition: all .25s ease;
-  background: var(--glass-bg-2);
-  font-size: 0.95rem;
-  position: relative;
-  overflow: hidden;
-}
-.color-picker-label:hover {
-  border-color: var(--accent);
-  transform: scale(1.08);
-}
-.color-picker-label input[type="color"] {
-  position: absolute;
-  inset: -8px;
-  width: 50px;
-  height: 50px;
-  opacity: 0;
-  cursor: pointer;
-  border: none;
-  padding: 0;
-}
-
-.color-reset {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 1px solid var(--line);
-  background: transparent;
-  color: var(--ink-dim);
-  font-size: 0.7rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all .25s ease;
-  flex-shrink: 0;
 }
 
-.color-reset:hover {
-  background: var(--glass-bg-2);
-  color: var(--ink);
-  border-color: var(--accent);
-}
+.color-picker-label { width: 34px; padding: 0; position: relative; overflow: hidden; }
+.color-picker-label input[type="color"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.color-reset { width: 34px; padding: 0; }
 
 /* ============ CONTAINER ============ */
 .container {
@@ -513,11 +299,9 @@ header:hover {
   margin: 0 0 22px;
   position: relative;
   padding: 0 50px;
-  line-height: 1.4;
 }
 
-.section-title::before,
-.section-title::after {
+.section-title::before, .section-title::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -528,14 +312,12 @@ header:hover {
 .section-title::before { left: 0; }
 .section-title::after { right: 0; }
 
-/* ============ DIVIDER ============ */
 .divider {
   text-align: center;
   color: var(--ink-faint);
   font-size: 0.7rem;
   letter-spacing: 10px;
   margin: 32px 0;
-  user-select: none;
 }
 
 /* ============ GLASS CARD ============ */
@@ -547,81 +329,9 @@ header:hover {
   border-radius: var(--radius-lg);
   padding: 30px 24px;
   position: relative;
-  box-shadow:
-    inset 0 1px 0 var(--glass-highlight),
-    0 4px 20px var(--shadow-deep);
+  box-shadow: inset 0 1px 0 var(--glass-highlight), 0 4px 20px var(--shadow-deep);
   margin-bottom: 22px;
-  transition: transform .35s cubic-bezier(.25,.46,.45,.94), box-shadow .35s, background .35s;
   overflow: hidden;
-}
-
-.card:hover {
-  background: var(--glass-bg-2);
-  transform: translateY(-2px);
-  box-shadow:
-    inset 0 1px 0 var(--glass-highlight),
-    0 10px 32px var(--shadow-deep);
-}
-
-/* ============ SECTION GRAPH DECOR ============ */
-.section-graph {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.5;
-  overflow: hidden;
-  border-radius: inherit;
-}
-
-.section-graph svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.section-graph path.g-line {
-  fill: none;
-  stroke: var(--graph-color);
-  stroke-width: 1.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  filter: drop-shadow(0 0 4px rgba(47,79,122,0.25));
-  stroke-dasharray: 2000;
-  stroke-dashoffset: 2000;
-}
-
-.wave-in .section-graph path.g-line {
-  animation: drawLine 2.4s cubic-bezier(.22,1,.36,1) forwards;
-}
-
-@keyframes drawLine {
-  to { stroke-dashoffset: 0; }
-}
-
-.section-graph path.g-axis {
-  fill: none;
-  stroke: var(--line);
-  stroke-width: 1;
-  stroke-dasharray: 3 4;
-  opacity: 0.7;
-}
-
-.section-graph circle.g-dot {
-  fill: var(--graph-color-2);
-  stroke: var(--bg-deep);
-  stroke-width: 1.5;
-  opacity: 0;
-}
-
-.wave-in .section-graph circle.g-dot {
-  animation: popDot .8s cubic-bezier(.22,1,.36,1) 1.6s forwards;
-}
-
-@keyframes popDot {
-  0% { opacity: 0; transform: scale(0); transform-origin: center; }
-  60% { opacity: 1; }
-  100% { opacity: 1; transform: scale(1); }
 }
 
 /* ============ PROFILE ============ */
@@ -635,213 +345,32 @@ header:hover {
   z-index: 2;
 }
 
-/* Equation solver panel */
-.equation-solver {
-  width: 100%;
-  background: var(--glass-bg-2);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-md);
-  padding: 16px 18px;
-  margin-bottom: 18px;
-  position: relative;
-  z-index: 2;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: inset 0 1px 0 var(--glass-highlight), 0 4px 14px var(--shadow-deep);
-  transition: opacity .6s ease, transform .6s ease, max-height .6s ease, margin .6s ease, padding .6s ease;
-  overflow: hidden;
-}
-
-.equation-solver.solved {
-  opacity: 0;
-  transform: translateY(-10px) scale(0.98);
-  max-height: 0;
-  margin: 0;
-  padding: 0;
-  border: none;
-  pointer-events: none;
-}
-
-.eq-title {
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--ink-dim);
-  margin-bottom: 10px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.eq-title::before {
-  content: "∑";
-  font-size: 0.9rem;
-  color: var(--accent-3);
-}
-
-.eq-line {
-  font-family: 'SF Mono', 'Consolas', 'Monaco', monospace;
-  font-size: 0.82rem;
-  color: var(--ink);
-  padding: 6px 10px;
-  border-left: 2px solid var(--accent);
-  background: rgba(47,79,122,0.05);
-  border-radius: 4px;
-  margin-bottom: 6px;
-  opacity: 0;
-  transform: translateX(-8px);
-  transition: opacity .4s ease, transform .4s ease;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.eq-line.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.eq-line .eq-result {
-  color: var(--accent);
-  font-weight: 700;
-}
-
-.eq-graph {
-  width: 100%;
-  height: 70px;
-  margin-top: 10px;
-  opacity: 0;
-  transition: opacity .6s ease;
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.eq-graph.visible { opacity: 1; }
-.eq-graph svg { width: 100%; height: 100%; display: block; }
-.eq-graph path.eq-curve {
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-}
-.eq-graph.visible path.eq-curve {
-  animation: drawEq 1.6s cubic-bezier(.22,1,.36,1) forwards;
-}
-@keyframes drawEq { to { stroke-dashoffset: 0; } }
-
-.eq-graph path.eq-axis {
-  fill: none;
-  stroke: var(--line);
-  stroke-width: 0.8;
-  stroke-dasharray: 2 3;
-}
-
-.eq-graph circle.eq-dot {
-  fill: var(--accent-3);
-  stroke: var(--bg-deep);
-  stroke-width: 1.5;
-}
-
-/* ============ PORTRAIT ============ */
 .portrait {
   width: 132px;
   height: 132px;
   border-radius: 50%;
   overflow: hidden;
   position: relative;
-  flex-shrink: 0;
-  transition: transform .4s cubic-bezier(.25,.46,.45,.94), opacity .6s ease, filter .6s ease;
-  box-shadow:
-    0 0 0 1px var(--line),
-    0 0 0 6px var(--glass-bg-2),
-    0 8px 30px var(--shadow-deep);
+  box-shadow: 0 0 0 1px var(--line), 0 0 0 6px var(--glass-bg-2), 0 8px 30px var(--shadow-deep);
 }
 
-.portrait.reveal {
-  opacity: 1;
-  filter: blur(0) saturate(1);
-  transform: scale(1);
-}
+.portrait img { width: 100%; height: 100%; object-fit: cover; }
 
-.portrait:not(.reveal) {
-  opacity: 0;
-  filter: blur(12px) saturate(0);
-  transform: scale(0.7);
-}
+h1 { font-size: 1.55rem; font-weight: 700; margin-bottom: 8px; color: var(--ink); }
+.subtitle { font-size: 0.9rem; color: var(--ink-dim); margin-bottom: 16px; border-bottom: 1px solid var(--line); }
 
-.portrait:hover { transform: scale(1.04); }
-
-.portrait img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: saturate(1.02) contrast(1.02);
-}
-
-.portrait span {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--ink-dim);
-  font-size: 0.7rem;
-  text-align: center;
-  padding: 8px;
-  z-index: 0;
-}
-
-.portrait img + span { display: none; }
-
-h1 {
-  font-size: 1.55rem;
-  font-weight: 700;
-  letter-spacing: -0.4px;
-  line-height: 1.25;
-  margin-bottom: 8px;
-  color: var(--ink);
-}
-
-.subtitle {
-  font-size: 0.9rem;
-  color: var(--ink-dim);
-  margin-bottom: 16px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--line);
-  position: relative;
-  font-weight: 500;
-}
-
-/* ============ TEXT ============ */
-p {
-  font-size: 0.94rem;
-  color: var(--ink);
-  text-align: left;
-  margin-bottom: 14px;
-  line-height: 1.75;
-  opacity: 0.92;
-}
-p:last-child{margin-bottom:0}
+p { font-size: 0.94rem; color: var(--ink); margin-bottom: 14px; line-height: 1.75; opacity: 0.92; }
 
 /* ============ SPEC LIST ============ */
 .spec-list { list-style: none; position: relative; z-index: 2; }
-
-.spec-item {
+.spec-item, .video-spec-item {
   position: relative;
   padding: 16px 0 16px 30px;
-  font-size: 0.92rem;
-  line-height: 1.6;
   border-bottom: 1px solid var(--line);
-  transition: padding-left .2s;
 }
-.spec-item:last-child { border-bottom: none; }
-.spec-item:hover { padding-left: 34px; }
+.spec-item:last-child, .video-spec-item:last-child { border-bottom: none; }
 
-.spec-item::before {
+.spec-item::before, .video-spec-item::before {
   content: "";
   position: absolute;
   left: 0;
@@ -850,438 +379,96 @@ p:last-child{margin-bottom:0}
   height: 6px;
   border-radius: 50%;
   background: var(--accent-3);
-  box-shadow: 0 0 0 3px rgba(201,183,142,0.18);
-  transition: transform .2s, box-shadow .2s;
 }
 
-.spec-item:hover::before {
-  transform: scale(1.3);
-  box-shadow: 0 0 0 5px rgba(201,183,142,0.22);
-}
-
-.spec-item strong {
+.spec-item strong, .video-spec-item strong {
   display: block;
   color: var(--accent);
   font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 1.6px;
   margin-bottom: 4px;
-  font-weight: 700;
 }
 
-/* ============ VIDEO EDITING SECTION ============ */
-.video-spec-item {
-  position: relative;
-  padding: 16px 0 16px 30px;
-  font-size: 0.92rem;
-  line-height: 1.6;
-  border-bottom: 1px solid var(--line);
-  transition: padding-left .2s;
-  position: relative;
-  z-index: 2;
-}
-.video-spec-item:last-child { border-bottom: none; }
-.video-spec-item:hover { padding-left: 34px; }
-
-.video-spec-item::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 24px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 3px rgba(47,79,122,0.15);
-  transition: transform .2s, box-shadow .2s;
-}
-
-.video-spec-item:hover::before {
-  transform: scale(1.3);
-  box-shadow: 0 0 0 5px rgba(47,79,122,0.22);
-}
-
-.video-spec-item strong {
-  display: block;
-  color: var(--accent);
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 1.6px;
-  margin-bottom: 4px;
-  font-weight: 700;
-}
-
-body[dir="rtl"] .video-spec-item { padding: 14px 32px 14px 0; }
-body[dir="rtl"] .video-spec-item::before { left: auto; right: 0; }
-
-/* Video badges */
-.video-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 6px;
-}
-
+.video-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
 .video-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 3px 10px;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  border-radius: 100px;
-  background: var(--glass-bg-2);
-  border: 1px solid var(--line);
-  color: var(--ink);
+  display: inline-flex; padding: 3px 10px; font-size: 0.68rem; font-weight: 600;
+  border-radius: 100px; background: var(--glass-bg-2); border: 1px solid var(--line);
 }
-
 .video-badge.adobe { color: #ff0000; border-color: rgba(255,0,0,0.3); }
 .video-badge.youtube { color: #ff0000; border-color: rgba(255,0,0,0.3); }
 .video-badge.chart { color: #00a0dc; border-color: rgba(0,160,220,0.3); }
 
 /* ============ EMAIL BUTTON ============ */
 .btn-email {
-  display: flex;
-  width: 100%;
-  padding: 15px 24px;
-  margin-top: 16px;
-  border: 1px solid var(--line);
-  background: var(--glass-bg-2);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  color: var(--ink);
-  text-decoration: none;
-  font-family: inherit;
-  font-weight: 600;
-  font-size: 0.85rem;
-  letter-spacing: 0.4px;
-  text-align: center;
-  border-radius: 100px;
-  transition: all .3s ease;
-  word-break: break-word;
-  min-height: 52px;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 2;
+  display: flex; width: 100%; padding: 15px 24px; margin-top: 16px;
+  border: 1px solid var(--line); background: var(--glass-bg-2); color: var(--ink);
+  text-decoration: none; font-weight: 600; border-radius: 100px;
+  align-items: center; justify-content: center; transition: all .3s ease;
 }
-
-.btn-email:hover {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
-  transform: translateY(-1px);
-  box-shadow: 0 8px 22px rgba(47,79,122,0.25);
-}
-
-[data-theme="dark"] .btn-email:hover {
-  color: var(--bg-deep);
-}
-
-.btn-email:active { transform: translateY(0) scale(.98); }
-
-.card.contact p { text-align: center; font-size: 0.92rem; position: relative; z-index: 2; }
-body[dir="rtl"] .card.contact p { text-align: center; }
+.btn-email:hover { background: var(--accent); color: #fff; }
+.card.contact p { text-align: center; }
 
 /* ============ CAROUSEL ============ */
 .carousel-section { margin-bottom: 22px; position: relative; }
-
 .carousel-container {
-  position: relative;
-  width: 100%;
-  max-width: 560px;
-  margin: 0 auto;
-  aspect-ratio: 16 / 10;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  border: 1px solid var(--glass-border);
-  background: var(--glass-bg);
-  box-shadow:
-    inset 0 1px 0 var(--glass-highlight),
-    0 6px 24px var(--shadow-deep);
-  transition: box-shadow .3s, border-color .3s;
-  z-index: 2;
+  position: relative; width: 100%; max-width: 560px; margin: 0 auto;
+  aspect-ratio: 16 / 10; border-radius: var(--radius-lg); overflow: hidden;
+  border: 1px solid var(--glass-border); background: var(--glass-bg);
+  box-shadow: inset 0 1px 0 var(--glass-highlight), 0 6px 24px var(--shadow-deep);
 }
-
-.carousel-container:hover {
-  border-color: var(--accent-2);
-}
-
-.carousel-track {
-  display: flex;
-  height: 100%;
-  transition: transform .8s cubic-bezier(.6,0,.2,1);
-  will-change: transform;
-}
-
-.carousel-slide {
-  flex: 0 0 100%;
-  height: 100%;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg-mid);
-  overflow: hidden;
-}
-
-.carousel-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: saturate(1.02) contrast(1.02);
-  transition: filter .4s, transform .4s;
-}
-
-.carousel-slide:hover img {
-  filter: saturate(1.08) contrast(1.04);
-  transform: scale(1.02);
-}
-
+.carousel-track { display: flex; height: 100%; transition: transform .8s cubic-bezier(.6,0,.2,1); }
+.carousel-slide { flex: 0 0 100%; height: 100%; position: relative; }
+.carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
 .slide-label {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 12px 16px;
+  position: absolute; bottom: 0; left: 0; right: 0; padding: 12px 16px;
   background: linear-gradient(transparent, rgba(14,17,23,0.85));
-  color: #fff;
-  font-size: 0.68rem;
-  letter-spacing: 1.4px;
-  text-transform: uppercase;
-  font-weight: 600;
-  opacity: 0;
-  transform: translateY(6px);
-  transition: all .35s;
+  color: #fff; font-size: 0.68rem; font-weight: 600;
 }
-
-.carousel-slide:hover .slide-label {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 18px;
-  position: relative;
-  z-index: 2;
-}
-
+.carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
 .carousel-dot {
-  width: 24px;
-  height: 4px;
-  border-radius: 100px;
-  border: none;
-  background: var(--line);
-  cursor: pointer;
-  transition: all .35s ease;
-  padding: 0;
+  width: 24px; height: 4px; border-radius: 100px; border: none;
+  background: var(--line); cursor: pointer; transition: all .35s ease;
 }
+.carousel-dot.active { background: var(--accent); width: 32px; }
 
-.carousel-dot.active {
-  background: var(--accent);
-  width: 32px;
-}
-
-.carousel-dot:hover { background: var(--accent-2); }
-.carousel-dot.active:hover { background: var(--accent); }
-
-/* ============ WAVE ANIMATION ============ */
-.wave-section {
-  opacity: 0;
-  transform: translateY(40px) scale(0.97);
-  transition: opacity .9s cubic-bezier(.22,1,.36,1),
-              transform .9s cubic-bezier(.22,1,.36,1);
-  position: relative;
-}
-
-.wave-section.wave-in {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-.wave-section.wave-in::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius-lg);
-  pointer-events: none;
-  background: radial-gradient(circle at var(--wave-x, 50%) var(--wave-y, 50%),
-    rgba(90,123,168,0.20) 0%,
-    rgba(90,123,168,0.08) 30%,
-    transparent 70%);
-  animation: waveRipple 1.2s cubic-bezier(.22,1,.36,1) forwards;
-  z-index: 3;
-}
-
-@keyframes waveRipple {
-  0%   { opacity: 0; transform: scale(0.6); }
-  40%  { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(1.3); }
-}
-
-.wave-section .wave-line {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  height: 2px;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    var(--wave-color) 20%,
-    var(--wave-color) 50%,
-    transparent 100%);
-  opacity: 0;
-  pointer-events: none;
-  z-index: 4;
-  border-radius: 100%;
-  filter: blur(0.5px);
-}
-
-.wave-section.wave-in .wave-line {
-  animation: waveSweep 1.4s cubic-bezier(.22,1,.36,1) forwards;
-}
-
-@keyframes waveSweep {
-  0%   { opacity: 0; transform: translateY(0) scaleX(0.2); }
-  30%  { opacity: 1; }
-  60%  { opacity: 0.8; transform: translateY(-8px) scaleX(1); }
-  100% { opacity: 0; transform: translateY(-16px) scaleX(1.1); }
-}
-
-.wave-section .wave-line.wave-line-2 {
-  top: 55%;
-  animation-delay: 0.15s;
-  opacity: 0;
-}
-
-.wave-section.wave-in .wave-line.wave-line-2 {
-  animation: waveSweep2 1.6s cubic-bezier(.22,1,.36,1) 0.15s forwards;
-}
-
-@keyframes waveSweep2 {
-  0%   { opacity: 0; transform: translateY(0) scaleX(0.3); }
-  40%  { opacity: 0.6; }
-  70%  { opacity: 0.5; transform: translateY(8px) scaleX(1); }
-  100% { opacity: 0; transform: translateY(16px) scaleX(1.15); }
-}
-
-/* ============ TABLET ============ */
+/* ============ TABLET & DESKTOP ============ */
 @media(min-width:600px){
   .container{padding:40px 24px 56px}
-  .card{padding:36px 30px;margin-bottom:26px}
+  .card{padding:36px 30px;}
   h1{font-size:1.9rem}
-  .subtitle{font-size:1rem}
   .portrait{width:160px;height:160px}
-  .btn-email{width:auto;display:inline-flex;padding:15px 36px}
-  .section-title{font-size:0.9rem;letter-spacing:5px}
-  .spec-item{font-size:0.96rem}
-  p{font-size:0.97rem}
+  .btn-email{width:auto;display:inline-flex;}
   .carousel-container{max-width:680px}
-  .eq-line{font-size:0.88rem}
 }
 
-/* ============ DESKTOP ============ */
 @media(min-width:820px){
-  header{padding:14px 28px;margin:14px 24px 0;border-radius:18px}
-  .logo{font-size:1.02rem;letter-spacing:1.6px}
-  .lang-select{height:36px;font-size:0.72rem;padding:0 12px}
-  .theme-select{height:36px;font-size:0.72rem;padding:0 12px}
-  .color-picker-label{width:36px;height:36px}
-  .color-reset{width:28px;height:28px;font-size:0.75rem}
+  header{flex-wrap: nowrap; padding:14px 28px; margin:14px 24px 0;}
   .container{padding:48px 28px 64px}
-  .card{padding:44px;margin-bottom:30px;border-radius:24px}
-  .divider{margin:44px 0}
-
+  .card{padding:44px;}
   .profile-grid{
-    display:grid;
-    grid-template-columns: 200px 1fr;
-    gap:42px;
-    align-items:center;
-    text-align:left;
+    display:grid; grid-template-columns: 200px 1fr; gap:42px;
+    align-items:center; text-align:left;
   }
   body[dir="rtl"] .profile-grid{grid-template-columns:1fr 200px}
-
   .portrait{width:180px;height:180px}
   h1{font-size:2.15rem}
-  .subtitle{font-size:1.02rem;padding-bottom:16px}
-  .section-title{font-size:0.95rem;letter-spacing:6px;padding:0 70px}
-  p{font-size:1rem}
-  .btn-email{font-size:0.88rem;padding:16px 40px}
-  .carousel-container{max-width:760px;border-radius:24px}
-  .eq-graph{height:90px}
-  .equation-solver{padding:20px 22px}
-  .eq-line{font-size:0.92rem}
-}
-
-/* ============ A11Y ============ */
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
-  .carousel-track{transition:none!important}
-  .wave-section{opacity:1;transform:none}
-  .wave-section::after,
-  .wave-section .wave-line{display:none}
-  .section-graph path.g-line{stroke-dashoffset:0}
-  .portrait:not(.reveal){opacity:1;filter:none;transform:none}
-}
-
-button:focus-visible,a:focus-visible,select:focus-visible{
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
+  .carousel-container{max-width:760px;}
 }
 </style>
 </head>
 <body data-theme="classic">
 
-<!-- ============ CUBIC FUNCTION GRAPH (DECOR) ============ -->
-<div class="cubic-graph top-right" aria-hidden="true">
-  <svg viewBox="0 0 520 380" preserveAspectRatio="xMidYMid meet">
-    <path class="axis" d="M 40 190 L 480 190" />
-    <path class="axis" d="M 260 30 L 260 350" />
-    <path class="line"
-      d="M 60 320
-         C 120 320, 150 300, 190 240
-         S 240 150, 260 190
-         S 300 260, 340 220
-         S 400 120, 460 60"
-    />
-    <circle class="dot" cx="260" cy="190" r="3.5" />
-    <circle class="dot" cx="190" cy="240" r="2.5" />
-    <circle class="dot" cx="340" cy="220" r="2.5" />
-  </svg>
-</div>
-
-<div class="cubic-graph bottom-left" aria-hidden="true">
-  <svg viewBox="0 0 560 400" preserveAspectRatio="xMidYMid meet">
-    <path class="axis" d="M 40 200 L 520 200" />
-    <path class="axis" d="M 280 30 L 280 370" />
-    <path class="line"
-      d="M 60 340
-         C 130 340, 170 310, 210 240
-         S 260 140, 280 200
-         S 320 290, 360 240
-         S 430 100, 500 50"
-    />
-    <circle class="dot" cx="280" cy="200" r="3.5" />
-    <circle class="dot" cx="210" cy="240" r="2.5" />
-    <circle class="dot" cx="360" cy="240" r="2.5" />
-  </svg>
-</div>
-
 <header>
   <div class="logo">M. A. Haidari</div>
   <div class="header-controls">
-    <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)" aria-label="Select Language">
+    <select id="langSelect" onchange="changeLanguage(this.value)" aria-label="Select Language">
       <option value="en">EN</option>
       <option value="fa">دری</option>
       <option value="ps">پښتو</option>
       <option value="ar">AR</option>
       <option value="tr">TR</option>
     </select>
-    <select class="theme-select" id="themeSelect" onchange="changeTheme(this.value)" aria-label="Select Theme">
+    <select id="themeSelect" onchange="changeTheme(this.value)" aria-label="Select Theme">
       <option value="classic">🎨 Classic</option>
       <option value="simple">⬜ Simple</option>
       <option value="dark">🌙 Dark</option>
@@ -1289,12 +476,12 @@ button:focus-visible,a:focus-visible,select:focus-visible{
       <option value="hacker">💻 Hacker</option>
       <option value="kids">🧸 Kids</option>
     </select>
-    <div class="color-picker-wrapper">
-      <label class="color-picker-label" title="Change background color" aria-label="Change background color">
-        <span aria-hidden="true">🎨</span>
-        <input type="color" id="bgColorPicker" value="#eef1f5" oninput="applyBgColor(this.value)" aria-label="Choose background color">
+    <div class="color-picker-wrapper" style="display:flex; gap:4px;">
+      <label class="color-picker-label" title="Background Color">
+        <span>🎨</span>
+        <input type="color" id="bgColorPicker" value="#eef1f5" oninput="applyBgColor(this.value)">
       </label>
-      <button class="color-reset" onclick="resetBgColor()" title="Reset background color" aria-label="Reset background color">✕</button>
+      <button class="color-reset" onclick="resetBgColor()" title="Reset">✕</button>
     </div>
   </div>
 </header>
@@ -1302,39 +489,12 @@ button:focus-visible,a:focus-visible,select:focus-visible{
 <main class="container">
 
   <!-- ============ PROFILE ============ -->
-  <section class="card wave-section" data-wave>
-    <div class="wave-line"></div>
-    <div class="wave-line wave-line-2"></div>
-
-    <div class="section-graph parab-sec" aria-hidden="true">
-      <svg viewBox="0 0 600 300" preserveAspectRatio="none">
-        <path class="g-axis" d="M 0 150 L 600 150"/>
-        <path class="g-axis" d="M 300 0 L 300 300"/>
-        <path class="g-line" d="M 40 20 Q 300 320 560 20"/>
-        <circle class="g-dot" cx="300" cy="170" r="4"/>
-      </svg>
-    </div>
-
+  <section class="card">
     <div class="profile-grid">
-      <div style="width:100%;">
-        <div class="equation-solver" id="equationSolver">
-          <div class="eq-title" id="eq-title">Solving equations…</div>
-          <div id="eq-lines"></div>
-          <div class="eq-graph" id="eqGraph">
-            <svg viewBox="0 0 300 70" preserveAspectRatio="none">
-              <path class="eq-axis" d="M 0 35 L 300 35"/>
-              <path class="eq-axis" d="M 150 0 L 150 70"/>
-              <path class="eq-curve" d="M 20 60 Q 150 -20 280 60"/>
-              <circle class="eq-dot" cx="150" cy="20" r="3"/>
-            </svg>
-          </div>
-        </div>
-
-        <div style="display:flex; justify-content:center;">
-          <div class="portrait" id="profilePortrait">
-            <img src="your-photo-here.jpg" alt="Mohammad Asim Haidari">
-            <span id="photo-fallback">Your<br>Photo</span>
-          </div>
+      <div style="display:flex; justify-content:center;">
+        <div class="portrait">
+          <!-- عکس پروفایل شما -->
+          <img src="your-photo-here.jpg" alt="Mohammad Asim Haidari" onerror="this.style.display='none'">
         </div>
       </div>
       <div>
@@ -1349,65 +509,43 @@ button:focus-visible,a:focus-visible,select:focus-visible{
     </div>
   </section>
 
-  <!-- ============ CAROUSEL ============ -->
-  <section class="carousel-section wave-section" data-wave>
-    <div class="wave-line"></div>
-    <div class="wave-line wave-line-2"></div>
-
-    <div class="section-graph quad" aria-hidden="true">
-      <svg viewBox="0 0 600 400" preserveAspectRatio="none">
-        <path class="g-axis" d="M 0 200 L 600 200"/>
-        <path class="g-axis" d="M 300 0 L 300 400"/>
-        <path class="g-line" d="M 20 40 Q 300 460 580 40"/>
-        <circle class="g-dot" cx="300" cy="250" r="4"/>
-      </svg>
-    </div>
-
+  <!-- ============ CAROUSEL (GALLERY) ============ -->
+  <section class="carousel-section">
     <h2 class="section-title" id="t-gallery-title">Gallery</h2>
     <div class="carousel-container" id="carouselContainer">
       <div class="carousel-track" id="carouselTrack">
 
         <div class="carousel-slide">
-          <img src="gallery1.jpg" alt="Gallery Image 1">
+          <!-- عکس گالری ۱ -->
+          <img src="gallery1.jpg" alt="Gallery Image 1" onerror="this.src='https://via.placeholder.com/600x400?text=Gallery+1'">
           <span class="slide-label">Portrait</span>
         </div>
 
         <div class="carousel-slide">
-          <img src="gallery2.jpg" alt="Gallery Image 2">
+          <!-- عکس گالری ۲ -->
+          <img src="gallery2.jpg" alt="Gallery Image 2" onerror="this.src='https://via.placeholder.com/600x400?text=Gallery+2'">
           <span class="slide-label">Editorial</span>
         </div>
 
         <div class="carousel-slide">
-          <img src="gallery3.jpg" alt="Gallery Image 3">
+          <!-- عکس گالری ۳ -->
+          <img src="gallery3.jpg" alt="Gallery Image 3" onerror="this.src='https://via.placeholder.com/600x400?text=Gallery+3'">
           <span class="slide-label">Vogue</span>
         </div>
 
       </div>
     </div>
-    <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Gallery navigation">
-      <button class="carousel-dot active" data-index="0" role="tab" aria-label="Slide 1" aria-selected="true"></button>
-      <button class="carousel-dot" data-index="1" role="tab" aria-label="Slide 2" aria-selected="false"></button>
-      <button class="carousel-dot" data-index="2" role="tab" aria-label="Slide 3" aria-selected="false"></button>
+    <div class="carousel-dots" id="carouselDots">
+      <button class="carousel-dot active" data-index="0"></button>
+      <button class="carousel-dot" data-index="1"></button>
+      <button class="carousel-dot" data-index="2"></button>
     </div>
   </section>
 
-  <div class="divider" aria-hidden="true">· · ·</div>
+  <div class="divider">· · ·</div>
 
   <!-- ============ ABOUT ============ -->
-  <section class="card wave-section" data-wave>
-    <div class="wave-line"></div>
-    <div class="wave-line wave-line-2"></div>
-
-    <div class="section-graph cubic-sec" aria-hidden="true">
-      <svg viewBox="0 0 600 300" preserveAspectRatio="none">
-        <path class="g-axis" d="M 0 150 L 600 150"/>
-        <path class="g-axis" d="M 300 0 L 300 300"/>
-        <path class="g-line" d="M 20 260 C 150 260, 200 40, 300 150 S 450 40, 580 40"/>
-        <circle class="g-dot" cx="300" cy="150" r="4"/>
-        <circle class="g-dot" cx="180" cy="120" r="3"/>
-      </svg>
-    </div>
-
+  <section class="card">
     <h2 class="section-title" id="t-profile-title">Profile</h2>
     <p id="t-profile-text">
       I am a highly analytical software engineer and an actively practicing
@@ -1418,21 +556,8 @@ button:focus-visible,a:focus-visible,select:focus-visible{
     </p>
   </section>
 
-  <!-- ============ SPECIFICATIONS (software, 1 year) ============ -->
-  <section class="card wave-section" data-wave>
-    <div class="wave-line"></div>
-    <div class="wave-line wave-line-2"></div>
-
-    <div class="section-graph sine-sec" aria-hidden="true">
-      <svg viewBox="0 0 600 300" preserveAspectRatio="none">
-        <path class="g-axis" d="M 0 150 L 600 150"/>
-        <path class="g-axis" d="M 300 0 L 300 300"/>
-        <path class="g-line" d="M 0 150 C 75 40, 150 40, 225 150 S 375 260, 450 150 S 525 40, 600 150"/>
-        <circle class="g-dot" cx="150" cy="40" r="3.5"/>
-        <circle class="g-dot" cx="450" cy="260" r="3.5"/>
-      </svg>
-    </div>
-
+  <!-- ============ SPECIFICATIONS ============ -->
+  <section class="card">
     <h2 class="section-title" id="t-specs-title">Specifications</h2>
     <ul class="spec-list">
       <li class="spec-item">
@@ -1450,22 +575,10 @@ button:focus-visible,a:focus-visible,select:focus-visible{
     </ul>
   </section>
 
-  <!-- ============ VIDEO EDITING SECTION (7 years) ============ -->
-  <section class="card wave-section" data-wave>
-    <div class="wave-line"></div>
-    <div class="wave-line wave-line-2"></div>
-
-    <div class="section-graph" aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;z-index:0;opacity:0.35;overflow:hidden;border-radius:inherit;">
-      <svg viewBox="0 0 600 400" preserveAspectRatio="none" style="width:100%;height:100%;display:block;">
-        <path class="g-axis" d="M 0 200 L 600 200" style="fill:none;stroke:var(--line);stroke-width:1;stroke-dasharray:3 4;"/>
-        <path class="g-axis" d="M 300 0 L 300 400" style="fill:none;stroke:var(--line);stroke-width:1;stroke-dasharray:3 4;"/>
-        <path class="g-line" d="M 20 350 C 100 350, 150 100, 300 200 S 500 350, 580 100" style="fill:none;stroke:var(--graph-color-3);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:2000;stroke-dashoffset:2000;filter:drop-shadow(0 0 4px rgba(47,79,122,0.25));"/>
-        <circle class="g-dot" cx="300" cy="200" r="4" style="fill:var(--graph-color-2);stroke:var(--bg-deep);stroke-width:1.5;opacity:0;"/>
-      </svg>
-    </div>
-
+  <!-- ============ VIDEO EDITING ============ -->
+  <section class="card">
     <h2 class="section-title" id="t-video-title">Video Editing &amp; Production</h2>
-    <p id="t-video-intro" style="text-align:center; margin-bottom:18px; position:relative; z-index:2;">
+    <p id="t-video-intro" style="text-align:center; margin-bottom:18px;">
       In addition to software engineering, I bring 7 years of professional video editing experience across Adobe Creative Suite and YouTube content production.
     </p>
     <ul class="spec-list">
@@ -1498,22 +611,10 @@ button:focus-visible,a:focus-visible,select:focus-visible{
     </ul>
   </section>
 
-  <div class="divider" aria-hidden="true">· · ·</div>
+  <div class="divider">· · ·</div>
 
   <!-- ============ CONTACT ============ -->
-  <section class="card contact wave-section" data-wave>
-    <div class="wave-line"></div>
-    <div class="wave-line wave-line-2"></div>
-
-    <div class="section-graph" aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;z-index:0;opacity:0.4;overflow:hidden;border-radius:inherit;">
-      <svg viewBox="0 0 600 300" preserveAspectRatio="none" style="width:100%;height:100%;display:block;">
-        <path class="g-axis" d="M 0 250 L 600 250" style="fill:none;stroke:var(--line);stroke-width:1;stroke-dasharray:3 4;"/>
-        <path class="g-axis" d="M 300 0 L 300 300" style="fill:none;stroke:var(--line);stroke-width:1;stroke-dasharray:3 4;"/>
-        <path class="g-line" d="M 20 280 Q 200 270 300 200 T 580 30" style="fill:none;stroke:var(--graph-color);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:2000;stroke-dashoffset:2000;filter:drop-shadow(0 0 4px rgba(47,79,122,0.25));"/>
-        <circle class="g-dot" cx="300" cy="200" r="4" style="fill:var(--graph-color-2);stroke:var(--bg-deep);stroke-width:1.5;opacity:0;"/>
-      </svg>
-    </div>
-
+  <section class="card contact">
     <h2 class="section-title" id="t-contact-title">Correspondence</h2>
     <p id="t-contact-text">
       For contract acquisition, security consultation, or employment inquiries,
@@ -1530,12 +631,8 @@ button:focus-visible,a:focus-visible,select:focus-visible{
 /* ============ THEME SYSTEM ============ */
 const THEME_LIST = ['classic','simple','dark','halloween','hacker','kids'];
 const DEFAULT_BG = {
-  classic:  '#eef1f5',
-  simple:   '#f8f9fa',
-  dark:     '#0e1117',
-  halloween:'#1a0f2e',
-  hacker:   '#0a0e0a',
-  kids:     '#fff5f9'
+  classic:  '#eef1f5', simple: '#f8f9fa', dark: '#0e1117', 
+  halloween: '#1a0f2e', hacker: '#0a0e0a', kids: '#fff5f9'
 };
 
 function changeTheme(theme) {
@@ -1585,7 +682,6 @@ function resetBgColor() {
     track.style.transform = `translateX(${rtl ? idx*100 : -idx*100}%)`;
     dots.forEach((d,n)=>{
       d.classList.toggle('active', n===idx);
-      d.setAttribute('aria-selected', n===idx ? 'true':'false');
     });
   }
   function next(){ go(idx+1); }
@@ -1603,8 +699,6 @@ function resetBgColor() {
   if(c) {
     c.addEventListener('mouseenter', stop);
     c.addEventListener('mouseleave', start);
-    c.addEventListener('focusin', stop);
-    c.addEventListener('focusout', start);
   }
 
   new MutationObserver((muts)=>{
@@ -1612,91 +706,6 @@ function resetBgColor() {
   }).observe(document.body,{attributes:true,attributeFilter:['dir']});
 
   start(); go(0);
-})();
-
-/* ============ EQUATION SOLVER ============ */
-(function initEquationSolver() {
-  const solver = document.getElementById('equationSolver');
-  const linesContainer = document.getElementById('eq-lines');
-  const eqGraph = document.getElementById('eqGraph');
-  const portrait = document.getElementById('profilePortrait');
-  if (!solver || !linesContainer || !portrait) return;
-
-  const steps = [
-    { eq: 'x² − 5x + 6 = 0', res: '→ (x−2)(x−3) = 0' },
-    { eq: '2x + 3y = 12', res: '→ y = (12 − 2x)/3' },
-    { eq: '∫ (3x² + 2x) dx', res: '→ x³ + x² + C' },
-    { eq: 'f(x) = ax² + bx + c', res: '→ Δ = b² − 4ac' }
-  ];
-
-  let i = 0;
-  const totalTime = 3800;
-  const stepGap = totalTime / steps.length;
-
-  function showNext() {
-    try {
-      if (i >= steps.length) {
-        if(eqGraph) eqGraph.classList.add('visible');
-        setTimeout(() => {
-          solver.classList.add('solved');
-          portrait.classList.add('reveal');
-        }, 900);
-        return;
-      }
-      const step = steps[i];
-      const line = document.createElement('div');
-      line.className = 'eq-line';
-      line.innerHTML = `${step.eq} <span class="eq-result">${step.res}</span>`;
-      linesContainer.appendChild(line);
-      requestAnimationFrame(() => line.classList.add('visible'));
-      i++;
-      setTimeout(showNext, stepGap);
-    } catch(e) {
-      solver.classList.add('solved');
-      portrait.classList.add('reveal');
-    }
-  }
-
-  setTimeout(showNext, 350);
-})();
-
-/* ============ SCROLL WAVE ANIMATION ============ */
-(function initWaveScroll() {
-  const sections = document.querySelectorAll('.wave-section');
-  if (!sections.length) return;
-
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReduced) {
-    sections.forEach(s => s.classList.add('wave-in'));
-    const portrait = document.getElementById('profilePortrait');
-    if (portrait) portrait.classList.add('reveal');
-    const solver = document.getElementById('equationSolver');
-    if (solver) solver.classList.add('solved');
-    return;
-  }
-
-  sections.forEach(s => s.classList.remove('wave-in'));
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        el.style.setProperty('--wave-x', '50%');
-        el.style.setProperty('--wave-y', '50%');
-        el.classList.add('wave-in');
-        observer.unobserve(el);
-      }
-    });
-  }, {
-    threshold: 0.15,
-    rootMargin: '0px 0px -10% 0px'
-  });
-
-  sections.forEach(s => observer.observe(s));
-
-  if (!('IntersectionObserver' in window)) {
-    sections.forEach(s => s.classList.add('wave-in'));
-  }
 })();
 
 /* ============ TRANSLATIONS ============ */
@@ -1722,8 +731,7 @@ const translations = {
     videoYoutubeText:'End-to-end YouTube video production — scripting, editing, thumbnails, and channel branding for 7 years.',
     contactTitle:'Correspondence',
     contactText:'For contract acquisition, security consultation, or employment inquiries, please dispatch your message directly to my verified email.',
-    photoText:'Your<br>Photo', galleryTitle:'Gallery',
-    eqTitle:'Solving equations…'
+    galleryTitle:'Gallery'
   },
   fa: {
     dir:'rtl', title:'محمد عاصم حیدری | پورتفولیو و رزومه',
@@ -1746,8 +754,7 @@ const translations = {
     videoYoutubeText:'تولید ویدیوی یوتیوب از ابتدا تا انتها — فیلمنامه، تدوین، تصاویر بندانگشتی و برندسازی کانال برای ۷ سال.',
     contactTitle:'ارتباطات',
     contactText:'جهت قراردادهای کاری، مشاوره امنیتی یا درخواست‌های استخدام، لطفاً پیام خود را مستقیماً به ایمیل تأیید شده من ارسال کنید.',
-    photoText:'عکس<br>شما', galleryTitle:'گالری',
-    eqTitle:'حل معادلات…'
+    galleryTitle:'گالری'
   },
   ps: {
     dir:'rtl', title:'محمد عاصم حیدری | پورټفولیو او سوانح',
@@ -1770,8 +777,7 @@ const translations = {
     videoYoutubeText:'له سره تر پایه د یوټیوب ویډیو تولید — سکریپټ، ایډیټینګ، ټامبنیل او د چینل برانډینګ ۷ کاله.',
     contactTitle:'اړیکې',
     contactText:'د قرارداد اخیستلو، امنیتي مشورې، یا د کارموندنې پوښتنو لپاره، مهرباني وکړئ خپل پیغام مستقیم زما تایید شوي بریښنالیک ته واستوئ.',
-    photoText:'ستاسو<br>عکس', galleryTitle:'ګالري',
-    eqTitle:'معادلې حل کول…'
+    galleryTitle:'ګالري'
   },
   ar: {
     dir:'rtl', title:'محمد عاصم حیدري | الملف الشخصي والسيرة الذاتية',
@@ -1794,8 +800,7 @@ const translations = {
     videoYoutubeText:'إنتاج فيديو يوتيوب من البداية إلى النهاية — كتابة، تحرير، صور مصغرة، وعلامة تجارية للقناة لمدة 7 سنوات.',
     contactTitle:'المراسلات',
     contactText:'للحصول على العقود، أو الاستشارات الأمنية، أو استفسارات التوظيف، يرجى إرسال رسالتك مباشرة إلى بريدي الإلكتروني المتحقق منه.',
-    photoText:'صورتك', galleryTitle:'معرض الصور',
-    eqTitle:'حل المعادلات…'
+    galleryTitle:'معرض الصور'
   },
   tr: {
     dir:'ltr', title:'Mohammad Asim Haidari | Portfolyo ve Özgeçmiş',
@@ -1818,8 +823,7 @@ const translations = {
     videoYoutubeText:'Uçtan uca YouTube video prodüksiyonu — senaryo, düzenleme, küçük resimler ve kanal markalama, 7 yıl.',
     contactTitle:'İletişim',
     contactText:'Sözleşme edinimi, güvenlik danışmanlığı veya iş teklifleri için lütfen mesajınızı doğrudan onaylanmış e-postama gönderin.',
-    photoText:'Fotoğrafınız', galleryTitle:'Galeri',
-    eqTitle:'Denklemler çözülüyor…'
+    galleryTitle:'Galeri'
   }
 };
 
@@ -1829,35 +833,37 @@ function changeLanguage(lang){
   document.documentElement.setAttribute('lang', lang);
   document.documentElement.setAttribute('dir', d.dir);
   document.body.setAttribute('dir', d.dir);
+  
+  const updateText = (id, text) => {
+    const el = document.getElementById(id);
+    if(el) el.innerText = text;
+  };
+
   document.getElementById('meta-title').innerText = d.title;
-  document.getElementById('t-name').innerText = d.name;
-  document.getElementById('t-subtitle').innerText = d.subtitle;
-  document.getElementById('t-welcome').innerText = d.welcome;
-  document.getElementById('t-profile-title').innerText = d.profileTitle;
-  document.getElementById('t-profile-text').innerText = d.profileText;
-  document.getElementById('t-specs-title').innerText = d.specsTitle;
-  document.getElementById('t-exp-label').innerText = d.expLabel;
-  document.getElementById('t-exp-text').innerText = d.expText;
-  document.getElementById('t-focus-label').innerText = d.focusLabel;
-  document.getElementById('t-focus-text').innerText = d.focusText;
-  document.getElementById('t-interface-label').innerText = d.interfaceLabel;
-  document.getElementById('t-interface-text').innerText = d.interfaceText;
-  // Video section
-  document.getElementById('t-video-title').innerText = d.videoTitle;
-  document.getElementById('t-video-intro').innerText = d.videoIntro;
-  document.getElementById('t-video-adobe-label').innerText = d.videoAdobeLabel;
-  document.getElementById('t-video-adobe-text').innerText = d.videoAdobeText;
-  document.getElementById('t-video-chart-label').innerText = d.videoChartLabel;
-  document.getElementById('t-video-chart-text').innerText = d.videoChartText;
-  document.getElementById('t-video-youtube-label').innerText = d.videoYoutubeLabel;
-  document.getElementById('t-video-youtube-text').innerText = d.videoYoutubeText;
-  // Contact
-  document.getElementById('t-contact-title').innerText = d.contactTitle;
-  document.getElementById('t-contact-text').innerText = d.contactText;
-  document.getElementById('photo-fallback').innerHTML = d.photoText;
-  document.getElementById('t-gallery-title').innerText = d.galleryTitle;
-  const eqTitle = document.getElementById('eq-title');
-  if (eqTitle) eqTitle.innerText = d.eqTitle;
+  updateText('t-name', d.name);
+  updateText('t-subtitle', d.subtitle);
+  updateText('t-welcome', d.welcome);
+  updateText('t-profile-title', d.profileTitle);
+  updateText('t-profile-text', d.profileText);
+  updateText('t-specs-title', d.specsTitle);
+  updateText('t-exp-label', d.expLabel);
+  updateText('t-exp-text', d.expText);
+  updateText('t-focus-label', d.focusLabel);
+  updateText('t-focus-text', d.focusText);
+  updateText('t-interface-label', d.interfaceLabel);
+  updateText('t-interface-text', d.interfaceText);
+  updateText('t-video-title', d.videoTitle);
+  updateText('t-video-intro', d.videoIntro);
+  updateText('t-video-adobe-label', d.videoAdobeLabel);
+  updateText('t-video-adobe-text', d.videoAdobeText);
+  updateText('t-video-chart-label', d.videoChartLabel);
+  updateText('t-video-chart-text', d.videoChartText);
+  updateText('t-video-youtube-label', d.videoYoutubeLabel);
+  updateText('t-video-youtube-text', d.videoYoutubeText);
+  updateText('t-contact-title', d.contactTitle);
+  updateText('t-contact-text', d.contactText);
+  updateText('t-gallery-title', d.galleryTitle);
+
   try{ localStorage.setItem('lang', lang); }catch(e){}
 }
 
@@ -1867,12 +873,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   let savedTheme = 'classic';
   try { savedTheme = localStorage.getItem('theme') || 'classic'; } catch(e) {}
   if (THEME_LIST.includes(savedTheme)) {
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    document.body.setAttribute('data-theme', savedTheme);
-    const sel = document.getElementById('themeSelect');
-    if (sel) sel.value = savedTheme;
-    const picker = document.getElementById('bgColorPicker');
-    if (picker) picker.value = DEFAULT_BG[savedTheme] || '#eef1f5';
+    changeTheme(savedTheme);
   }
 
   // Language
@@ -1887,10 +888,8 @@ window.addEventListener('DOMContentLoaded', ()=>{
   // Custom background override
   try{
     const customBg = localStorage.getItem('customBg');
-    if (custom instantlyBg) {
-      document.documentElement.style.setProperty('--bg-deep', customBg);
-      const picker = document.getElementById('bgColorPicker');
-      if (picker) picker.value = customBg;
+    if (customBg) {
+      applyBgColor(customBg);
     }
   }catch(e){}
 });
