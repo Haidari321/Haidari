@@ -35,7 +35,6 @@
   --body-font: 'Inter', -apple-system, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
   --graph-pattern: rgba(47,79,122,0.10);
 }
-
 [data-theme="simple"] {
   --bg-deep: #f8f9fa; --bg-mid: #ffffff; --bg-soft: #ffffff;
   --glass-bg: rgba(255,255,255,0.95); --glass-bg-2: #ffffff;
@@ -47,7 +46,50 @@
   --graph-color: #6c757d; --graph-color-2: #adb5bd; --graph-color-3: #495057;
   --graph-pattern: rgba(108,117,125,0.10);
 }
-
+[data-theme="halloween"] {
+  --bg-deep: #1a0f2e; --bg-mid: #2d1b4e; --bg-soft: #3d2662;
+  --glass-bg: rgba(60,30,90,0.55); --glass-bg-2: rgba(80,40,120,0.75);
+  --glass-border: rgba(255,140,0,0.35); --glass-highlight: rgba(255,180,80,0.30);
+  --ink: #f5e6d3; --ink-dim: #c9a88a; --ink-faint: #8a6f5a;
+  --accent: #ff7518; --accent-2: #ffb347; --accent-3: #9b59b6;
+  --line: rgba(255,140,0,0.20); --shadow-deep: rgba(0,0,0,0.55); --shadow-glass: 0 8px 30px rgba(255,100,0,0.20);
+  --wave-color: #ff7518; --wave-color-2: #9b59b6;
+  --graph-color: #ff7518; --graph-color-2: #9b59b6; --graph-color-3: #ffb347;
+  --graph-pattern: rgba(255,117,24,0.12);
+  --body-font: 'Georgia', 'Times New Roman', serif;
+}
+[data-theme="hacker"] {
+  --bg-deep: #0a0e0a; --bg-mid: #0d130d; --bg-soft: #111911;
+  --glass-bg: rgba(0,30,0,0.55); --glass-bg-2: rgba(0,50,0,0.75);
+  --glass-border: rgba(0,255,0,0.25); --glass-highlight: rgba(0,255,0,0.15);
+  --ink: #00ff41; --ink-dim: #00b32e; --ink-faint: #006617;
+  --accent: #00ff41; --accent-2: #39ff14; --accent-3: #00ffaa;
+  --line: rgba(0,255,0,0.15); --shadow-deep: rgba(0,0,0,0.85); --shadow-glass: 0 8px 30px rgba(0,255,0,0.15);
+  --wave-color: #00ff41; --wave-color-2: #39ff14;
+  --graph-color: #00ff41; --graph-color-2: #39ff14; --graph-color-3: #00ffaa;
+  --graph-pattern: rgba(0,255,65,0.12);
+  --body-font: 'SF Mono', 'Consolas', 'Monaco', 'Courier New', monospace;
+}
+[data-theme="hacker"] body::after {
+  background-image:
+    linear-gradient(rgba(0,255,0,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,0,0.08) 1px, transparent 1px) !important;
+}
+[data-theme="kids"] {
+  --bg-deep: #fff5f9; --bg-mid: #ffeef8; --bg-soft: #ffffff;
+  --glass-bg: rgba(255,255,255,0.75); --glass-bg-2: rgba(255,255,255,0.92);
+  --glass-border: rgba(255,105,180,0.55); --glass-highlight: rgba(255,255,255,0.95);
+  --ink: #3d1a4a; --ink-dim: #8a4a7a; --ink-faint: #c89ec0;
+  --accent: #ff4d94; --accent-2: #ffb347; --accent-3: #4dd0e1;
+  --line: rgba(255,105,180,0.25); --shadow-deep: rgba(255,80,150,0.20); --shadow-glass: 0 8px 30px rgba(255,105,180,0.20);
+  --wave-color: #ff4d94; --wave-color-2: #4dd0e1;
+  --graph-color: #ff4d94; --graph-color-2: #ffb347; --graph-color-3: #4dd0e1;
+  --graph-pattern: rgba(255,77,148,0.12);
+  --body-font: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive;
+  --radius-lg: 28px; --radius-md: 22px;
+}
+[data-theme="kids"] .card { border-width: 2px; }
+[data-theme="kids"] .logo::before { background: linear-gradient(135deg, #ff4d94 0%, #ffb347 50%, #4dd0e1 100%); border-radius: 50%; }
 [data-theme="dark"] {
   --bg-deep: #0e1117; --bg-mid: #131822; --bg-soft: #1a1f2b;
   --glass-bg: rgba(255,255,255,0.045); --glass-bg-2: rgba(255,255,255,0.075);
@@ -60,12 +102,82 @@
   --graph-pattern: rgba(143,176,217,0.12);
   --body-font: 'Inter', -apple-system, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
 }
-
+[data-theme="math"] {
+  --bg-deep: #0a0e1a; --bg-mid: #101828; --bg-soft: #16213e;
+  --glass-bg: rgba(20,35,70,0.55); --glass-bg-2: rgba(30,50,95,0.75);
+  --glass-border: rgba(100,200,255,0.35); --glass-highlight: rgba(150,220,255,0.30);
+  --ink: #e0f2ff; --ink-dim: #8ab6d6; --ink-faint: #5a8cb0;
+  --accent: #00d4ff; --accent-2: #7afcff; --accent-3: #ffd93d;
+  --line: rgba(100,200,255,0.20); --shadow-deep: rgba(0,20,50,0.75); --shadow-glass: 0 8px 30px rgba(0,180,255,0.20);
+  --wave-color: #00d4ff; --wave-color-2: #ffd93d;
+  --graph-color: #00d4ff; --graph-color-2: #ffd93d; --graph-color-3: #7afcff;
+  --graph-pattern: rgba(0,212,255,0.15);
+  --body-font: 'Cambria Math', 'Latin Modern Math', 'STIX Two Math', 'Georgia', serif;
+}
+[data-theme="math"] body::before {
+  background:
+    radial-gradient(ellipse 70% 50% at 15% 5%, rgba(0,212,255,0.18), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 100%, rgba(255,217,61,0.12), transparent 65%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(122,252,255,0.08), transparent 70%);
+}
+[data-theme="math"] body::after {
+  content: "∫ ∂ ∑ ∏ √ ∞ ≈ ≠ ≤ ≥ π θ λ μ σ Δ ∇ ∈ ∉ ⊂ ⊃ ∪ ∩ ∃ ∀ ℏ ∂²";
+  position: fixed; inset: 0;
+  font-family: 'Cambria Math', 'Latin Modern Math', 'Georgia', serif;
+  font-size: 2.2rem; line-height: 2.4; letter-spacing: 1.8rem; word-spacing: 1rem;
+  color: rgba(0,212,255,0.10); background: none; background-image: none;
+  overflow: hidden; pointer-events: none; z-index: 0; text-align: justify; padding: 20px;
+  mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 20%, transparent 95%);
+  -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 20%, transparent 95%);
+  opacity: 1; animation: mathDrift 40s linear infinite;
+}
+@keyframes mathDrift {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  50%  { transform: translate(-15px, -10px) rotate(1deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+[data-theme="math"] .card::before {
+  background-image: 
+    linear-gradient(var(--graph-pattern) 1px, transparent 1px),
+    linear-gradient(90deg, var(--graph-pattern) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, var(--graph-pattern) 1px, transparent 1px);
+  background-size: 40px 40px, 40px 40px, 80px 80px; opacity: 0.6;
+}
+[data-theme="math"] .logo::before {
+  content: "∫";
+  background: linear-gradient(135deg, #00d4ff, #7afcff, #ffd93d);
+  color: #0a0e1a; font-size: 1.1rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cambria Math', Georgia, serif;
+  box-shadow: 0 0 14px rgba(0,212,255,0.6);
+}
+[data-theme="math"] .portrait {
+  box-shadow: 0 0 0 1px rgba(0,212,255,0.4), 0 0 0 6px rgba(20,35,70,0.7),
+    0 0 24px rgba(0,212,255,0.35), 0 8px 30px rgba(0,0,0,0.5);
+}
+[data-theme="math"] .section-title {
+  color: var(--accent-2); text-shadow: 0 0 12px rgba(0,212,255,0.4);
+}
+[data-theme="math"] .btn-email {
+  border-color: rgba(0,212,255,0.4); background: rgba(0,40,80,0.5); color: var(--accent-2);
+}
+[data-theme="math"] .btn-email:hover {
+  background: linear-gradient(90deg, #00d4ff, #ffd93d); color: #0a0e1a;
+  box-shadow: 0 0 24px rgba(0,212,255,0.6);
+}
+[data-theme="math"] .video-badge { background: rgba(0,40,80,0.6); border-color: rgba(0,212,255,0.3); }
+[data-theme="math"] select, [data-theme="math"] .color-picker-label, [data-theme="math"] .color-reset {
+  border-color: rgba(0,212,255,0.4); color: var(--accent-2);
+}
+[data-theme="math"] select option { background: #101828; color: #e0f2ff; }
+[data-theme="math"] .card {
+  border-color: rgba(100,200,255,0.35);
+  box-shadow: inset 0 1px 0 var(--glass-highlight), 0 4px 24px rgba(0,180,255,0.15), 0 0 0 1px rgba(0,212,255,0.08);
+}
 /* ============ RESET & BASE ============ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 img{max-width:100%;display:block}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-
 body {
   font-family: var(--body-font);
   font-size: 16px; line-height: 1.7;
@@ -79,7 +191,25 @@ body[dir="rtl"] {
   font-family: 'Segoe UI', 'Tahoma', 'Iranian Sans', 'Vazirmatn', 'Noto Naskh Arabic', 'Arial', sans-serif;
   font-style: italic; text-align: right;
 }
-
+body[dir="rtl"] .spec-item{padding:14px 32px 14px 0}
+body[dir="rtl"] .spec-item::before{left:auto;right:0}
+body::before {
+  content:""; position:fixed; inset:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 15% 5%, rgba(90,123,168,0.14), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 100%, rgba(201,183,142,0.10), transparent 65%);
+  pointer-events:none; z-index:0;
+}
+body::after {
+  content:""; position:fixed; inset:0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, black 30%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, black 30%, transparent 85%);
+  opacity: 0.5; pointer-events:none; z-index: 0;
+}
 /* ============ HEADER ============ */
 header {
   position: sticky; top: 12px; z-index: 100;
@@ -94,19 +224,33 @@ header {
 .logo {
   font-size: 0.92rem; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
   display: flex; align-items: center; gap: 8px;
-  cursor: pointer; /* Make it clickable for the secret */
+  cursor: pointer; user-select: none;
 }
 .logo::before { content: ""; width: 24px; height: 24px; border-radius: 8px; background: var(--accent); }
-
+.header-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+select, .color-picker-label, .color-reset {
+  background: transparent; border: 1px solid var(--line); color: var(--ink);
+  padding: 0 10px; height: 34px; font-family: inherit; font-size: 0.75rem; font-weight: 600;
+  border-radius: 100px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.color-picker-label { width: 34px; padding: 0; position: relative; overflow: hidden; }
+.color-picker-label input[type="color"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.color-reset { width: 34px; padding: 0; }
 /* ============ CONTAINER ============ */
 .container { max-width: 880px; margin: 0 auto; padding: 32px 18px 48px; position: relative; z-index: 1; }
-
 /* ============ SECTION TITLES ============ */
 .section-title {
   font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 4px;
   color: var(--ink-dim); text-align: center; margin: 0 0 22px; position: relative; padding: 0 50px;
 }
-
+.section-title::before, .section-title::after {
+  content: ""; position: absolute; top: 50%; width: 32px; height: 1px; background: var(--line);
+}
+.section-title::before { left: 0; } .section-title::after { right: 0; }
+.divider {
+  text-align: center; color: var(--ink-faint); font-size: 0.7rem; letter-spacing: 10px; margin: 32px 0;
+}
 /* ============ GLASS CARD ============ */
 .card {
   background: var(--glass-bg);
@@ -116,7 +260,114 @@ header {
   box-shadow: inset 0 1px 0 var(--glass-highlight), 0 4px 20px var(--shadow-deep);
   margin-bottom: 22px; overflow: hidden;
 }
-
+.card::before {
+  content: ""; position: absolute; inset: 0;
+  background-image: 
+    radial-gradient(circle at 20% 30%, var(--graph-pattern) 1.5px, transparent 1.5px),
+    radial-gradient(circle at 80% 70%, var(--graph-pattern) 1.5px, transparent 1.5px),
+    linear-gradient(135deg, transparent 40%, var(--graph-pattern) 40%, var(--graph-pattern) 41%, transparent 41%),
+    linear-gradient(45deg, transparent 60%, var(--graph-pattern) 60%, var(--graph-pattern) 61%, transparent 61%);
+  background-size: 60px 60px, 90px 90px, 120px 120px, 140px 140px;
+  opacity: 0.5; pointer-events: none; z-index: 0;
+  mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 20%, transparent 90%);
+  -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 20%, transparent 90%);
+}
+.carousel-section::before {
+  content: ""; position: absolute; inset: 0;
+  background-image: 
+    radial-gradient(circle at 20% 30%, var(--graph-pattern) 1.5px, transparent 1.5px),
+    radial-gradient(circle at 80% 70%, var(--graph-pattern) 1.5px, transparent 1.5px);
+  background-size: 60px 60px, 90px 90px;
+  opacity: 0.4; pointer-events: none; z-index: 0;
+  mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 20%, transparent 90%);
+  -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 20%, transparent 90%);
+}
+/* ============ ✨ MOTION TEXT SYSTEM ✨ ============ */
+.motion-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.6em) rotateX(-90deg) scale(0.6);
+  filter: blur(6px);
+  animation: charReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform-origin: bottom center;
+  will-change: transform, opacity, filter;
+}
+@keyframes charReveal {
+  0%   { opacity: 0; transform: translateY(0.6em) rotateX(-90deg) scale(0.6); filter: blur(6px); }
+  60%  { opacity: 1; filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0) rotateX(0) scale(1); filter: blur(0); }
+}
+.motion-gradient {
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: gradientShift 6s ease infinite;
+}
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+.motion-float {
+  animation: floatWave 3.6s ease-in-out infinite;
+}
+@keyframes floatWave {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25%      { transform: translateY(-3px) rotate(-1.5deg); }
+  50%      { transform: translateY(0) rotate(0deg); }
+  75%      { transform: translateY(-2px) rotate(1.5deg); }
+}
+.motion-cursor::after {
+  content: "|";
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--accent);
+  animation: cursorBlink 1s step-end infinite;
+  font-weight: 400;
+}
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+.motion-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.4em);
+  filter: blur(4px);
+  animation: wordReveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: transform, opacity, filter;
+}
+@keyframes wordReveal {
+  0%   { opacity: 0; transform: translateY(0.4em); filter: blur(4px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+.motion-slide-up {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100%);
+  animation: slideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes slideUp {
+  0%   { opacity: 0; transform: translateY(100%); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.motion-scale-in {
+  display: inline-block;
+  opacity: 0;
+  transform: scale(0.6) rotate(-3deg);
+  animation: scaleIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+@keyframes scaleIn {
+  0%   { opacity: 0; transform: scale(0.6) rotate(-3deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+/* ============ WAVE CANVAS ============ */
+.wave-wrapper {
+  position: relative; width: 100%; height: 90px; margin: 0 0 18px;
+  border-radius: var(--radius-md); overflow: hidden; background: transparent; opacity: 0.9;
+}
+#waveCanvas { display: block; width: 100%; height: 100%; border-radius: var(--radius-md); }
 /* ============ PROFILE ============ */
 .profile-grid {
   display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px;
@@ -127,107 +378,420 @@ header {
   box-shadow: 0 0 0 1px var(--line), 0 0 0 6px var(--glass-bg-2), 0 8px 30px var(--shadow-deep);
 }
 .portrait img { width: 100%; height: 100%; object-fit: cover; }
-
-h1 { font-size: 1.55rem; font-weight: 700; margin-bottom: 8px; color: var(--ink); cursor: pointer; /* Clickable */ }
+h1 { font-size: 1.55rem; font-weight: 700; margin-bottom: 8px; color: var(--ink); }
 .subtitle { font-size: 0.9rem; color: var(--ink-dim); margin-bottom: 16px; border-bottom: 1px solid var(--line); }
 p { font-size: 0.94rem; color: var(--ink); margin-bottom: 14px; line-height: 1.75; opacity: 0.92; }
-
-/* ============ CHESSBOARD MODAL ============ */
-#chessModal {
-  display: none; position: fixed; inset: 0; z-index: 1000;
-  background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
-  justify-content: center; align-items: center;
-  padding: 20px;
+/* ============ HACKING DECRYPT EFFECT ============ */
+.hack-overlay {
+  position: absolute; inset: 0;
+  background: rgba(0, 0, 0, 0.92); color: #00ff41;
+  font-family: 'SF Mono', 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.78rem; padding: 18px 16px;
+  overflow: hidden; z-index: 10;
+  display: flex; flex-direction: column; justify-content: flex-start; gap: 2px;
+  border-radius: var(--radius-lg); letter-spacing: 0.5px;
+  white-space: pre-wrap; word-break: break-all; line-height: 1.4;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
-.chess-modal-content {
-  background: #1a1a1a; border-radius: 20px; padding: 20px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.8), inset 0 2px 5px rgba(255,255,255,0.1);
-  max-width: 500px; width: 100%;
-  border: 2px solid #333;
-  position: relative;
+.hack-overlay.hidden { opacity: 0; transform: scale(0.95); pointer-events: none; }
+.hack-overlay .hack-line {
+  display: block; opacity: 0.9;
+  animation: hackFlicker 0.12s infinite alternate;
 }
-.chess-title { color: #ddd; text-align: center; margin-bottom: 15px; font-size: 1.2rem; letter-spacing: 2px; }
-
-/* 3D Chessboard Styling */
-.chessboard-container {
-  perspective: 1000px;
-  display: flex; justify-content: center; align-items: center;
-  margin-bottom: 20px;
+.hack-overlay .hack-line.access { color: #39ff14; font-weight: 700; text-shadow: 0 0 8px #00ff41; }
+.hack-overlay .hack-line.warn { color: #ffb347; }
+.hack-overlay .hack-line.success { color: #00ffaa; font-weight: 700; text-shadow: 0 0 10px #00ffaa; }
+@keyframes hackFlicker { 0% { opacity: 0.85; } 100% { opacity: 1; } }
+.card.profile-card.hacking .profile-grid {
+  filter: blur(6px) brightness(0.7); transform: scale(0.98);
+  transition: filter 0.4s ease, transform 0.4s ease;
 }
-.chessboard {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(8, 1fr);
-  width: 100%; aspect-ratio: 1;
-  border: 8px solid #3e2723;
-  border-radius: 4px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(0,0,0,0.3);
-  transform: rotateX(15deg) rotateY(0deg);
-  transition: transform 0.3s ease;
+.card.profile-card.hacking {
+  box-shadow: 0 0 30px rgba(0,255,65,0.4), inset 0 0 20px rgba(0,255,65,0.1);
 }
-.chessboard:hover {
-  transform: rotateX(5deg) rotateY(0deg) scale(1.02);
+.card.profile-card.unlocked { animation: unlockFlash 0.7s ease; }
+@keyframes unlockFlash {
+  0% { box-shadow: 0 0 40px rgba(0,255,65,0.8), 0 0 80px rgba(0,255,65,0.4); }
+  100% { box-shadow: inset 0 1px 0 var(--glass-highlight), 0 4px 20px var(--shadow-deep); }
 }
-.square {
-  width: 100%; height: 100%; position: relative;
-  display: flex; justify-content: center; align-items: center;
-  cursor: pointer;
-  box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+/* ============ SPEC LIST ============ */
+.spec-list { list-style: none; position: relative; z-index: 2; }
+.spec-item, .video-spec-item {
+  position: relative; padding: 16px 0 16px 30px; border-bottom: 1px solid var(--line);
 }
-.square.light { background: #f0d9b5; }
-.square.dark { background: #b58863; }
-.square .piece {
-  font-size: 2rem; user-select: none; pointer-events: none;
-  text-shadow: 1px 2px 3px rgba(0,0,0,0.4);
-  position: absolute;
-  z-index: 2;
+.spec-item:last-child, .video-spec-item:last-child { border-bottom: none; }
+.spec-item::before, .video-spec-item::before {
+  content: ""; position: absolute; left: 0; top: 24px; width: 6px; height: 6px;
+  border-radius: 50%; background: var(--accent-3);
 }
-.square.selected { box-shadow: inset 0 0 0 3px #ffeb3b, inset 0 0 15px rgba(255,235,59,0.5); }
-.square.valid-move::after {
-  content: ''; position: absolute; width: 30%; height: 30%;
-  background: rgba(76, 175, 80, 0.6); border-radius: 50%; z-index: 1;
+.spec-item strong, .video-spec-item strong {
+  display: block; color: var(--accent); font-size: 0.7rem;
+  text-transform: uppercase; margin-bottom: 4px;
 }
-.chess-msg { color: #aaa; text-align: center; font-size: 0.9rem; min-height: 20px; }
-.chess-reset-btn {
-  display: block; margin: 15px auto 0; padding: 8px 20px;
-  background: #444; color: #fff; border: none; border-radius: 50px;
-  cursor: pointer; font-size: 0.8rem;
+.video-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.video-badge {
+  display: inline-flex; padding: 3px 10px; font-size: 0.68rem; font-weight: 600;
+  border-radius: 100px; background: var(--glass-bg-2); border: 1px solid var(--line);
 }
-.chess-reset-btn:hover { background: #666; }
-
-/* ============ ADMIN DASHBOARD (Hidden inside modal) ============ */
-#adminPanel {
-  display: none; margin-top: 20px; color: #ccc;
-  background: rgba(0,0,0,0.5); border-radius: 10px; padding: 15px;
-  border: 1px solid #444; max-height: 300px; overflow-y: auto;
+.video-badge.adobe { color: #ff0000; border-color: rgba(255,0,0,0.3); }
+.video-badge.youtube { color: #ff0000; border-color: rgba(255,0,0,0.3); }
+.video-badge.chart { color: #00a0dc; border-color: rgba(0,160,220,0.3); }
+/* ============ EMAIL BUTTON ============ */
+.btn-email {
+  display: flex; width: 100%; padding: 15px 24px; margin-top: 16px;
+  border: 1px solid var(--line); background: var(--glass-bg-2); color: var(--ink);
+  text-decoration: none; font-weight: 600; border-radius: 100px;
+  align-items: center; justify-content: center; transition: all .3s ease;
 }
-#adminPanel h3 { color: #ffeb3b; font-size: 0.9rem; margin-bottom: 10px; letter-spacing: 1px; }
-.device-item {
-  border-bottom: 1px solid #333; padding: 8px 0; font-size: 0.8rem;
-  display: flex; flex-direction: column; gap: 4px;
+.btn-email:hover { background: var(--accent); color: #fff; }
+.card.contact p { text-align: center; }
+/* ============ CAROUSEL ============ */
+.carousel-section { margin-bottom: 22px; position: relative; }
+.carousel-container {
+  position: relative; width: 100%; max-width: 560px; margin: 0 auto;
+  aspect-ratio: 16 / 10; border-radius: var(--radius-lg); overflow: hidden;
+  border: 1px solid var(--glass-border); background: var(--glass-bg);
+  box-shadow: inset 0 1px 0 var(--glass-highlight), 0 6px 24px var(--shadow-deep);
+  z-index: 1;
 }
-.device-item strong { color: #fff; }
-.device-item span { color: #aaa; }
-.vpn-badge { padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; }
-.vpn-yes { background: #b71c1c; color: #fff; }
-.vpn-no { background: #1b5e20; color: #fff; }
-
-/* ============ MEDIA QUERIES ============ */
+.carousel-track { display: flex; height: 100%; transition: transform .8s cubic-bezier(.6,0,.2,1); }
+.carousel-slide { flex: 0 0 100%; height: 100%; position: relative; }
+.carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+.slide-label {
+  position: absolute; bottom: 0; left: 0; right: 0; padding: 12px 16px;
+  background: linear-gradient(transparent, rgba(14,17,23,0.85));
+  color: #fff; font-size: 0.68rem; font-weight: 600;
+}
+.carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; position: relative; z-index: 1; }
+.carousel-dot {
+  width: 24px; height: 4px; border-radius: 100px; border: none;
+  background: var(--line); cursor: pointer; transition: all .35s ease;
+}
+.carousel-dot.active { background: var(--accent); width: 32px; }
+/* ============ TABLET & DESKTOP ============ */
+@media(min-width:600px){
+  .container{padding:40px 24px 56px}
+  .card{padding:36px 30px;}
+  h1{font-size:1.9rem}
+  .portrait{width:160px;height:160px}
+  .btn-email{width:auto;display:inline-flex;}
+  .carousel-container{max-width:680px}
+  .hack-overlay{font-size:0.85rem; padding:22px 20px;}
+}
 @media(min-width:820px){
+  header{flex-wrap: nowrap; padding:14px 28px; margin:14px 24px 0;}
   .container{padding:48px 28px 64px}
+  .card{padding:44px;}
   .profile-grid{
     display:grid; grid-template-columns: 200px 1fr; gap:42px;
     align-items:center; text-align:left;
   }
   body[dir="rtl"] .profile-grid{grid-template-columns:1fr 200px}
+  .portrait{width:180px;height:180px}
   h1{font-size:2.15rem}
+  .carousel-container{max-width:760px;}
+  .hack-overlay{font-size:0.92rem; padding:28px 26px;}
+}
+@media (prefers-reduced-motion: reduce) {
+  .motion-char, .motion-word, .motion-slide-up, .motion-scale-in, .motion-float {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* ============ 🔐 SECRET CHESSBOARD MODAL ============ */
+#chessGate {
+  position: fixed; inset: 0; z-index: 9999;
+  display: none; align-items: center; justify-content: center;
+  padding: 16px;
+  background: radial-gradient(ellipse at center, rgba(12,16,26,0.75) 0%, rgba(6,8,14,0.94) 75%);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  animation: gateFadeIn .35s ease;
+}
+#chessGate.active { display: flex; }
+@keyframes gateFadeIn { from { opacity: 0; } to { opacity: 1; } }
+.chess-glass {
+  position: relative;
+  width: min(100%, 920px); max-height: 96vh; overflow-y: auto;
+  padding: 22px 18px 26px;
+  border-radius: 26px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.20);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.65), inset 0 1px 0 rgba(255,255,255,0.25),
+              0 0 0 1px rgba(0,0,0,0.4), 0 0 60px rgba(80,120,200,0.15);
+  backdrop-filter: blur(30px) saturate(1.4);
+  -webkit-backdrop-filter: blur(30px) saturate(1.4);
+  color: #e9eef7;
+  font-family: 'Inter', -apple-system, 'Segoe UI', system-ui, sans-serif;
+}
+.chess-glass::before {
+  content: "";
+  position: absolute; inset: 0; border-radius: 26px;
+  background:
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 6px),
+    radial-gradient(circle at 20% 10%, rgba(140,180,255,0.10), transparent 45%),
+    radial-gradient(circle at 85% 90%, rgba(200,170,100,0.08), transparent 50%);
+  pointer-events: none;
+}
+.chess-header {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; padding: 0 4px 14px; position: relative; z-index: 2;
+  border-bottom: 1px solid rgba(255,255,255,0.10); margin-bottom: 16px;
+}
+.chess-header h2 {
+  font-size: 1.05rem; letter-spacing: 3px; text-transform: uppercase;
+  background: linear-gradient(90deg, #cfd9ea, #f2e4bf, #cfd9ea);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+.chess-header small { color: #8fa0bd; font-size: 0.68rem; letter-spacing: 1px; }
+.chess-close {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.18);
+  color: #e9eef7; width: 34px; height: 34px; border-radius: 50%;
+  font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all .25s ease;
+}
+.chess-close:hover { background: rgba(255,80,80,0.35); border-color: rgba(255,120,120,0.6); transform: rotate(90deg); }
+.chess-layout {
+  display: grid; grid-template-columns: 1fr; gap: 18px;
+  position: relative; z-index: 2;
+}
+@media (min-width: 760px) {
+  .chess-layout { grid-template-columns: minmax(0,1.25fr) minmax(0,1fr); align-items: start; }
+}
+/* 3D Board */
+.board-stage {
+  perspective: 1400px; perspective-origin: 50% 35%;
+  display: flex; align-items: center; justify-content: center;
+  padding: 22px 4px 42px;
+}
+.board3d {
+  position: relative;
+  width: min(92vw, 380px);
+  aspect-ratio: 1 / 1;
+  transform-style: preserve-3d;
+  transform: rotateX(46deg) rotateZ(-14deg) translateZ(20px);
+  transition: transform .8s cubic-bezier(.6,0,.2,1);
+  animation: boardFloat 7s ease-in-out infinite;
+}
+@keyframes boardFloat {
+  0%,100% { transform: rotateX(46deg) rotateZ(-14deg) translateZ(20px) translateY(0); }
+  50%     { transform: rotateX(46deg) rotateZ(-14deg) translateZ(20px) translateY(-6px); }
+}
+.board3d .squares {
+  position: absolute; inset: 0;
+  display: grid; grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(8, 1fr);
+  border-radius: 6px; overflow: hidden;
+  box-shadow:
+    0 24px 60px rgba(0,0,0,0.75),
+    0 0 0 3px #2b1e14,
+    0 0 0 6px #6b4a2a,
+    0 0 0 8px #1b120b,
+    inset 0 0 40px rgba(0,0,0,0.55);
+  transform-style: preserve-3d;
+}
+.board3d .squares::after {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.22), transparent 55%);
+  pointer-events: none; mix-blend-mode: screen;
+}
+.sq {
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; user-select: none;
+  transition: filter .15s ease;
+}
+.sq.light {
+  background: linear-gradient(135deg, #f0dcb4 0%, #e2c893 55%, #c8a86e 100%);
+  box-shadow: inset 0 0 0 1px rgba(120,90,50,0.35);
+}
+.sq.dark {
+  background: linear-gradient(135deg, #7a4a25 0%, #5a3318 55%, #3d210f 100%);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.5);
+}
+.sq:hover { filter: brightness(1.18) saturate(1.2); }
+.sq.selected { box-shadow: inset 0 0 0 3px #e8c33c, inset 0 0 20px rgba(232,195,60,0.55); }
+.sq.legal-move::after {
+  content: ""; width: 24%; height: 24%; border-radius: 50%;
+  background: radial-gradient(circle, rgba(80,220,120,0.95), rgba(40,160,80,0.4));
+  box-shadow: 0 0 14px rgba(80,220,120,0.85);
+  position: absolute; pointer-events: none;
+}
+.sq.legal-capture::after {
+  content: ""; position: absolute; inset: 8%;
+  border-radius: 50%; border: 3px solid rgba(255,90,90,0.85);
+  box-shadow: 0 0 14px rgba(255,90,90,0.7); pointer-events: none;
+}
+.sq.check { box-shadow: inset 0 0 0 3px #ff3b3b, inset 0 0 24px rgba(255,60,60,0.6) !important; }
+.piece {
+  font-size: clamp(20px, 6.2vw, 34px);
+  line-height: 1; text-shadow: 0 3px 6px rgba(0,0,0,0.65), 0 1px 0 rgba(255,255,255,0.25);
+  transform: translateZ(14px) translateY(-4px) scale(1.1);
+  filter: drop-shadow(0 6px 8px rgba(0,0,0,0.55));
+  pointer-events: none;
+  transition: transform .2s ease;
+}
+.sq:hover .piece { transform: translateZ(18px) translateY(-8px) scale(1.16); }
+.piece.white { color: #fffdf8; text-shadow: 0 0 2px #000, 0 2px 4px #000, 0 4px 8px rgba(0,0,0,0.6); }
+.piece.black { color: #14181f; text-shadow: 0 0 2px rgba(255,255,255,0.4), 0 2px 4px rgba(0,0,0,0.7), 0 4px 8px rgba(0,0,0,0.55); }
+.coord { position: absolute; font-size: 8px; color: rgba(255,255,255,0.55); pointer-events: none; }
+.coord.rank { top: 2px; left: 3px; }
+.coord.file { bottom: 1px; right: 3px; }
+/* Chess side panel */
+.chess-side { display: flex; flex-direction: column; gap: 12px; }
+.chess-status {
+  font-size: 0.82rem; padding: 12px 16px; border-radius: 14px;
+  background: rgba(10,16,28,0.55); border: 1px solid rgba(255,255,255,0.12);
+  color: #cfe0ff; line-height: 1.55; min-height: 48px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.chess-status strong { color: #ffd97a; }
+.chess-hint { font-size: 0.72rem; color: #8fa0bd; line-height: 1.6; }
+.chess-hint kbd {
+  display: inline-block; padding: 1px 7px; border-radius: 6px;
+  background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.22);
+  font-size: 0.68rem; color: #ffe6a5; margin: 0 1px;
+}
+.chess-reset {
+  align-self: flex-start;
+  padding: 8px 18px; border-radius: 100px; cursor: pointer;
+  background: linear-gradient(135deg, rgba(120,160,230,0.25), rgba(80,110,180,0.18));
+  border: 1px solid rgba(160,190,255,0.4); color: #dbe8ff;
+  font-weight: 600; font-size: 0.78rem; letter-spacing: 0.5px;
+  transition: all .25s ease;
+}
+.chess-reset:hover { background: linear-gradient(135deg, rgba(140,180,255,0.4), rgba(100,130,200,0.3)); transform: translateY(-1px); }
+/* Victory / unlock flash */
+.chess-glass.victory {
+  animation: victoryPulse 1s ease;
+  box-shadow: 0 0 0 2px rgba(120,255,180,0.6), 0 30px 90px rgba(0,0,0,0.7), 0 0 80px rgba(120,255,180,0.35);
+}
+@keyframes victoryPulse {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+/* ============ 📊 ADMIN / VISITOR PANEL ============ */
+#visitorAdmin {
+  position: fixed; inset: 0; z-index: 10000;
+  display: none; align-items: flex-start; justify-content: center;
+  padding: 24px 12px; overflow-y: auto;
+  background: radial-gradient(ellipse at 50% 0%, rgba(20,30,50,0.85), rgba(4,6,12,0.97));
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  animation: gateFadeIn .4s ease;
+}
+#visitorAdmin.active { display: flex; }
+.admin-glass {
+  width: min(100%, 1080px);
+  padding: 22px 18px 30px;
+  border-radius: 22px;
+  background: linear-gradient(160deg, rgba(22,30,48,0.95), rgba(10,14,24,0.96));
+  border: 1px solid rgba(120,170,255,0.25);
+  box-shadow: 0 30px 90px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.10);
+  color: #dfe8f6;
+  font-family: 'Inter', -apple-system, 'Segoe UI', system-ui, sans-serif;
+}
+.admin-header {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; margin-bottom: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.10); padding-bottom: 14px;
+}
+.admin-header h2 {
+  font-size: 1.02rem; letter-spacing: 2px; text-transform: uppercase;
+  background: linear-gradient(90deg, #a9d0ff, #ffe6a0, #a9d0ff);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+.admin-header .admin-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.admin-btn {
+  padding: 7px 14px; border-radius: 100px; cursor: pointer; font-size: 0.74rem;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.2);
+  color: #dfe8f6; transition: all .2s ease; font-weight: 600;
+}
+.admin-btn:hover { background: rgba(120,170,255,0.25); border-color: rgba(140,190,255,0.6); }
+.admin-btn.danger:hover { background: rgba(255,80,80,0.3); border-color: rgba(255,120,120,0.7); }
+.admin-summary {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px; margin-bottom: 18px;
+}
+.stat-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 14px; padding: 12px 14px;
+}
+.stat-card .label { font-size: 0.66rem; letter-spacing: 1.5px; text-transform: uppercase; color: #7d8fa8; }
+.stat-card .value { font-size: 1.4rem; font-weight: 700; color: #d5e6ff; }
+.visitor-table-wrap { overflow-x: auto; border-radius: 14px; border: 1px solid rgba(255,255,255,0.10); }
+table.visitor-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+table.visitor-table th, table.visitor-table td {
+  padding: 10px 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.07);
+  vertical-align: top;
+}
+table.visitor-table th {
+  background: rgba(255,255,255,0.05); color: #9db1cc; font-weight: 600;
+  text-transform: uppercase; font-size: 0.64rem; letter-spacing: 1px;
+  position: sticky; top: 0; z-index: 1;
+}
+table.visitor-table tr:hover td { background: rgba(120,170,255,0.07); cursor: pointer; }
+.device-row .device-id { color: #ffe6a0; font-weight: 600; }
+.device-row .badge {
+  display: inline-block; padding: 2px 8px; border-radius: 100px;
+  font-size: 0.62rem; font-weight: 700; margin-right: 4px;
+}
+.badge.vpn-yes { background: rgba(255,80,80,0.2); color: #ff9d9d; border: 1px solid rgba(255,120,120,0.5); }
+.badge.vpn-no { background: rgba(80,220,140,0.15); color: #8bffb8; border: 1px solid rgba(100,255,160,0.4); }
+.badge.vpn-unknown { background: rgba(200,200,200,0.12); color: #c6c6c6; border: 1px solid rgba(200,200,200,0.35); }
+.detail-panel {
+  display: none; padding: 14px 16px; border-radius: 12px;
+  background: rgba(20,30,50,0.85); border: 1px solid rgba(120,170,255,0.3);
+  margin: 6px 0; font-size: 0.78rem; line-height: 1.7;
+}
+.detail-panel.open { display: block; }
+.detail-panel .kv { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px dashed rgba(255,255,255,0.08); padding: 4px 0; }
+.detail-panel .kv .k { color: #8fa4c0; }
+.detail-panel .kv .v { color: #dfe8f6; font-weight: 600; text-align: right; word-break: break-all; }
+.empty-state { text-align: center; padding: 36px 16px; color: #7d8fa8; font-size: 0.9rem; }
+
+/* ============ 🎲 AMBIENT FLOATING SHAPES (liven up) ============ */
+.ambient-layer {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+}
+.ambient-shape {
+  position: absolute; border-radius: 50%;
+  background: radial-gradient(circle, rgba(90,123,168,0.20), transparent 70%);
+  filter: blur(1px);
+  animation: ambientFloat linear infinite;
+}
+@keyframes ambientFloat {
+  0% { transform: translate(0,0) scale(1); opacity: 0.4; }
+  50% { transform: translate(20px,-30px) scale(1.15); opacity: 0.7; }
+  100% { transform: translate(0,0) scale(1); opacity: 0.4; }
+}
+/* Sparkle pulse on logo */
+.logo:hover::after {
+  content: ""; position: absolute; inset: -4px; border-radius: inherit;
+  box-shadow: 0 0 20px rgba(90,123,168,0.5); pointer-events: none;
+}
+/* Live dot */
+.live-dot {
+  display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+  background: #4ade80; box-shadow: 0 0 8px #4ade80; animation: livePulse 1.6s infinite;
+  margin-right: 6px; vertical-align: middle;
+}
+@keyframes livePulse {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50%     { transform: scale(1.4); opacity: 0.6; }
 }
 </style>
 </head>
 <body data-theme="classic">
 
+<!-- Ambient floating shapes to make site feel alive -->
+<div class="ambient-layer" id="ambientLayer" aria-hidden="true"></div>
+
 <header>
-  <div class="logo" id="triggerChess">M. A. Haidari</div>
+  <div class="logo" id="secretLogoTrigger" title="">M. A. Haidari</div>
   <div class="header-controls">
     <select id="langSelect" onchange="changeLanguage(this.value)" aria-label="Select Language">
       <option value="en">EN</option>
@@ -240,12 +804,34 @@ p { font-size: 0.94rem; color: var(--ink); margin-bottom: 14px; line-height: 1.7
       <option value="classic">🎨 Classic</option>
       <option value="simple">⬜ Simple</option>
       <option value="dark">🌙 Dark</option>
+      <option value="halloween">🎃 Halloween</option>
+      <option value="hacker">💻 Hacker</option>
+      <option value="kids">🧸 Kids</option>
+      <option value="math">📐 Math</option>
     </select>
+    <div class="color-picker-wrapper" style="display:flex; gap:4px;">
+      <label class="color-picker-label" title="Background Color">
+        <span>🎨</span>
+        <input type="color" id="bgColorPicker" value="#eef1f5" oninput="applyBgColor(this.value)">
+      </label>
+      <button class="color-reset" onclick="resetBgColor()" title="Reset">✕</button>
+    </div>
   </div>
 </header>
 
 <main class="container">
+
+  <section class="card" style="padding-bottom:18px;">
+    <div class="wave-wrapper">
+      <canvas id="waveCanvas" width="1600" height="180"></canvas>
+    </div>
+    <p style="text-align:center; font-size:0.75rem; letter-spacing:2px; color:var(--ink-dim); margin-bottom:0; position:relative; z-index:1;" id="t-wave-caption">
+      ~ harmonic wave ~
+    </p>
+  </section>
+
   <section class="card profile-card" id="profileCard">
+    <div class="hack-overlay" id="hackOverlay"></div>
     <div class="profile-grid">
       <div style="display:flex; justify-content:center;">
         <div class="portrait">
@@ -253,9 +839,9 @@ p { font-size: 0.94rem; color: var(--ink); margin-bottom: 14px; line-height: 1.7
         </div>
       </div>
       <div>
-        <h1 id="triggerChessName">Mohammad Asim Haidari</h1>
-        <div class="subtitle" id="t-subtitle">Software Engineer &amp; Cyber Security Intern</div>
-        <p id="t-welcome">
+        <h1 id="t-name" data-motion="chars">Mohammad Asim Haidari</h1>
+        <div class="subtitle" id="t-subtitle" data-motion="words">Software Engineer &amp; Cyber Security Intern</div>
+        <p id="t-welcome" data-motion="words">
           Welcome to my personal index — an interactive, living curriculum vitae
           built for recruiters, peers, and collaborators to explore my engineering
           track record and current operations.
@@ -264,278 +850,1308 @@ p { font-size: 0.94rem; color: var(--ink); margin-bottom: 14px; line-height: 1.7
     </div>
   </section>
 
-  <!-- Other sections remain unchanged for brevity... -->
-  <section class="card">
-    <h2 class="section-title">Profile</h2>
-    <p>I am a highly analytical software engineer and an actively practicing cybersecurity intern...</p>
+  <section class="carousel-section">
+    <h2 class="section-title" id="t-gallery-title" data-motion="chars">Gallery</h2>
+    <div class="carousel-container" id="carouselContainer">
+      <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-slide">
+          <img src="gallery1.jpg" alt="Gallery Image 1" onerror="this.src='https://via.placeholder.com/600x400?text=Gallery+1'">
+          <span class="slide-label">Portrait</span>
+        </div>
+        <div class="carousel-slide">
+          <img src="gallery2.jpg" alt="Gallery Image 2" onerror="this.src='https://via.placeholder.com/600x400?text=Gallery+2'">
+          <span class="slide-label">Editorial</span>
+        </div>
+        <div class="carousel-slide">
+          <img src="gallery3.jpg" alt="Gallery Image 3" onerror="this.src='https://via.placeholder.com/600x400?text=Gallery+3'">
+          <span class="slide-label">Vogue</span>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-dots" id="carouselDots">
+      <button class="carousel-dot active" data-index="0"></button>
+      <button class="carousel-dot" data-index="1"></button>
+      <button class="carousel-dot" data-index="2"></button>
+    </div>
   </section>
+
+  <div class="divider">· · ·</div>
+
+  <section class="card">
+    <h2 class="section-title" id="t-profile-title" data-motion="chars">Profile</h2>
+    <p id="t-profile-text" data-motion="words">
+      I am a highly analytical software engineer and an actively practicing
+      cybersecurity intern. Over the past three years, I have engineered reliable
+      software patterns, built functional architectures, and specialized in
+      monitoring security perimeters, evaluating code vulnerabilities, and
+      optimizing overall structural integrity.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2 class="section-title" id="t-specs-title" data-motion="chars">Specifications</h2>
+    <ul class="spec-list">
+      <li class="spec-item">
+        <strong id="t-exp-label">Experience</strong>
+        <span id="t-exp-text">1 Year of Full-Stack Application Programming</span>
+      </li>
+      <li class="spec-item">
+        <strong id="t-focus-label">Current Focus</strong>
+        <span id="t-focus-text">Cybersecurity Auditing, Threat Detection &amp; Penetration Testing</span>
+      </li>
+      <li class="spec-item">
+        <strong id="t-interface-label">Interface</strong>
+        <span id="t-interface-text">Native support for dark and light reading environments</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2 class="section-title" id="t-video-title" data-motion="chars">Video Editing &amp; Production</h2>
+    <p id="t-video-intro" style="text-align:center; margin-bottom:18px;" data-motion="words">
+      In addition to software engineering, I bring 7 years of professional video editing experience across Adobe Creative Suite and YouTube content production.
+    </p>
+    <ul class="spec-list">
+      <li class="video-spec-item">
+        <strong id="t-video-adobe-label">Adobe Suite</strong>
+        <span id="t-video-adobe-text">Premiere Pro, After Effects, Photoshop, Illustrator — 7 years of professional editing and motion graphics.</span>
+        <div class="video-badges">
+          <span class="video-badge adobe">Pr</span>
+          <span class="video-badge adobe">Ae</span>
+          <span class="video-badge adobe">Ps</span>
+          <span class="video-badge adobe">Ai</span>
+        </div>
+      </li>
+      <li class="video-spec-item">
+        <strong id="t-video-chart-label">Chart &amp; Motion Graphics</strong>
+        <span id="t-video-chart-text">Animated charts, data visualizations, and explainer graphics for YouTube channels and corporate clients.</span>
+        <div class="video-badges">
+          <span class="video-badge chart">Charts</span>
+          <span class="video-badge chart">Motion</span>
+        </div>
+      </li>
+      <li class="video-spec-item">
+        <strong id="t-video-youtube-label">YouTube Production</strong>
+        <span id="t-video-youtube-text">End-to-end YouTube video production — scripting, editing, thumbnails, and channel branding for 7 years.</span>
+        <div class="video-badges">
+          <span class="video-badge youtube">YouTube</span>
+          <span class="video-badge youtube">Thumbnails</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <div class="divider">· · ·</div>
 
   <section class="card contact">
-    <h2 class="section-title">Correspondence</h2>
-    <p>For contract acquisition, security consultation, or employment inquiries, please dispatch your message directly to my verified email.</p>
-    <a href="mailto:Haidariasim65@gmail.com" class="btn-email" style="display:flex; width:100%; padding:15px; border:1px solid var(--line); background:var(--glass-bg-2); color:var(--ink); text-decoration:none; font-weight:600; border-radius:100px; justify-content:center; margin-top:16px;">Haidariasim65@gmail.com</a>
+    <h2 class="section-title" id="t-contact-title" data-motion="chars">Correspondence</h2>
+    <p id="t-contact-text" data-motion="words">
+      For contract acquisition, security consultation, or employment inquiries,
+      please dispatch your message directly to my verified email.
+    </p>
+    <a href="mailto:Haidariasim65@gmail.com" class="btn-email">
+      Haidariasim65@gmail.com
+    </a>
   </section>
+
 </main>
 
-<!-- CHESS MODAL -->
-<div id="chessModal">
-  <div class="chess-modal-content">
-    <div class="chess-title">SECURE ACCESS - CHESS PUZZLE</div>
-    <div class="chessboard-container">
-      <div class="chessboard" id="chessboard"></div>
+<!-- ============ 🔐 SECRET CHESS GATE ============ -->
+<div id="chessGate" role="dialog" aria-modal="true" aria-label="Chess Challenge">
+  <div class="chess-glass" id="chessGlass">
+    <div class="chess-header">
+      <div>
+        <h2>♟ Grandmaster's Lock</h2>
+        <small>Win the match with a checkmate to unlock the archive</small>
+      </div>
+      <button class="chess-close" id="chessCloseBtn" aria-label="Close">✕</button>
     </div>
-    <div class="chess-msg" id="chessMsg">White to move. Find the checkmate.</div>
-    <button class="chess-reset-btn" onclick="resetChess()">Reset Board</button>
-    
-    <!-- HIDDEN ADMIN PANEL -->
-    <div id="adminPanel">
-      <h3>📊 VISITOR LOG (Admin Only)</h3>
-      <div id="visitorList"></div>
+    <div class="chess-layout">
+      <div class="board-stage">
+        <div class="board3d" id="board3d">
+          <div class="squares" id="squaresGrid"></div>
+        </div>
+      </div>
+      <div class="chess-side">
+        <div class="chess-status" id="chessStatus">
+          <strong>White</strong> to move. Find the forced checkmate to unlock.
+        </div>
+        <div class="chess-hint">
+          <kbd>Click</kbd> a piece to select · <kbd>Click</kbd> a highlighted square to move.<br>
+          Deliver a checkmate to reveal the hidden archive.
+        </div>
+        <button class="chess-reset" id="chessResetBtn">↺ Reset Board</button>
+      </div>
     </div>
   </div>
 </div>
 
+<!-- ============ 📊 VISITOR ADMIN PANEL ============ -->
+<div id="visitorAdmin" role="dialog" aria-modal="true" aria-label="Visitor Log">
+  <div class="admin-glass">
+    <div class="admin-header">
+      <h2><span class="live-dot"></span>Visitor Log — Device Registry</h2>
+      <div class="admin-actions">
+        <button class="admin-btn" id="adminRefreshBtn">↻ Refresh</button>
+        <button class="admin-btn" id="adminExportBtn">⬇ Export JSON</button>
+        <button class="admin-btn danger" id="adminClearBtn">🗑 Clear Log</button>
+        <button class="admin-btn" id="adminCloseBtn">✕ Close</button>
+      </div>
+    </div>
+    <div class="admin-summary" id="adminSummary"></div>
+    <div class="visitor-table-wrap">
+      <table class="visitor-table" id="visitorTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Device / Model</th>
+            <th>Country · City</th>
+            <th>IP Address</th>
+            <th>VPN</th>
+            <th>First Seen</th>
+            <th>Last Seen</th>
+          </tr>
+        </thead>
+        <tbody id="visitorTbody"></tbody>
+      </table>
+    </div>
+    <p style="font-size:0.68rem; color:#7d8fa8; margin-top:14px; line-height:1.6;">
+      Note: Device data is stored locally in this browser's <code>localStorage</code> under the key
+      <code>mahidari_visitors</code>. To aggregate across all devices you must enable a backend endpoint.
+      VPN detection is heuristic (timezone mismatch &amp; known hosting ASNs).
+    </p>
+  </div>
+</div>
+
 <script>
-/* ============ VISITOR LOGGING & TRACKING ============ */
-// This runs once per session. It fetches IP and saves device info.
-async function logVisitor() {
-    // Check if already logged in this session to avoid spam
-    if (sessionStorage.getItem('visitorLogged')) return;
-    
-    try {
-        // Fetch IP data from a free API
-        const res = await fetch('https://ipapi.co/json/');
-        const ipData = await res.json();
-        
-        // Get device info from browser
-        const ua = navigator.userAgent;
-        let deviceModel = "Unknown Device";
-        if (ua.includes("iPhone")) deviceModel = "iPhone";
-        else if (ua.includes("iPad")) deviceModel = "iPad";
-        else if (ua.includes("Android")) {
-            const match = ua.match(/Android\s([0-9\.]+)/);
-            deviceModel = "Android Device" + (match ? " (v" + match[1] + ")" : "");
-        } else if (ua.includes("Windows")) deviceModel = "Windows PC";
-        else if (ua.includes("Mac")) deviceModel = "Mac";
-        else if (ua.includes("Linux")) deviceModel = "Linux";
-
-        // Detect VPN (Basic heuristic: if ISP/Org contains known VPN keywords)
-        let vpnStatus = false;
-        const org = (ipData.org || "").toLowerCase();
-        const vpnKeywords = ['vpn', 'proxy', 'hosting', 'digitalocean', 'aws', 'amazon', 'google', 'microsoft', 'cloud'];
-        if (vpnKeywords.some(k => org.includes(k))) vpnStatus = true;
-        
-        // If country doesn't match timezone, likely VPN
-        if (ipData.country_code && ipData.timezone) {
-            const tzCountry = ipData.timezone.split('/')[0];
-            if (tzCountry !== ipData.country_code) vpnStatus = true;
-        }
-
-        const visitorData = {
-            ip: ipData.ip || "Hidden",
-            country: ipData.country_name || "Unknown",
-            city: ipData.city || "Unknown",
-            org: ipData.org || "Unknown ISP",
-            device: deviceModel,
-            vpn: vpnStatus ? "Yes (Detected)" : "No",
-            timestamp: new Date().toLocaleString()
-        };
-
-        // Save to localStorage (limit to last 10 entries)
-        let logs = JSON.parse(localStorage.getItem('siteVisitors') || '[]');
-        logs.unshift(visitorData);
-        if (logs.length > 10) logs.pop();
-        localStorage.setItem('siteVisitors', JSON.stringify(logs));
-        
-        // Mark as logged for this session
-        sessionStorage.setItem('visitorLogged', 'true');
-    } catch (e) {
-        console.error("Could not fetch IP data", e);
-    }
-}
-
-// Call logging on page load
-document.addEventListener('DOMContentLoaded', () => {
-    logVisitor();
-    // Apply default theme
-    document.body.setAttribute('data-theme', 'classic');
-});
-
-/* ============ CHESS PUZZLE LOGIC ============ */
-const boardElement = document.getElementById('chessboard');
-const msgElement = document.getElementById('chessMsg');
-const adminPanel = document.getElementById('adminPanel');
-const visitorList = document.getElementById('visitorList');
-const modal = document.getElementById('chessModal');
-
-let board = [];
-let selectedSquare = null;
-let moveHistory = [];
-// Fool's Mate sequence: f2-f3, e7-e5, g2-g4, d8-h4
-const winSequence = [
-    { from: 'f2', to: 'f3' },
-    { from: 'e7', to: 'e5' },
-    { from: 'g2', to: 'g4' },
-    { from: 'd8', to: 'h4' }
-];
-let currentSequenceIndex = 0;
-
-// Initial Board Setup
-function initBoard() {
-    board = [
-        ['r','n','b','q','k','b','n','r'],
-        ['p','p','p','p','p','p','p','p'],
-        ['.','.','.','.','.','.','.','.'],
-        ['.','.','.','.','.','.','.','.'],
-        ['.','.','.','.','.','.','.','.'],
-        ['.','.','.','.','.','.','.','.'],
-        ['P','P','P','P','P','P','P','P'],
-        ['R','N','B','Q','K','B','N','R']
-    ];
-    currentSequenceIndex = 0;
-    moveHistory = [];
-    renderBoard();
-    msgElement.textContent = "White to move. Find the checkmate.";
-}
-
-function renderBoard() {
-    boardElement.innerHTML = '';
-    for (let r = 0; r < 8; r++) {
-        for (let c = 0; c < 8; c++) {
-            const square = document.createElement('div');
-            square.classList.add('square');
-            // Checkerboard pattern
-            if ((r + c) % 2 === 0) square.classList.add('light');
-            else square.classList.add('dark');
-            
-            // Coordinates
-            const file = String.fromCharCode(97 + c); // a-h
-            const rank = 8 - r;
-            square.dataset.pos = file + rank;
-            
-            const piece = board[r][c];
-            if (piece !== '.') {
-                const pieceSpan = document.createElement('span');
-                pieceSpan.classList.add('piece');
-                // Use Unicode Chess Symbols
-                const pieceMap = {
-                    'r': '♜', 'n': '♞', 'b': '♝', 'q': '♛', 'k': '♚', 'p': '♟',
-                    'R': '♖', 'N': '♘', 'B': '♗', 'Q': '♕', 'K': '♔', 'P': '♙'
-                };
-                pieceSpan.textContent = pieceMap[piece];
-                // Color styling for 3D effect
-                if (piece === piece.toUpperCase()) {
-                    pieceSpan.style.color = '#fff'; // White pieces
-                    pieceSpan.style.textShadow = '0px 2px 3px rgba(0,0,0,0.8)';
-                } else {
-                    pieceSpan.style.color = '#000'; // Black pieces
-                    pieceSpan.style.textShadow = '0px 2px 3px rgba(255,255,255,0.3)';
-                }
-                square.appendChild(pieceSpan);
-            }
-            
-            square.addEventListener('click', () => handleSquareClick(r, c, square));
-            boardElement.appendChild(square);
-        }
-    }
-}
-
-function handleSquareClick(r, c, square) {
-    // Check if it's the correct move in sequence
-    const file = String.fromCharCode(97 + c);
-    const rank = 8 - r;
-    const pos = file + rank;
-    
-    // If a square is selected, try to move
-    if (selectedSquare) {
-        const fromPos = selectedSquare.dataset.pos;
-        const piece = board[selectedSquare.row][selectedSquare.col];
-        const targetPiece = board[r][c];
-        
-        // Check if this move matches the win sequence
-        const expectedMove = winSequence[currentSequenceIndex];
-        
-        if (expectedMove && fromPos === expectedMove.from && pos === expectedMove.to) {
-            // Valid move
-            board[r][c] = piece;
-            board[selectedSquare.row][selectedSquare.col] = '.';
-            currentSequenceIndex++;
-            selectedSquare.square.classList.remove('selected');
-            
-            // Check if sequence is complete
-            if (currentSequenceIndex === winSequence.length) {
-                msgElement.textContent = "CHECKMATE! Access Granted.";
-                setTimeout(() => {
-                    adminPanel.style.display = 'block';
-                    loadAdminPanel();
-                }, 500);
-            } else {
-                msgElement.textContent = "Good move. Continue...";
-            }
-            selectedSquare = null;
-            renderBoard();
-        } else {
-            // Invalid move
-            msgElement.textContent = "Invalid move. Try again.";
-            selectedSquare.square.classList.remove('selected');
-            selectedSquare = null;
-        }
-    } else {
-        // Select piece
-        if (board[r][c] !== '.') {
-            selectedSquare = { row: r, col: c, square: square };
-            square.classList.add('selected');
-            msgElement.textContent = "Piece selected.";
-        }
-    }
-}
-
-function resetChess() {
-    initBoard();
-    selectedSquare = null;
-    adminPanel.style.display = 'none';
-}
-
-// Open Modal
-function openChessModal() {
-    modal.style.display = 'flex';
-    initBoard();
-}
-
-// Event Listeners for secret trigger
-document.getElementById('triggerChess').addEventListener('click', openChessModal);
-document.getElementById('triggerChessName').addEventListener('click', openChessModal);
-document.getElementById('chessModal').addEventListener('click', (e) => {
-    if (e.target === modal) modal.style.display = 'none';
-});
-
-/* ============ ADMIN PANEL RENDER ============ */
-function loadAdminPanel() {
-    const logs = JSON.parse(localStorage.getItem('siteVisitors') || '[]');
-    if (logs.length === 0) {
-        visitorList.innerHTML = '<div style="color:#aaa;">No visitors logged yet.</div>';
-        return;
-    }
-    visitorList.innerHTML = logs.map(log => `
-        <div class="device-item">
-            <div><strong>IP:</strong> ${log.ip} <span class="vpn-badge ${log.vpn.includes('Yes') ? 'vpn-yes' : 'vpn-no'}">VPN: ${log.vpn}</span></div>
-            <div><strong>Location:</strong> ${log.city}, ${log.country}</div>
-            <div><strong>Device:</strong> ${log.device}</div>
-            <div><strong>ISP/Org:</strong> ${log per.org}</div>
-            <div><strong>Time:</strong> ${log.timestamp}</div>
-        </div>
-    `).join('');
-}
-
-/* ============ LANGUAGE & THEME (Simplified for brevity) ============ */
-function changeLanguage(lang) {
-    // (Translation logic remains as original code, omitted here for space)
-    console.log("Language switched to:", lang);
-}
+/* ============ THEME SYSTEM ============ */
+const THEME_LIST = ['classic','simple','dark','halloween','hacker','kids','math'];
+const DEFAULT_BG = {
+  classic: '#eef1f5', simple: '#f8f9fa', dark: '#0e1117', 
+  halloween: '#1a0f2e', hacker: '#0a0e0a', kids: '#fff5f9', math: '#0a0e1a'
+};
 function changeTheme(theme) {
-    document.body.setAttribute('data-theme', theme);
+  if (!THEME_LIST.includes(theme)) return;
+  try { localStorage.removeItem('customBg'); } catch(e) {}
+  document.documentElement.removeAttribute('style');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.body.setAttribute('data-theme', theme);
+  const picker = document.getElementById('bgColorPicker');
+  if (picker) picker.value = DEFAULT_BG[theme] || '#eef1f5';
+  const sel = document.getElementById('themeSelect');
+  if (sel) sel.value = theme;
+  try { localStorage.setItem('theme', theme); } catch(e) {}
+}
+function applyBgColor(hex) {
+  document.documentElement.style.setProperty('--bg-deep', hex);
+  try { localStorage.setItem('customBg', hex); } catch(e) {}
+  const picker = document.getElementById('bgColorPicker');
+  if (picker) picker.value = hex;
+}
+function resetBgColor() {
+  try { localStorage.removeItem('customBg'); } catch(e) {}
+  const theme = document.documentElement.getAttribute('data-theme') || 'classic';
+  const def = DEFAULT_BG[theme] || '#eef1f5';
+  document.documentElement.style.setProperty('--bg-deep', def);
+  const picker = document.getElementById('bgColorPicker');
+  if (picker) picker.value = def;
 }
 
+/* ============ CAROUSEL ============ */
+(function(){
+  const track = document.getElementById('carouselTrack');
+  const dots = document.querySelectorAll('.carousel-dot');
+  if(!track) return;
+  const slides = track.querySelectorAll('.carousel-slide');
+  const total = slides.length;
+  let idx = 0, timer = null;
+  const MS = 4000;
+  function go(i){
+    if(i<0) i = total-1;
+    if(i>=total) i = 0;
+    idx = i;
+    const rtl = document.body.getAttribute('dir') === 'rtl';
+    track.style.transform = `translateX(${rtl ? idx*100 : -idx*100}%)`;
+    dots.forEach((d,n)=>{ d.classList.toggle('active', n===idx); });
+  }
+  function next(){ go(idx+1); }
+  function start(){ stop(); timer = setInterval(next, MS); }
+  function stop(){ if(timer){ clearInterval(timer); timer = null; } }
+  dots.forEach(d=>{
+    d.addEventListener('click', ()=>{ go(parseInt(d.dataset.index,10)); start(); });
+  });
+  const c = document.getElementById('carouselContainer');
+  if(c) { c.addEventListener('mouseenter', stop); c.addEventListener('mouseleave', start); }
+  new MutationObserver((muts)=>{
+    muts.forEach(m=>{ if(m.attributeName==='dir') go(idx); });
+  }).observe(document.body,{attributes:true,attributeFilter:['dir']});
+  start(); go(0);
+})();
+
+/* ============ WAVE ANIMATION ============ */
+(function(){
+  const canvas = document.getElementById('waveCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w, h;
+  function resize(){
+    const rect = canvas.parentElement.getBoundingClientRect();
+    w = canvas.width = rect.width * (window.devicePixelRatio || 1);
+    h = canvas.height = rect.height * (window.devicePixelRatio || 1);
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = rect.height + 'px';
+  }
+  window.addEventListener('resize', resize);
+  resize();
+  let t = 0;
+  function draw(){
+    const style = getComputedStyle(document.documentElement);
+    const c1 = style.getPropertyValue('--wave-color').trim() || '#5a7ba8';
+    const c2 = style.getPropertyValue('--wave-color-2').trim() || '#c9b78e';
+    ctx.clearRect(0, 0, w, h);
+    const amp1 = h * 0.28;
+    ctx.beginPath();
+    for(let x=0; x<w; x+=2){
+      const y = h/2 + Math.sin(x*0.012 + t*0.03) * amp1 * Math.sin(t*0.02 + 1);
+      if(x===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.strokeStyle = c1; ctx.lineWidth = 3 * (window.devicePixelRatio||1);
+    ctx.globalAlpha = 0.8; ctx.stroke();
+    ctx.beginPath();
+    for(let x=0; x<w; x+=2){
+      const y = h/2 + Math.sin(x*0.008 - t*0.02) * h*0.18 * Math.cos(t*0.015);
+      if(x===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.strokeStyle = c2; ctx.lineWidth = 2 * (window.devicePixelRatio||1);
+    ctx.globalAlpha = 0.6; ctx.stroke();
+    ctx.beginPath();
+    for(let x=0; x<w; x+=2){
+      const y = h/2 + Math.sin(x*0.02 + t*0.04) * h*0.08;
+      if(x===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.strokeStyle = c1; ctx.lineWidth = 1 * (window.devicePixelRatio||1);
+    ctx.globalAlpha = 0.3; ctx.stroke();
+    ctx.globalAlpha = 1;
+    t += 1;
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ============ ✨ MOTION TEXT ENGINE ✨ ============ */
+const MotionText = (function(){
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function splitChars(el){
+    if(el.dataset.motionDone === '1') return;
+    const text = el.textContent;
+    el.textContent = '';
+    const frag = document.createDocumentFragment();
+    const chars = Array.from(text);
+    chars.forEach((ch, i) => {
+      if(ch === ' '){
+        const sp = document.createElement('span');
+        sp.innerHTML = '&nbsp;';
+        sp.style.display = 'inline-block';
+        sp.className = 'motion-char';
+        sp.style.animationDelay = (i * 35) + 'ms';
+        frag.appendChild(sp);
+      } else {
+        const span = document.createElement('span');
+        span.textContent = ch;
+        span.className = 'motion-char';
+        span.style.animationDelay = (i * 35) + 'ms';
+        if(el.id === 't-name'){
+          span.classList.add('motion-float');
+          span.style.animationDelay = (i * 35) + 'ms, ' + (i * 60 + 900) + 'ms';
+          span.style.animationDuration = '0.7s, 3.6s';
+        }
+        frag.appendChild(span);
+      }
+    });
+    el.appendChild(frag);
+    el.dataset.motionDone = '1';
+  }
+  function splitWords(el){
+    if(el.dataset.motionDone === '1') return;
+    const text = el.textContent;
+    el.textContent = '';
+    const words = text.split(/(\s+)/);
+    const frag = document.createDocumentFragment();
+    let wordIndex = 0;
+    words.forEach((w) => {
+      if(w.trim() === ''){
+        frag.appendChild(document.createTextNode(w));
+      } else {
+        const span = document.createElement('span');
+        span.textContent = w;
+        span.className = 'motion-word';
+        span.style.animationDelay = (wordIndex * 45) + 'ms';
+        frag.appendChild(span);
+        wordIndex++;
+      }
+    });
+    el.appendChild(frag);
+    el.dataset.motionDone = '1';
+  }
+  function applyAll(){
+    if(reduceMotion) return;
+    document.querySelectorAll('[data-motion="chars"]').forEach(splitChars);
+    document.querySelectorAll('[data-motion="words"]').forEach(splitWords);
+  }
+  function reset(el){
+    if(!el) return;
+    el.dataset.motionDone = '0';
+  }
+  return { applyAll, splitChars, splitWords, reset };
+})();
+
+/* ============ HACKING DECRYPT INTRO ============ */
+(function(){
+  const overlay = document.getElementById('hackOverlay');
+  const profileCard = document.getElementById('profileCard');
+  if(!overlay || !profileCard) return;
+
+  let seen = false;
+  try { seen = sessionStorage.getItem('hackIntroSeen') === '1'; } catch(e) {}
+
+  if (seen) {
+    overlay.classList.add('hidden');
+    setTimeout(() => overlay.remove(), 500);
+    setTimeout(() => MotionText.applyAll(), 100);
+    return;
+  }
+
+  profileCard.classList.add('hacking');
+
+  const hackLines = [
+    { text: '> INITIALIZING SECURE CONNECTION...', cls: '' },
+    { text: '> SCANNING BIOMETRIC HASHES...', cls: '' },
+    { text: '> ACCESSING PROFILE DATABASE [0x7F3A]', cls: 'warn' },
+    { text: '> BYPASSING FIREWALL LAYER 1...', cls: '' },
+    { text: '> BYPASSING FIREWALL LAYER 2...', cls: '' },
+    { text: '> DECRYPTING IDENTITY MATRIX...', cls: 'warn' },
+    { text: '  [████████████████████░░░░] 78%', cls: '' },
+    { text: '> VALIDATING CREDENTIALS...', cls: '' },
+    { text: '> MATCH FOUND: M. A. HAIDARI', cls: 'access' },
+    { text: '> UNLOCKING PROFILE...', cls: 'success' },
+    { text: '> ACCESS GRANTED ✓', cls: 'success' },
+  ];
+
+  let lineIndex = 0;
+  let charIndex = 0;
+  let currentLineEl = null;
+
+  function createLineEl(cls) {
+    const el = document.createElement('span');
+    el.className = 'hack-line' + (cls ? ' ' + cls : '');
+    overlay.appendChild(el);
+    return el;
+  }
+
+  function scrambleNext() {
+    if (lineIndex >= hackLines.length) {
+      setTimeout(finishHack, 350);
+      return;
+    }
+    const line = hackLines[lineIndex];
+    if (!currentLineEl) {
+      currentLineEl = createLineEl(line.cls);
+      charIndex = 0;
+    }
+    if (charIndex < line.text.length) {
+      const charsPerTick = 3;
+      const remaining = line.text.length - charIndex;
+      const step = Math.min(charsPerTick, remaining);
+      currentLineEl.textContent = line.text.slice(0, charIndex + step);
+      charIndex += step;
+      setTimeout(scrambleNext, 8);
+    } else {
+      lineIndex++;
+      currentLineEl = null;
+      charIndex = 0;
+      setTimeout(scrambleNext, 40);
+    }
+  }
+
+  function finishHack() {
+    overlay.classList.add('hidden');
+    profileCard.classList.remove('hacking');
+    profileCard.classList.add('unlocked');
+    try { sessionStorage.setItem('hackIntroSeen', '1'); } catch(e) {}
+    setTimeout(() => MotionText.applyAll(), 150);
+    setTimeout(() => overlay.remove(), 600);
+  }
+
+  setTimeout(scrambleNext, 250);
+})();
+
+/* ============ TRANSLATIONS ============ */
+const translations = {
+  en: {
+    dir:'ltr', title:'Mohammad Asim Haidari | Portfolio & CV',
+    name:'Mohammad Asim Haidari',
+    subtitle:'Software Engineer & Cyber Security Intern',
+    welcome:'Welcome to my personal index — an interactive, living curriculum vitae built for recruiters, peers, and collaborators to explore my engineering track record and current operations.',
+    profileTitle:'Profile',
+    profileText:'I am a highly analytical software engineer and an actively practicing cybersecurity intern. Over the past three years, I have engineered reliable software patterns, built functional architectures, and specialized in monitoring security perimeters, evaluating code vulnerabilities, and optimizing overall structural integrity.',
+    specsTitle:'Specifications',
+    expLabel:'Experience', expText:'1 Year of Full-Stack Application Programming',
+    focusLabel:'Current Focus', focusText:'Cybersecurity Auditing, Threat Detection & Penetration Testing',
+    interfaceLabel:'Interface', interfaceText:'Native support for dark and light reading environments',
+    videoTitle:'Video Editing & Production',
+    videoIntro:'In addition to software engineering, I bring 7 years of professional video editing experience across Adobe Creative Suite and YouTube content production.',
+    videoAdobeLabel:'Adobe Suite',
+    videoAdobeText:'Premiere Pro, After Effects, Photoshop, Illustrator — 7 years of professional editing and motion graphics.',
+    videoChartLabel:'Chart & Motion Graphics',
+    videoChartText:'Animated charts, data visualizations, and explainer graphics for YouTube channels and corporate clients.',
+    videoYoutubeLabel:'YouTube Production',
+    videoYoutubeText:'End-to-end YouTube video production — scripting, editing, thumbnails, and channel branding for 7 years.',
+    contactTitle:'Correspondence',
+    contactText:'For contract acquisition, security consultation, or employment inquiries, please dispatch your message directly to my verified email.',
+    galleryTitle:'Gallery',
+    waveCaption:'~ harmonic wave ~'
+  },
+  fa: {
+    dir:'rtl', title:'محمد عاصم حیدری | پورتفولیو و رزومه',
+    name:'محمد عاصم حیدری',
+    subtitle:'مهندس نرم‌افزار و کارآموز امنیت سایبری',
+    welcome:'به نمایه شخصی من خوش آمدید — یک رزومه تعاملی و پویا که برای استخدام‌کنندگان، همکاران و شرکا ساخته شده است تا سوابق مهندسی و فعالیت‌های جاری من را بررسی کنند.',
+    profileTitle:'پروفایل',
+    profileText:'من یک مهندس نرم‌افزار تحلیل‌گر و کارآموز فعال امنیت سایبری هستم. طی سه سال گذشته، الگوهای نرم‌افزاری قابل اعتمادی را مهندسی کرده‌ام، معماری‌های کاربردی ساخته‌ام و در زمینه نظارت بر حوزه‌های امنیتی، ارزیابی آسیب‌پذیری کدهای برنامه‌نویسی و بهینه‌سازی یکپارچگی ساختاری تخصص دارم.',
+    specsTitle:'مشخصات',
+    expLabel:'تجربه', expText:'۱ سال برنامه‌نویسی اپلیکیشن‌های فول‌استک',
+    focusLabel:'تمرکز فعلی', focusText:'حسابرسی امنیت سایبری، تشخیص تهدیدات و تست نفوذ',
+    interfaceLabel:'رابط کاربری', interfaceText:'پشتیبانی بومی از محیط‌های مطالعه تاریک و روشن',
+    videoTitle:'تدوین و تولید ویدیو',
+    videoIntro:'علاوه بر مهندسی نرم‌افزار، ۷ سال تجربه حرفه‌ای تدوین ویدیو در مجموعه ادوبی و تولید محتوای یوتیوب دارم.',
+    videoAdobeLabel:'مجموعه ادوبی',
+    videoAdobeText:'پریمیر پرو، افتر افکت، فتوشاپ، ایلاستریتور — ۷ سال تدوین حرفه‌ای و موشن گرافیک.',
+    videoChartLabel:'نمودار و موشن گرافیک',
+    videoChartText:'نمودارهای متحرک، تجسم داده‌ها و گرافیک‌های توضیحی برای کانال‌های یوتیوب و مشتریان شرکتی.',
+    videoYoutubeLabel:'تولید یوتیوب',
+    videoYoutubeText:'تولید ویدیوی یوتیوب از ابتدا تا انتها — فیلمنامه، تدوین، تصاویر بندانگشتی و برندسازی کانال برای ۷ سال.',
+    contactTitle:'ارتباطات',
+    contactText:'جهت قراردادهای کاری، مشاوره امنیتی یا درخواست‌های استخدام، لطفاً پیام خود را مستقیماً به ایمیل تأیید شده من ارسال کنید.',
+    galleryTitle:'گالری',
+    waveCaption:'~ موج هارمونیک ~'
+  },
+  ps: {
+    dir:'rtl', title:'محمد عاصم حیدری | پورټفولیو او سوانح',
+    name:'محمد عاصم حیدری',
+    subtitle:'د سافټویر انجنییر او د سایبر امنیت کارآموز',
+    welcome:'زما شخصي انډیکس ته ښه راغلاست — یو متقابل او ژوندی رزومه چې د استخدام کونکو، همکارانو او شریکانو لپاره جوړ شوی ترڅو زما د انجنییرۍ ریکارډ او اوسني فعالیتونه وپلټي.',
+    profileTitle:'پروفایل',
+    profileText:'زه یو لوړ تحلیلي سافټویر انجنییر او په فعاله توګه د سایبر امنیت کارآموز یم. په تیرو دریو کلونو کې، ما د اعتبار وړ سافټویر الگوونه جوړ کړي، فعال جوړښتونه یې ډیزاین کړي، او د امنیتي پولو په څارلو، د کوډ د نیمګړتیاوو په ارزولو او د عمومي جوړښت په ښه کولو کې تخصص لرم.',
+    specsTitle:'مشخصات',
+    expLabel:'تجربه', expText:'د فول سټک اپلیکیشن پروګرامینګ ۱ کال',
+    focusLabel:'اوسنی تمرکز', focusText:'د سایبر امنیت تفتیش، د ګواښونو کشف او د نفوذ ازموینه',
+    interfaceLabel:'انٹرفیس', interfaceText:'د تورو او روښانه لوستلو چاپیریال لپاره بومي ملاتړ',
+    videoTitle:'د ویډیو ایډیټینګ او تولید',
+    videoIntro:'د سافټویر انجنییرۍ سربیره، زه د اډوب تخلیقي سیټ او د یوټیوب مینځپانګې تولید کې ۷ کاله مسلکي ویډیو ایډیټینګ تجربه لرم.',
+    videoAdobeLabel:'د اډوب سیټ',
+    videoAdobeText:'پریمیر پرو، افټر افیکټس، فوټوشاپ، ایلاسټریټر — ۷ کاله مسلکي ایډیټینګ او موشن ګرافیک.',
+    videoChartLabel:'چارټ او موشن ګرافیک',
+    videoChartText:'متحرک چارټونه، د معلوماتو تجسم او تشریحي ګرافیک د یوټیوب چینلونو او شرکتونو لپاره.',
+    videoYoutubeLabel:'د یوټیوب تولید',
+    videoYoutubeText:'له سره تر پایه د یوټیوب ویډیو تولید — سکریپټ، ایډیټینګ، ټامبنیل او د چینل برانډینګ ۷ کاله.',
+    contactTitle:'اړیکې',
+    contactText:'د قرارداد اخیستلو، امنیتي مشورې، یا د کارموندنې پوښتنو لپاره، مهرباني وکړئ خپل پیغام مستقیم زما تایید شوي بریښنالیک ته واستوئ.',
+    galleryTitle:'ګالري',
+    waveCaption:'~ هارمونیک څپې ~'
+  },
+  ar: {
+    dir:'rtl', title:'محمد عاصم حیدري | الملف الشخصي والسيرة الذاتية',
+    name:'محمد عاصم حیدري',
+    subtitle:'مهندس برمجيات ومتدرب في الأمن السيبراني',
+    welcome:'مرحبًا بك في مؤشري الشخصي — سيرة ذاتية تفاعلية وحية مصممة لمسؤولي التوظيف والزملاء والمتعاونين لاستكشاف سجلي الهندسي وعملياتي الحالية.',
+    profileTitle:'الملف الشخصي',
+    profileText:'أنا مهندس برمجيات تحليلي للغاية ومتدرب نشط في مجال الأمن السيبراني. خلال السنوات الثلاث الماضية، قمت بتصميم أنماط برمجية موثوقة، وبناء هياكل وظيفية، وتخصصت في مراقبة الحدود الأمنية، وتقييم ثغرات الكود، وتحسين السلامة الهيكلية العامة.',
+    specsTitle:'المواصفات',
+    expLabel:'الخبرة', expText:'سنة واحدة في برمجة التطبيقات المتكاملة',
+    focusLabel:'التركيز الحالي', focusText:'تدقيق الأمن السيبراني، كشف التهديدات واختبار الاختراق',
+    interfaceLabel:'الواجهة', interfaceText:'دعم أصلي لبيئات القراءة الداكنة والفاتحة',
+    videoTitle:'تحرير وإنتاج الفيديو',
+    videoIntro:'إلى جانب هندسة البرمجيات، لدي 7 سنوات من الخبرة المهنية في تحرير الفيديو عبر مجموعة أدوبي وإنتاج محتوى يوتيوب.',
+    videoAdobeLabel:'مجموعة أدوبي',
+    videoAdobeText:'بريمير برو، أفتر إفكتس، فوتوشوب، إلستريتور — 7 سنوات من التحرير المهني والموشن جرافيك.',
+    videoChartLabel:'الرسوم البيانية والموشن جرافيك',
+    videoChartText:'رسوم بيانية متحركة وتصورات بيانات ورسوم توضيحية لقنوات يوتيوب والعملاء.',
+    videoYoutubeLabel:'إنتاج يوتيوب',
+    videoYoutubeText:'إنتاج فيديو يوتيوب من البداية إلى النهاية — كتابة، تحرير، صور مصغرة، وعلامة تجارية للقناة لمدة 7 سنوات.',
+    contactTitle:'المراسلات',
+    contactText:'للحصول على العقود، أو الاستشارات الأمنية، أو استفسارات التوظيف، يرجى إرسال رسالتك مباشرة إلى بريدي الإلكتروني المتحقق منه.',
+    galleryTitle:'معرض الصور',
+    waveCaption:'~ موجة متناغمة ~'
+  },
+  tr: {
+    dir:'ltr', title:'Mohammad Asim Haidari | Portfolyo ve Özgeçmiş',
+    name:'Mohammad Asim Haidari',
+    subtitle:'Yazılım Mühendisi & Siber Güvenlik Stajyeri',
+    welcome:'Kişisel endeksime hoş geldiniz — işe alım uzmanlarının, meslektaşların ve işbirlikçilerin mühendislik geçmişimi ve mevcut operasyonlarımı keşfetmesi için oluşturulmuş etkileşimli, canlı bir özgeçmiş.',
+    profileTitle:'Profil',
+    profileText:'Yüksek düzeyde analitik bir yazılım mühendisi ve aktif olarak siber güvenlik stajyeri yapmaktayım. Son üç yıl içinde güvenilir yazılım kalıpları tasarladım, işlevsel mimariler kurdum ve güvenlik çevrelerini izleme, kod açıklarını değerlendirme ve genel yapısal bütünlüğü optimize etme konularında uzmanlaştım.',
+    specsTitle:'Özellikler',
+    expLabel:'Deneyim', expText:'1 Yıllık Full-Stack Uygulama Programlama',
+    focusLabel:'Mevcut Odak', focusText:'Siber Güvenlik Denetimi, Tehdit Tespiti ve Sızma Testi',
+    interfaceLabel:'Arayüz', interfaceText:'Karanlık ve aydınlık okuma ortamları için yerel destek',
+    videoTitle:'Video Düzenleme ve Prodüksiyon',
+    videoIntro:'Yazılım mühendisliğinin yanı sıra, Adobe Creative Suite ve YouTube içerik üretiminde 7 yıllık profesyonel video düzenleme deneyimim var.',
+    videoAdobeLabel:'Adobe Suite',
+    videoAdobeText:'Premiere Pro, After Effects, Photoshop, Illustrator — 7 yıllık profesyonel düzenleme ve motion graphics.',
+    videoChartLabel:'Grafik ve Motion Graphics',
+    videoChartText:'YouTube kanalları ve kurumsal müşteriler için animasyonlu grafikler, veri görselleştirmeleri ve açıklayıcı grafikler.',
+    videoYoutubeLabel:'YouTube Prodüksiyonu',
+    videoYoutubeText:'Uçtan uca YouTube video prodüksiyonu — senaryo, düzenleme, küçük resimler ve kanal markalama, 7 yıl.',
+    contactTitle:'İletişim',
+    contactText:'Sözleşme edinimi, güvenlik danışmanlığı veya iş teklifleri için lütfen mesajınızı doğrudan onaylanmış e-postama gönderin.',
+    galleryTitle:'Galeri',
+    waveCaption:'~ harmonik dalga ~'
+  }
+};
+
+function changeLanguage(lang){
+  const d = translations[lang];
+  if(!d) return;
+  document.documentElement.setAttribute('lang', lang);
+  document.documentElement.setAttribute('dir', d.dir);
+  document.body.setAttribute('dir', d.dir);
+
+  const updateText = (id, text, motionMode) => {
+    const el = document.getElementById(id);
+    if(el) {
+      el.textContent = text;
+      if(motionMode) MotionText.reset(el);
+    }
+  };
+
+  document.getElementById('meta-title').innerText = d.title;
+  updateText('t-name', d.name, 'chars');
+  updateText('t-subtitle', d.subtitle, 'words');
+  updateText('t-welcome', d.welcome, 'words');
+  updateText('t-profile-title', d.profileTitle, 'chars');
+  updateText('t-profile-text', d.profileText, 'words');
+  updateText('t-specs-title', d.specsTitle, 'chars');
+  updateText('t-exp-label', d.expLabel);
+  updateText('t-exp-text', d.expText);
+  updateText('t-focus-label', d.focusLabel);
+  updateText('t-focus-text', d.focusText);
+  updateText('t-interface-label', d.interfaceLabel);
+  updateText('t-interface-text', d.interfaceText);
+  updateText('t-video-title', d.videoTitle, 'chars');
+  updateText('t-video-intro', d.videoIntro, 'words');
+  updateText('t-video-adobe-label', d.videoAdobeLabel);
+  updateText('t-video-adobe-text', d.videoAdobeText);
+  updateText('t-video-chart-label', d.videoChartLabel);
+  updateText('t-video-chart-text', d.videoChartText);
+  updateText('t-video-youtube-label', d.videoYoutubeLabel);
+  updateText('t-video-youtube-text', d.videoYoutubeText);
+  updateText('t-contact-title', d.contactTitle, 'chars');
+  updateText('t-contact-text', d.contactText, 'words');
+  updateText('t-gallery-title', d.galleryTitle, 'chars');
+  updateText('t-wave-caption', d.waveCaption);
+
+  setTimeout(() => {
+    document.querySelectorAll('[data-motion="chars"]').forEach(el => {
+      if(el.dataset.motionDone === '1') MotionText.reset(el);
+    });
+    document.querySelectorAll('[data-motion="words"]').forEach(el => {
+      if(el.dataset.motionDone === '1') MotionText.reset(el);
+    });
+    MotionText.applyAll();
+  }, 50);
+
+  try{ localStorage.setItem('lang', lang); }catch(e){}
+}
+
+/* ============ 🎲 AMBIENT SHAPES ============ */
+(function(){
+  const layer = document.getElementById('ambientLayer');
+  if(!layer) return;
+  const count = 14;
+  const colors = [
+    'radial-gradient(circle, rgba(90,123,168,0.20), transparent 70%)',
+    'radial-gradient(circle, rgba(201,183,142,0.20), transparent 70%)',
+    'radial-gradient(circle, rgba(140,180,255,0.15), transparent 70%)'
+  ];
+  for(let i=0;i<count;i++){
+    const el = document.createElement('div');
+    el.className = 'ambient-shape';
+    const size = 30 + Math.random()*140;
+    el.style.width = size+'px';
+    el.style.height = size+'px';
+    el.style.left = (Math.random()*100)+'%';
+    el.style.top = (Math.random()*100)+'%';
+    el.style.background = colors[i % colors.length];
+    el.style.animationDuration = (10 + Math.random()*14)+'s';
+    el.style.animationDelay = (-Math.random()*20)+'s';
+    layer.appendChild(el);
+  }
+})();
+
+/* ==================================================================== */
+/* ========== 📡 VISITOR TRACKING + VPN DETECTION ==================== */
+/* ==================================================================== */
+const VISITOR_STORAGE_KEY = 'mahidari_visitors_v1';
+const DEVICE_ID_KEY = 'mahidari_device_id';
+
+function getOrCreateDeviceId(){
+  try {
+    let id = localStorage.getItem(DEVICE_ID_KEY);
+    if(!id){
+      id = 'dev_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2,10);
+      localStorage.setItem(DEVICE_ID_KEY, id);
+    }
+    return id;
+  } catch(e){
+    return 'dev_' + Math.random().toString(36).slice(2,10);
+  }
+}
+
+function loadVisitors(){
+  try {
+    const raw = localStorage.getItem(VISITOR_STORAGE_KEY);
+    if(!raw) return [];
+    const arr = JSON.parse(raw);
+    return Array.isArray(arr) ? arr : [];
+  } catch(e){ return []; }
+}
+function saveVisitors(list){
+  try { localStorage.setItem(VISITOR_STORAGE_KEY, JSON.stringify(list)); } catch(e){}
+}
+
+function detectDevice(){
+  const ua = navigator.userAgent;
+  let os = 'Unknown', browser = 'Unknown', type = 'Desktop';
+  // OS
+  if(/Windows NT 10/.test(ua)) os = 'Windows 10/11';
+  else if(/Windows NT 6\.3/.test(ua)) os = 'Windows 8.1';
+  else if(/Windows NT 6\.1/.test(ua)) os = 'Windows 7';
+  else if(/Windows/.test(ua)) os = 'Windows';
+  else if(/Android (\d+(\.\d+)?)/.test(ua)) { os = 'Android ' + RegExp.$1; type = 'Mobile'; }
+  else if(/iPhone OS (\d+_\d+)/.test(ua)) { os = 'iOS ' + RegExp.$1.replace('_','.'); type = 'Mobile'; }
+  else if(/iPad/.test(ua)) { os = 'iPadOS'; type = 'Tablet'; }
+  else if(/Mac OS X (\d+[._]\d+)/.test(ua)) os = 'macOS ' + RegExp.$1.replace('_','.');
+  else if(/CrOS/.test(ua)) os = 'ChromeOS';
+  else if(/Linux/.test(ua)) os = 'Linux';
+  // Browser
+  if(/Edg\//.test(ua)) browser = 'Edge';
+  else if(/OPR\/|Opera/.test(ua)) browser = 'Opera';
+  else if(/Chrome\//.test(ua) && !/Chromium/.test(ua)) browser = 'Chrome';
+  else if(/Firefox\//.test(ua)) browser = 'Firefox';
+  else if(/Safari\//.test(ua) && !/Chrome/.test(ua)) browser = 'Safari';
+  // Model hints from UA
+  let model = 'Unknown';
+  const androidMatch = ua.match(/Android[^;]*;\s*([^;)]+)\s*(?:Build|\))/);
+  if(androidMatch) model = androidMatch[1].trim();
+  if(/iPhone/.test(ua)){
+    const m = ua.match(/iPhone OS (\d+_\d+)/);
+    model = 'iPhone' + (m ? ' (iOS '+m[1].replace('_','.')+')' : '');
+  }
+  if(/iPad/.test(ua)) model = 'iPad';
+  // touch
+  const touch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+  if(touch && type === 'Desktop') type = 'Touch Device';
+  // screen
+  const screenRes = window.screen ? `${screen.width}x${screen.height}` : '';
+  // platform
+  const platform = navigator.platform || '';
+  return { os, browser, type, model, screenRes, platform, ua };
+}
+
+async function fetchGeoInfo(){
+  // Free endpoints — ipapi.co first, fallback to ipwho.is
+  const tryFetch = async (url) => {
+    try {
+      const r = await fetch(url, { cache: 'no-store' });
+      if(!r.ok) return null;
+      return await r.json();
+    } catch(e){ return null; }
+  };
+  // ipapi.co
+  let d = await tryFetch('https://ipapi.co/json/');
+  if(d && d.ip){
+    return {
+      ip: d.ip,
+      country: d.country_name || d.country || '',
+      countryCode: d.country_code || '',
+      city: d.city || '',
+      region: d.region || '',
+      org: d.org || '',
+      timezone: d.timezone || '',
+      latitude: d.latitude, longitude: d.longitude,
+      source: 'ipapi.co'
+    };
+  }
+  // ipwho.is
+  d = await tryFetch('https://ipwho.is/');
+  if(d && d.ip){
+    return {
+      ip: d.ip,
+      country: d.country || '',
+      countryCode: d.country_code || '',
+      city: d.city || '',
+      region: d.region || '',
+      org: d.connection?.isp || '',
+      timezone: d.timezone?.id || '',
+      latitude: d.latitude, longitude: d.longitude,
+      source: 'ipwho.is'
+    };
+  }
+  // last fallback ipify (IP only)
+  d = await tryFetch('https://api.ipify.org?format=json');
+  if(d && d.ip){
+    return {
+      ip: d.ip, country:'', countryCode:'', city:'', region:'',
+      org:'', timezone:'', latitude:null, longitude:null, source:'ipify'
+    };
+  }
+  return { ip:'', country:'', countryCode:'', city:'', region:'',
+           org:'', timezone:'', latitude:null, longitude:null, source:'none' };
+}
+
+function detectVPN(geo){
+  const reasons = [];
+  // 1) Timezone mismatch
+  const browserTz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+  if(geo.timezone && browserTz && geo.timezone !== browserTz){
+    reasons.push(`Timezone mismatch (IP: ${geo.timezone} vs Browser: ${browserTz})`);
+  }
+  // 2) Known hosting/datacenter orgs (very rough)
+  const org = (geo.org||'').toLowerCase();
+  const hostingHints = ['hosting','vpn','datacenter','data center','amazon','digitalocean','linode','ovh','hetzner','vultr','azure','google cloud','m247','nordvpn','expressvpn','surfshark','proton'];
+  if(hostingHints.some(h => org.includes(h))){
+    reasons.push(`Hosting/VPN ASN detected (${geo.org})`);
+  }
+  // 3) WebRTC local IP mismatch — async, skipped here (could add later)
+  return { usingVPN: reasons.length > 0, reasons };
+}
+
+async function logVisit(){
+  const deviceId = getOrCreateDeviceId();
+  const device = detectDevice();
+  const now = new Date().toISOString();
+  const geo = await fetchGeoInfo();
+  const vpn = detectVPN(geo);
+
+  const list = loadVisitors();
+  const existing = list.find(v => v.deviceId === deviceId);
+  if(existing){
+    // Update: keep firstSeen, update lastSeen, model history if changed
+    const modelChanged = existing.device.model !== device.model && device.model !== 'Unknown';
+    existing.lastSeen = now;
+    existing.visits = (existing.visits||1) + 1;
+    existing.device = device;
+    existing.geo = geo;
+    existing.vpn = vpn;
+    if(modelChanged){
+      existing.modelHistory = existing.modelHistory || [];
+      existing.modelHistory.push({ oldModel: existing.device.model, newModel: device.model, at: now });
+    }
+  } else {
+    list.push({
+      deviceId,
+      firstSeen: now,
+      lastSeen: now,
+      visits: 1,
+      device,
+      geo,
+      vpn,
+      modelHistory: []
+    });
+  }
+  saveVisitors(list);
+}
+
+/* ==================================================================== */
+/* ========== ♟ SECRET CHESS GATE (3D) =============================== */
+/* ==================================================================== */
+(function(){
+  // Trigger: 3 rapid clicks on logo
+  const trigger = document.getElementById('secretLogoTrigger');
+  const gate = document.getElementById('chessGate');
+  const glass = document.getElementById('chessGlass');
+  const closeBtn = document.getElementById('chessCloseBtn');
+  const resetBtn = document.getElementById('chessResetBtn');
+  const statusEl = document.getElementById('chessStatus');
+  const grid = document.getElementById('squaresGrid');
+  if(!trigger || !gate || !grid) return;
+
+  let clickCount = 0, clickTimer = null;
+  trigger.addEventListener('click', () => {
+    clickCount++;
+    clearTimeout(clickTimer);
+    clickTimer = setTimeout(() => { clickCount = 0; }, 900);
+    if(clickCount >= 3){
+      clickCount = 0;
+      openGate();
+    }
+  });
+
+  // Also allow keyboard shortcut: Ctrl+Shift+C
+  window.addEventListener('keydown', (e) => {
+    if(e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'c'){
+      e.preventDefault();
+      openGate();
+    }
+  });
+
+  function openGate(){
+    gate.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    initBoard();
+  }
+  function closeGate(){
+    gate.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  closeBtn.addEventListener('click', closeGate);
+  gate.addEventListener('click', (e) => { if(e.target === gate) closeGate(); });
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && gate.classList.contains('active')) closeGate();
+  });
+
+  /* --- Chess engine (simplified) --- */
+  // Board representation: array 64, index 0 = a8, 63 = h1
+  // pieces: 'P','N','B','R','Q','K' white; lowercase black
+  const START = [
+    'r','n','b','q','k','b','n','r',
+    'p','p','p','p','p','p','p','p',
+    '', '', '', '', '', '', '', '',
+    '', '', '', '', '', '', '', '',
+    '', '', '', '', '', '', '', '',
+    '', '', '', '', '', '', '', '',
+    'P','P','P','P','P','P','P','P',
+    'R','N','B','Q','K','B','N','R'
+  ];
+  const GLYPH = {
+    P:'♙', N:'♘', B:'♗', R:'♖', Q:'♕', K:'♔',
+    p:'♟', n:'♞', b:'♝', r:'♜', q:'♛', k:'♚'
+  };
+  const FILES = ['a','b','c','d','e','f','g','h'];
+  const RANKS = ['8','7','6','5','4','3','2','1'];
+
+  let board = START.slice();
+  let turn = 'w';
+  let selected = -1;
+  let legalMoves = [];
+  let lastMove = null;
+  let history = [];
+
+  function idxToAlg(i){ return FILES[i%8] + RANKS[Math.floor(i/8)]; }
+  function isWhite(p){ return p === p.toUpperCase() && p !== ''; }
+  function isBlack(p){ return p === p.toLowerCase() && p !== ''; }
+  function isEnemy(p, side){ return side === 'w' ? isBlack(p) : isWhite(p); }
+  function isOwn(p, side){ return side === 'w' ? isWhite(p) : isBlack(p); }
+
+  function cloneBoard(b){ return b.slice(); }
+
+  function findKing(b, side){
+    const k = side === 'w' ? 'K' : 'k';
+    for(let i=0;i<64;i++) if(b[i]===k) return i;
+    return -1;
+  }
+
+  function inBounds(i){ return i>=0 && i<64; }
+  function fileOf(i){ return i%8; }
+  function rankOf(i){ return Math.floor(i/8); }
+
+  function pseudoMoves(b, from, side){
+    const p = b[from]; const moves = [];
+    if(!p) return moves;
+    const f = fileOf(from), r = rankOf(from);
+    const add = (to, opts={}) => {
+      if(!inBounds(to)) return false;
+      const target = b[to];
+      if(isOwn(target, side)) return false;
+      moves.push({ from, to, capture: !!target, ...opts });
+      return !target;
+    };
+    const P = p.toUpperCase();
+    const dir = side === 'w' ? -1 : 1;
+    if(P === 'P'){
+      const startRank = side === 'w' ? 6 : 1;
+      // forward 1
+      const f1 = from + dir*8;
+      if(inBounds(f1) && !b[f1]){
+        moves.push({ from, to: f1, capture:false, pawnDouble:false });
+        // forward 2 from start
+        if(r === startRank){
+          const f2 = from + dir*16;
+          if(inBounds(f2) && !b[f2]) moves.push({ from, to: f2, capture:false, pawnDouble:true });
+        }
+      }
+      // captures
+      for(const df of [-1,1]){
+        const nf = f + df; if(nf<0||nf>7) continue;
+        const nf1 = f1 + df;
+        if(inBounds(nf1) && b[nf1] && isEnemy(b[nf1], side)) moves.push({ from, to: nf1, capture:true });
+      }
+    }
+    if(P === 'N'){
+      const deltas = [[-2,-1],[-2,1],[-1,-2],[-1,2],[1,-2],[1,2],[2,-1],[2,1]];
+      deltas.forEach(([dr,dc])=>{
+        const nr=r+dr, nc=f+dc;
+        if(nr<0||nr>7||nc<0||nc>7) return;
+        const to = nr*8+nc;
+        if(isOwn(b[to], side)) return;
+        moves.push({ from, to, capture: !!b[to] });
+      });
+    }
+    if(P === 'B' || P === 'R' || P === 'Q'){
+      const dirs = [];
+      if(P==='B'||P==='Q') dirs.push([-1,-1],[-1,1],[1,-1],[1,1]);
+      if(P==='R'||P==='Q') dirs.push([-1,0],[1,0],[0,-1],[0,1]);
+      dirs.forEach(([dr,dc])=>{
+        let nr=r+dr, nc=f+dc;
+        while(nr>=0&&nr<8&&nc>=0&&nc<8){
+          const to = nr*8+nc;
+          if(isOwn(b[to], side)) break;
+          moves.push({ from, to, capture: !!b[to] });
+          if(b[to]) break;
+          nr+=dr; nc+=dc;
+        }
+      });
+    }
+    if(P === 'K'){
+      for(let dr=-1;dr<=1;dr++) for(let dc=-1;dc<=1;dc++){
+        if(dr===0&&dc===0) continue;
+        const nr=r+dr, nc=f+dc;
+        if(nr<0||nr>7||nc<0||nc>7) continue;
+        const to = nr*8+nc;
+        if(isOwn(b[to], side)) continue;
+        moves.push({ from, to, capture: !!b[to] });
+      }
+    }
+    return moves;
+  }
+
+  function kingAttacked(b, side){
+    const king = findKing(b, side);
+    if(king < 0) return false;
+    const enemy = side === 'w' ? 'b' : 'w';
+    for(let i=0;i<64;i++){
+      if(b[i] && isEnemy(b[i], side)){
+        const ms = pseudoMoves(b, i, enemy);
+        if(ms.some(m => m.to === king)) return true;
+      }
+    }
+    return false;
+  }
+
+  function legalMovesFor(b, from, side){
+    const p = b[from];
+    if(!p || !isOwn(p, side)) return [];
+    const moves = pseudoMoves(b, from, side);
+    return moves.filter(m => {
+      const nb = cloneBoard(b);
+      nb[m.to] = nb[m.from]; nb[m.from] = '';
+      // handle pawn promotion
+      const P = p.toUpperCase();
+      if(P === 'P'){
+        const rank = rankOf(m.to);
+        if((side==='w' && rank===0) || (side==='b' && rank===7)){
+          nb[m.to] = side==='w' ? 'Q' : 'q';
+        }
+      }
+      return !kingAttacked(nb, side);
+    });
+  }
+
+  function hasAnyLegalMove(b, side){
+    for(let i=0;i<64;i++){
+      if(b[i] && isOwn(b[i], side)){
+        if(legalMovesFor(b, i, side).length > 0) return true;
+      }
+    }
+    return false;
+  }
+
+  function inCheck(b, side){
+    return kingAttacked(b, side);
+  }
+
+  function applyMove(from, to){
+    history.push({ board: cloneBoard(board), turn, selected, lastMove });
+    const p = board[from];
+    board[to] = p;
+    board[from] = '';
+    // promotion
+    if(p.toUpperCase() === 'P'){
+      const rank = rankOf(to);
+      if((turn==='w' && rank===0) || (turn==='b' && rank===7)){
+        board[to] = turn==='w' ? 'Q' : 'q';
+      }
+    }
+    lastMove = { from, to };
+    turn = turn === 'w' ? 'b' : 'w';
+    selected = -1; legalMoves = [];
+    render();
+    // After move, check game state
+    const sideToMove = turn;
+    const checked = inCheck(board, sideToMove);
+    const hasMove = hasAnyLegalMove(board, sideToMove);
+    const isMate = checked && !hasMove;
+    const isStale = !checked && !hasMove;
+    if(isMate){
+      statusEl.innerHTML = `<strong>Checkmate!</strong> ${sideToMove==='b' ? 'White' : 'Black'} wins. ♛`;
+      glass.classList.add('victory');
+      // Unlock after short delay
+      setTimeout(() => { unlockArchive(); }, 900);
+    } else if(isStale){
+      statusEl.innerHTML = `<strong>Stalemate.</strong> Draw — try again.`;
+    } else if(checked){
+      statusEl.innerHTML = `<strong>Check!</strong> ${sideToMove==='w'?'White':'Black'} is in check.`;
+    } else {
+      statusEl.innerHTML = `<strong>${turn==='w'?'White':'Black'}</strong> to move. ${lastMove ? `Last: ${idxToAlg(lastMove.from)}→${idxToAlg(lastMove.to)}` : ''}`;
+    }
+  }
+
+  function render(){
+    grid.innerHTML = '';
+    for(let i=0;i<64;i++){
+      const r = rankOf(i), f = fileOf(i);
+      const isLight = (r+f) % 2 === 0;
+      const sq = document.createElement('div');
+      sq.className = 'sq ' + (isLight ? 'light' : 'dark');
+      sq.dataset.idx = i;
+      // highlight selected
+      if(selected === i) sq.classList.add('selected');
+      // legal move dots
+      if(legalMoves.some(m => m.to === i)){
+        const isCap = !!board[i];
+        sq.classList.add(isCap ? 'legal-capture' : 'legal-move');
+      }
+      // piece
+      if(board[i]){
+        const span = document.createElement('span');
+        span.className = 'piece ' + (isWhite(board[i]) ? 'white' : 'black');
+        span.textContent = GLYPH[board[i]] || '';
+        sq.appendChild(span);
+      }
+      // coords (light squares only)
+      if(f === 0){
+        const c = document.createElement('span'); c.className='coord rank'; c.textContent = RANKS[r]; sq.appendChild(c);
+      }
+      if(r === 7){
+        const c = document.createElement('span'); c.className='coord file'; c.textContent = FILES[f]; sq.appendChild(c);
+      }
+      sq.addEventListener('click', () => onSquareClick(i));
+      grid.appendChild(sq);
+    }
+  }
+
+  function onSquareClick(i){
+    const piece = board[i];
+    if(selected === -1){
+      if(piece && isOwn(piece, turn)){
+        selected = i;
+        legalMoves = legalMovesFor(board, i, turn);
+        render();
+      }
+      return;
+    }
+    // If clicking same square, deselect
+    if(selected === i){ selected = -1; legalMoves = []; render(); return; }
+    // If clicking own piece, reselect
+    if(piece && isOwn(piece, turn)){ selected = i; legalMoves = legalMovesFor(board, i, turn); render(); return; }
+    // Attempt move
+    if(legalMoves.some(m => m.to === i)){
+      applyMove(selected, i);
+    } else {
+      // Invalid — reset
+      selected = -1; legalMoves = []; render();
+    }
+  }
+
+  function initBoard(){
+    board = START.slice();
+    turn = 'w';
+    selected = -1; legalMoves = []; lastMove = null; history = [];
+    glass.classList.remove('victory');
+    statusEl.innerHTML = `<strong>White</strong> to move. Find the forced checkmate to unlock.`;
+    render();
+  }
+  resetBtn.addEventListener('click', initBoard);
+
+  function unlockArchive(){
+    statusEl.classList.add('victory');
+    // Close chess, open admin
+    setTimeout(() => {
+      closeGate();
+      openAdmin();
+    }, 700);
+  }
+  window.__unlockArchiveFromChess = unlockArchive;
+})();
+
+/* ==================================================================== */
+/* ========== 📊 VISITOR ADMIN PANEL ================================= */
+/* ==================================================================== */
+function openAdmin(){
+  const panel = document.getElementById('visitorAdmin');
+  if(!panel) return;
+  panel.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  renderVisitorTable();
+}
+function closeAdmin(){
+  const panel = document.getElementById('visitorAdmin');
+  if(!panel) return;
+  panel.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function fmtDate(iso){
+  if(!iso) return '—';
+  try {
+    const d = new Date(iso);
+    return d.toLocaleString('en-GB', { year:'numeric', month:'short', day:'2-digit', hour:'2-digit', minute:'2-digit' });
+  } catch(e){ return iso; }
+}
+
+function renderVisitorTable(){
+  const tbody = document.getElementById('visitorTbody');
+  const summary = document.getElementById('adminSummary');
+  if(!tbody || !summary) return;
+  const list = loadVisitors();
+
+  // Summary
+  const totalDevices = list.length;
+  const totalVisits = list.reduce((a,v)=>a+(v.visits||1),0);
+  const vpnCount = list.filter(v=>v.vpn && v.vpn.usingVPN).length;
+  const countries = new Set(list.map(v=>v.geo && v.geo.country).filter(Boolean));
+  summary.innerHTML = `
+    <div class="stat-card"><div class="label">Unique Devices</div><div class="value">${totalDevices}</div></div>
+    <div class="stat-card"><div class="label">Total Visits</div><div class="value">${totalVisits}</div></div>
+    <div class="stat-card"><div class="label">VPN Detected</div><div class="value">${vpnCount}</div></div>
+    <div class="stat-card"><div class="label">Countries</div><div class="value">${countries.size}</div></div>
+  `;
+
+  if(list.length === 0){
+    tbody.innerHTML = `<tr><td colspan="7"><div class="empty-state">No visitors logged yet.<br><small>Reload the page or trigger a visit from another device/browser.</small></div></td></tr>`;
+    return;
+  }
+
+  // Sort by lastSeen desc
+  list.sort((a,b)=> new Date(b.lastSeen) - new Date(a.lastSeen));
+
+  tbody.innerHTML = '';
+  list.forEach((v, idx) => {
+    const d = v.device || {};
+    const g = v.geo || {};
+    const vpn = v.vpn || {};
+    const vpnClass = vpn.usingVPN ? 'vpn-yes' : (vpn.reasons && vpn.reasons.length ? 'vpn-unknown' : 'vpn-no');
+    const vpnLabel = vpn.usingVPN ? 'VPN: YES' : 'VPN: NO';
+    const modelShort = (d.model && d.model !== 'Unknown') ? d.model : (d.os || 'Unknown');
+    const tr = document.createElement('tr');
+    tr.className = 'device-row';
+    tr.innerHTML = `
+      <td>${idx+1}</td>
+      <td><span class="device-id">${escapeHtml(modelShort)}</span><br><small style="color:#8fa4c0">${escapeHtml(d.os||'')} · ${escapeHtml(d.browser||'')}</small></td>
+      <td>${escapeHtml(g.country||'—')}${g.city ? ' · <small>'+escapeHtml(g.city)+'</small>' : ''}</td>
+      <td><code style="color:#ffe6a0">${escapeHtml(g.ip||'—')}</code></td>
+      <td><span class="badge ${vpnClass}">${vpnLabel}</span></td>
+      <td><small>${fmtDate(v.firstSeen)}</small></td>
+      <td><small>${fmtDate(v.lastSeen)}</small></td>
+    `;
+    // Expandable detail
+    const detailTr = document.createElement('tr');
+    const detailTd = document.createElement('td');
+    detailTd.colSpan = 7;
+    const panel = document.createElement('div');
+    panel.className = 'detail-panel';
+    // Model history info
+    let historyHtml = '<em>No model change recorded</em>';
+    if(v.modelHistory && v.modelHistory.length){
+      historyHtml = v.modelHistory.map(h =>
+        `<div>Old: <b>${escapeHtml(h.oldModel||'?')}</b> → New: <b>${escapeHtml(h.newModel||'?')}</b> <small>(${fmtDate(h.at)})</small></div>`
+      ).join('');
+    }
+    // VPN reasons
+    let vpnReasonsHtml = '<em>No suspicious signals</em>';
+    if(vpn.reasons && vpn.reasons.length){
+      vpnReasonsHtml = vpn.reasons.map(r => `<div>• ${escapeHtml(r)}</div>`).join('');
+    }
+    panel.innerHTML = `
+      <div class="kv"><div class="k">Device ID</div><div class="v">${escapeHtml(v.deviceId||'')}</div></div>
+      <div class="kv"><div class="k">Model</div><div class="v">${escapeHtml(d.model||'Unknown')}</div></div>
+      <div class="kv"><div class="k">OS</div><div class="v">${escapeHtml(d.os||'')}</div></div>
+      <div class="kv"><div class="k">Browser</div><div class="v">${escapeHtml(d.browser||'')}</div></div>
+      <div class="kv"><div class="k">Screen</div><div class="v">${escapeHtml(d.screenRes||'')}</div></div>
+      <div class="kv"><div class="k">IP</div><div class="v">${escapeHtml(g.ip||'')}</div></div>
+      <div class="kv"><div classع="k">Country / Region</div><div class="v">${escapeHtml(g.country||'')} ${g.region?'· '+escapeHtml(g.region):''}</div></div>
+      <div class="kv"><div class="k">City</div><div class="v">${escapeHtml(g.city||'—')}</div></div>
+      <div class="kv"><div class="k">Org / ISP</div><div class="v">${escapeHtml(g.org||'—')}</div></div>
+      <div class="kv"><div class="k">IP Timezone</div><div class="v">${escapeHtml(g.timezone||'—')}</div></div>
+      <div class="kv"><div class="k">Coordinates</div><div class="v">${g.latitude!=null?g.latitude+', '+g.longitude:'—'}</div></div>
+      <div class="kv"><div class="k">Visits</div><div class="v">${v.visits||1}</div></div>
+      <div style="margin-top:10px; color:#9db1cc; font-weight:600;">VPN Signals:</div>
+      <div style="color:#cfe0ff;">${vpnReasonsHtml}</div>
+      <div style="margin-top:10px; color:#9db1cc; font-weight:600;">Model Change History:</div>
+      <div style="color:#cfe0ff;">${historyHtml}</div>
+    `;
+    detailTd.appendChild(panel);
+    detailTr.appendChild(detailTd);
+    // Toggle on row click
+    tr.addEventListener('click', () => {
+      panel.classList.toggle('open');
+    });
+    tbody.appendChild(tr);
+    tbody.appendChild(detailTr);
+  });
+}
+
+function escapeHtml(s){
+  if(s == null) return '';
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+document.getElementById('adminCloseBtn').addEventListener('click', closeAdmin);
+document.getElementById('adminRefreshBtn').addEventListener('click', renderVisitorTable);
+document.getElementById('adminClearBtn').addEventListener('click', () => {
+  if(confirm('Clear all visitor records from localStorage?')){
+    localStorage.removeItem(VISITOR_STORAGE_KEY);
+    renderVisitorTable();
+  }
+});
+document.getElementById('adminExportBtn').addEventListener('click', () => {
+  const data = loadVisitors();
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type:'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'visitor-log-' + Date.now() + '.json';
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+});
+document.getElementById('visitorAdmin').addEventListener('click', (e) => {
+  if(e.target.id === 'visitorAdmin') closeAdmin();
+});
+
+/* ============ INIT ============ */
+window.addEventListener('DOMContentLoaded', ()=>{
+  let savedTheme = 'classic';
+  try { savedTheme = localStorage.getItem('theme') || 'classic'; } catch(e) {}
+  if (THEME_LIST.includes(savedTheme)) changeTheme(savedTheme);
+
+  try{
+    const savedLang = localStorage.getItem('lang');
+    if(savedLang && translations[savedLang]){
+      document.getElementById('langSelect').value = savedLang;
+      changeLanguage(savedLang);
+    }
+  }catch(e){}
+
+  try{
+    const customBg = localStorage.getItem('customBg');
+    if (customBg) applyBgColor(customBg);
+  }catch(e){}
+
+  setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 200);
+
+  // Log visitor silently in background
+  logVisit().catch(()=>{});
+});
 </script>
 </body>
 </html>
