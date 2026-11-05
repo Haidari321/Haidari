@@ -367,20 +367,87 @@ p { font-size: 0.94rem; color: var(--ink); margin-bottom: 14px; line-height: 1.7
   font-size: 0.6rem; color: #8a6f5a; text-align: center; font-weight: 600;
 }
 
-.admin-list {
-  max-height: 55vh; overflow-y: auto;
-  color: #c9b78e; font-family: monospace; font-size: 0.75rem; line-height: 1.6;
+/* ============ ADMIN PANEL ============ */
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
 }
-.admin-list .visit-card {
-  padding: 10px; margin-bottom: 8px;
+.stat-card {
+  padding: 12px 14px;
+  background: linear-gradient(145deg, rgba(201,183,142,0.12), rgba(201,183,142,0.04));
+  border: 1px solid rgba(201,183,142,0.3);
+  border-radius: 10px;
+  text-align: center;
+}
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f5b942;
+  font-family: Georgia, serif;
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 0.62rem;
+  color: #8a6f5a;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 4px;
+  font-weight: 600;
+}
+.stat-card.warn .stat-value { color: #ffb347; }
+.stat-card.good .stat-value { color: #4ade80; }
+
+.admin-list {
+  max-height: 45vh; overflow-y: auto;
+  color: #c9b78e; font-family: monospace; font-size: 0.75rem; line-height: 1.6;
+  padding-right: 4px;
+}
+.admin-list::-webkit-scrollbar { width: 6px; }
+.admin-list::-webkit-scrollbar-thumb { background: rgba(201,183,142,0.3); border-radius: 3px; }
+
+.visit-card {
+  padding: 12px;
+  margin-bottom: 10px;
   background: rgba(201,183,142,0.06);
   border: 1px solid rgba(201,183,142,0.15);
   border-radius: 8px;
 }
-.admin-list .visit-time { color: #e0c9a0; font-weight: 700; margin-bottom: 4px; }
-.admin-list .visit-fields {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 2px 10px; font-size: 0.7rem;
+.visit-card.vpn-detected {
+  background: rgba(255,140,0,0.08);
+  border-color: rgba(255,140,0,0.35);
+  box-shadow: 0 0 12px rgba(255,140,0,0.15);
 }
+.visit-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 8px; flex-wrap: wrap; gap: 6px;
+}
+.visit-time { color: #e0c9a0; font-weight: 700; font-size: 0.75rem; }
+.vpn-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 8px; border-radius: 100px;
+  font-size: 0.6rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+}
+.vpn-badge.detected {
+  background: rgba(255,140,0,0.25);
+  color: #ffb347;
+  border: 1px solid rgba(255,140,0,0.5);
+}
+.vpn-badge.clear {
+  background: rgba(74,222,128,0.15);
+  color: #4ade80;
+  border: 1px solid rgba(74,222,128,0.4);
+}
+.visit-fields {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px;
+  font-size: 0.72rem;
+}
+.visit-fields .field-label { color: #8a6f5a; }
+.visit-fields .field-value { color: #e0d0b0; word-break: break-all; }
+.visit-fields .full { grid-column: 1 / -1; }
+
 .admin-actions { display: flex; gap: 10px; margin-top: 14px; }
 .admin-actions button {
   flex: 1; padding: 10px; border-radius: 10px;
@@ -516,11 +583,12 @@ p { font-size: 0.94rem; color: var(--ink); margin-bottom: 14px; line-height: 1.7
 </div>
 
 <div class="chess-overlay" id="adminOverlay">
-  <div class="chess-box" style="max-width:720px;">
+  <div class="chess-box" style="max-width:760px;">
     <div class="chess-box-header">
-      <div class="chess-box-title">Visitor Log</div>
+      <div class="chess-box-title">Visitor Analytics</div>
       <button class="chess-box-close" onclick="closeAdminPanel()">X</button>
     </div>
+    <div class="admin-stats" id="adminStats"></div>
     <div class="admin-list" id="adminContent"></div>
     <div class="admin-actions">
       <button class="btn-export" onclick="exportVisitorLog()">Export JSON</button>
@@ -625,41 +693,114 @@ function resetBgColor() {
   draw();
 })();
 
+/* ============ VISITOR LOGGER (with VPN detection) ============ */
 const VisitorLog = (function(){
-  const KEY = 'visitor_log_v1';
+  const KEY = 'visitor_log_v2';
+
   function detectDevice() {
     const ua = navigator.userAgent;
     let device = 'Desktop', os = 'Unknown', browser = 'Unknown';
-    if (/iPhone|iPad|iPod/i.test(ua)) { device = 'iOS'; os = 'iOS'; }
-    else if (/Android/i.test(ua)) { device = 'Android'; os = 'Android'; }
+    if (/iPhone/i.test(ua)) { device = 'iPhone'; os = 'iOS'; }
+    else if (/iPad/i.test(ua)) { device = 'iPad'; os = 'iPadOS'; }
+    else if (/iPod/i.test(ua)) { device = 'iPod'; os = 'iOS'; }
+    else if (/Android/i.test(ua)) {
+      device = 'Android';
+      os = 'Android';
+      const m = ua.match(/Android[^;]*;\s*([^;)]+)/);
+      if (m && m[1]) device = m[1].trim() + ' (Android)';
+    }
+    else if (/Windows NT 10/i.test(ua)) os = 'Windows 10/11';
     else if (/Windows/i.test(ua)) os = 'Windows';
-    else if (/Mac/i.test(ua)) os = 'macOS';
+    else if (/Mac OS X/i.test(ua)) os = 'macOS';
     else if (/Linux/i.test(ua)) os = 'Linux';
     if (/Edg\//i.test(ua)) browser = 'Edge';
-    else if (/Chrome\//i.test(ua)) browser = 'Chrome';
+    else if (/OPR\//i.test(ua) || /Opera/i.test(ua)) browser = 'Opera';
+    else if (/Chrome\//i.test(ua) && !/Chromium/i.test(ua)) browser = 'Chrome';
     else if (/Firefox\//i.test(ua)) browser = 'Firefox';
-    else if (/Safari\//i.test(ua)) browser = 'Safari';
-    return { device, os, browser, screen: window.screen.width + 'x' + window.screen.height,
-      lang: navigator.language, tz: Intl.DateTimeFormat().resolvedOptions().timeZone, ua };
+    else if (/Safari\//i.test(ua) && !/Chrome/i.test(ua)) browser = 'Safari';
+    else if (/SamsungBrowser/i.test(ua)) browser = 'Samsung Browser';
+    return {
+      device, os, browser,
+      screen: window.screen.width + '×' + window.screen.height,
+      lang: navigator.language || 'unknown',
+      tz: Intl.DateTimeFormat().resolvedOptions().timeZone || 'unknown',
+      ua
+    };
   }
+
+  // VPN/Proxy heuristic detection based on ipapi.co data
+  function detectVPN(d) {
+    if (!d) return { isVPN: false, reason: 'no data' };
+    const reasons = [];
+    // ipapi.co: "org" contains hosting providers names → likely VPN
+    const hostingKeywords = ['vpn','proxy','hosting','amazon','aws','digitalocean','linode','vultr','hetzner','ovh','azure','google cloud','cloudflare','m247','nordvpn','expressvpn','surfshark','cyberghost','private internet','packet','contabo','leaseweb','choopa','quadranet','hostwinds','psychz','cogent'];
+    const org = (d.org || d.isp || '').toLowerCase();
+    for (const k of hostingKeywords) {
+      if (org.indexOf(k) !== -1) { reasons.push('hosting: ' + k); break; }
+    }
+    // ipapi.co has no direct vpn flag in free tier but the "org" is the main signal
+    // Also check timezone mismatch (country vs timezone)
+    return {
+      isVPN: reasons.length > 0,
+      reason: reasons.join(', ') || 'residential'
+    };
+  }
+
   async function fetchIP() {
     try {
       const r = await fetch('https://ipapi.co/json/');
+      if (!r.ok) throw new Error('HTTP ' + r.status);
       const d = await r.json();
-      return { ip: d.ip || '?', city: d.city || '', country: d.country_name || '', isp: d.org || '' };
-    } catch(e) { return { ip: '?', city: '', country: '', isp: '' }; }
+      return {
+        ip: d.ip || '?',
+        city: d.city || '',
+        region: d.region || '',
+        country: d.country_name || '',
+        countryCode: d.country_code || '',
+        isp: d.org || '',
+        lat: d.latitude || null,
+        lon: d.longitude || null
+      };
+    } catch(e) {
+      try {
+        const r2 = await fetch('https://api.ipify.org?format=json');
+        const d2 = await r2.json();
+        return { ip: d2.ip || '?', city: '', region: '', country: '', countryCode: '', isp: '', lat: null, lon: null };
+      } catch(e2) {
+        return { ip: '?', city: '', region: '', country: '', countryCode: '', isp: '', lat: null, lon: null };
+      }
+    }
   }
+
   async function logVisit() {
     let store = { visits: [] };
     try { store = JSON.parse(localStorage.getItem(KEY) || '{"visits":[]}'); } catch(e) {}
-    const v = { id: Date.now(), time: new Date().toLocaleString(), timestamp: new Date().toISOString(), ...detectDevice(), ...(await fetchIP()), referrer: document.referrer || 'direct' };
-    const dup = store.visits.find(x => x.ip === v.ip && Math.abs(Date.now() - new Date(x.timestamp).getTime()) < 1800000);
+    const dev = detectDevice();
+    const ipData = await fetchIP();
+    const vpn = detectVPN(ipData);
+    const v = {
+      id: Date.now() + '-' + Math.random().toString(36).slice(2, 8),
+      time: new Date().toLocaleString(),
+      timestamp: new Date().toISOString(),
+      ...dev,
+      ...ipData,
+      vpnDetected: vpn.isVPN,
+      vpnReason: vpn.reason,
+      referrer: document.referrer || 'direct'
+    };
+    // Dedup: same IP within 30 min
+    const dup = store.visits.find(x =>
+      x.ip === v.ip &&
+      Math.abs(Date.now() - new Date(x.timestamp).getTime()) < 30 * 60 * 1000
+    );
     if (!dup) {
       store.visits.unshift(v);
       if (store.visits.length > 500) store.visits.length = 500;
       try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {}
     }
+    return v;
   }
+
   function getAll() {
     try { return JSON.parse(localStorage.getItem(KEY) || '{"visits":[]}').visits || []; } catch(e) { return []; }
   }
@@ -672,9 +813,32 @@ const VisitorLog = (function(){
     a.download = 'visitor-log-' + Date.now() + '.json';
     a.click();
   }
-  return { logVisit, getAll, clear, exportJSON };
+  function computeStats() {
+    const visits = getAll();
+    const uniqueDevices = new Set();
+    const uniqueCountries = new Set();
+    const uniqueCities = new Set();
+    let vpnCount = 0;
+    visits.forEach(v => {
+      const key = (v.ip || '?') + '|' + (v.ua || '?');
+      uniqueDevices.add(key);
+      if (v.country) uniqueCountries.add(v.country);
+      if (v.city) uniqueCities.add(v.city);
+      if (v.vpnDetected) vpnCount++;
+    });
+    return {
+      totalVisits: visits.length,
+      uniqueDevices: uniqueDevices.size,
+      vpnCount,
+      cleanCount: visits.length - vpnCount,
+      countries: Array.from(uniqueCountries),
+      cities: Array.from(uniqueCities)
+    };
+  }
+  return { logVisit, getAll, clear, exportJSON, computeStats };
 })();
 
+/* ============ CHESS LOCK ============ */
 const ChessLock = (function(){
   const GLYPHS = { wK:'♔', wQ:'♕', wR:'♖', wB:'♗', wN:'♘', wP:'♙', bK:'♚', bQ:'♛', bR:'♜', bB:'♝', bN:'♞', bP:'♟' };
   let pieces = [], selectedSq = null, solved = false;
@@ -856,25 +1020,49 @@ const ChessLock = (function(){
   return { init, open, close };
 })();
 
+/* ============ ADMIN PANEL ============ */
 function openAdminPanel() {
   const o = document.getElementById('adminOverlay');
   const c = document.getElementById('adminContent');
-  if (!o || !c) return;
+  const s = document.getElementById('adminStats');
+  if (!o || !c || !s) return;
+
   const visits = VisitorLog.getAll();
+  const stats = VisitorLog.computeStats();
+
+  // Stats cards
+  s.innerHTML =
+    '<div class="stat-card"><div class="stat-value">' + stats.totalVisits + '</div><div class="stat-label">Total Visits</div></div>' +
+    '<div class="stat-card"><div class="stat-value">' + stats.uniqueDevices + '</div><div class="stat-label">Devices</div></div>' +
+    '<div class="stat-card ' + (stats.vpnCount > 0 ? 'warn' : '') + '"><div class="stat-value">' + stats.vpnCount + '</div><div class="stat-label">VPN / Proxy</div></div>' +
+    '<div class="stat-card good"><div class="stat-value">' + stats.cleanCount + '</div><div class="stat-label">Clean IPs</div></div>' +
+    '<div class="stat-card"><div class="stat-value">' + stats.countries.length + '</div><div class="stat-label">Countries</div></div>' +
+    '<div class="stat-card"><div class="stat-value">' + stats.cities.length + '</div><div class="stat-label">Cities</div></div>';
+
   if (visits.length === 0) {
     c.innerHTML = '<div style="padding:20px;text-align:center;color:#8a6f5a;">No visitors yet.</div>';
   } else {
-    c.innerHTML = visits.map(function(v,i){
-      return '<div class="visit-card">' +
-        '<div class="visit-time">#' + (i+1) + ' - ' + v.time + '</div>' +
+    c.innerHTML = visits.map(function(v, i) {
+      const vpnClass = v.vpnDetected ? 'vpn-detected' : '';
+      const vpnBadge = v.vpnDetected
+        ? '<span class="vpn-badge detected">VPN / Proxy</span>'
+        : '<span class="vpn-badge clear">Direct</span>';
+      const location = [v.city, v.region, v.country].filter(Boolean).join(', ') || '—';
+      return '<div class="visit-card ' + vpnClass + '">' +
+        '<div class="visit-header">' +
+          '<span class="visit-time">#' + (i+1) + ' — ' + v.time + '</span>' +
+          vpnBadge +
+        '</div>' +
         '<div class="visit-fields">' +
-          '<div>IP: ' + v.ip + '</div>' +
-          '<div>Device: ' + v.device + '</div>' +
-          '<div>OS: ' + v.os + '</div>' +
-          '<div>Browser: ' + v.browser + '</div>' +
-          '<div>Country: ' + (v.country || '?') + '</div>' +
-          '<div>City: ' + (v.city || '?') + '</div>' +
-          '<div style="grid-column:1/-1;">ISP: ' + (v.isp || '?') + '</div>' +
+          '<div><span class="field-label">IP:</span> <span class="field-value">' + (v.ip || '?') + '</span></div>' +
+          '<div><span class="field-label">Device:</span> <span class="field-value">' + (v.device || '?') + '</span></div>' +
+          '<div><span class="field-label">OS:</span> <span class="field-value">' + (v.os || '?') + '</span></div>' +
+          '<div><span class="field-label">Browser:</span> <span class="field-value">' + (v.browser || '?') + '</span></div>' +
+          '<div><span class="field-label">Country:</span> <span class="field-value">' + (v.country || '?') + (v.countryCode ? ' (' + v.countryCode + ')' : '') + '</span></div>' +
+          '<div><span class="field-label">City:</span> <span class="field-value">' + (v.city || '?') + '</span></div>' +
+          '<div class="full"><span class="field-label">Location:</span> <span class="field-value">' + location + '</span></div>' +
+          '<div class="full"><span class="field-label">ISP / Org:</span> <span class="field-value">' + (v.isp || '?') + '</span></div>' +
+          (v.vpnDetected ? '<div class="full"><span class="field-label">VPN Signal:</span> <span class="field-value" style="color:#ffb347;">' + v.vpnReason + '</span></div>' : '') +
         '</div>' +
       '</div>';
     }).join('');
@@ -894,6 +1082,7 @@ function clearVisitorLog() {
   }
 }
 
+/* ============ TRANSLATIONS ============ */
 const translations = {
   en: { dir:'ltr', title:'Mohammad Asim Haidari | Portfolio & CV', name:'Mohammad Asim Haidari', subtitle:'Software Engineer & Cyber Security Intern', welcome:'Welcome to my personal index - an interactive, living curriculum vitae built for recruiters, peers, and collaborators to explore my engineering track record and current operations.', profileTitle:'Profile', profileText:'I am a highly analytical software engineer and an actively practicing cybersecurity intern. Over the past three years, I have engineered reliable software patterns, built functional architectures, and specialized in monitoring security perimeters, evaluating code vulnerabilities, and optimizing overall structural integrity.', specsTitle:'Specifications', expLabel:'Experience', expText:'1 Year of Full-Stack Application Programming', focusLabel:'Current Focus', focusText:'Cybersecurity Auditing, Threat Detection & Penetration Testing', interfaceLabel:'Interface', interfaceText:'Native support for dark and light reading environments', videoTitle:'Video Editing & Production', videoIntro:'In addition to software engineering, I bring 7 years of professional video editing experience across Adobe Creative Suite and YouTube content production.', videoAdobeLabel:'Adobe Suite', videoAdobeText:'Premiere Pro, After Effects, Photoshop, Illustrator - 7 years of professional editing and motion graphics.', videoChartLabel:'Chart & Motion Graphics', videoChartText:'Animated charts, data visualizations, and explainer graphics for YouTube channels and corporate clients.', videoYoutubeLabel:'YouTube Production', videoYoutubeText:'End-to-end YouTube video production - scripting, editing, thumbnails, and channel branding for 7 years.', contactTitle:'Correspondence', contactText:'For contract acquisition, security consultation, or employment inquiries, please dispatch your message directly to my verified email.', galleryTitle:'Gallery', waveCaption:'~ harmonic wave ~' },
   fa: { dir:'rtl', title:'محمد عاصم حیدری | پورتفولیو و رزومه', name:'محمد عاصم حیدری', subtitle:'مهندس نرم‌افزار و کارآموز امنیت سایبری', welcome:'به نمایه شخصی من خوش آمدید - یک رزومه تعاملی و پویا که برای استخدام‌کنندگان، همکاران و شرکا ساخته شده است.', profileTitle:'پروفایل', profileText:'من یک مهندس نرم‌افزار تحلیل‌گر و کارآموز فعال امنیت سایبری هستم. طی سه سال گذشته، الگوهای نرم‌افزاری قابل اعتمادی را مهندسی کرده‌ام و در زمینه نظارت بر حوزه‌های امنیتی، ارزیابی آسیب‌پذیری کد و بهینه‌سازی یکپارچگی ساختاری تخصص دارم.', specsTitle:'مشخصات', expLabel:'تجربه', expText:'۱ سال برنامه‌نویسی اپلیکیشن‌های فول‌استک', focusLabel:'تمرکز فعلی', focusText:'حسابرسی امنیت سایبری، تشخیص تهدیدات و تست نفوذ', interfaceLabel:'رابط کاربری', interfaceText:'پشتیبانی بومی از محیط‌های مطالعه تاریک و روشن', videoTitle:'تدوین و تولید ویدیو', videoIntro:'علاوه بر مهندسی نرم‌افزار، ۷ سال تجربه حرفه‌ای تدوین ویدیو در مجموعه ادوبی و تولید محتوای یوتیوب دارم.', videoAdobeLabel:'مجموعه ادوبی', videoAdobeText:'پریمیر پرو، افتر افکت، فتوشاپ، ایلاستریتور - ۷ سال تدوین حرفه‌ای و موشن گرافیک.', videoChartLabel:'نمودار و موشن گرافیک', videoChartText:'نمودارهای متحرک، تجسم داده‌ها و گرافیک‌های توضیحی برای کانال‌های یوتیوب و مشتریان شرکتی.', videoYoutubeLabel:'تولید یوتیوب', videoYoutubeText:'تولید ویدیوی یوتیوب از ابتدا تا انتها - فیلمنامه، تدوین، تصاویر بندانگشتی و برندسازی کانال برای ۷ سال.', contactTitle:'ارتباطات', contactText:'جهت قراردادهای کاری، مشاوره امنیتی یا درخواست‌های استخدام، لطفاً پیام خود را مستقیماً به ایمیل تأیید شده من ارسال کنید.', galleryTitle:'گالری', waveCaption:'~ موج هارمونیک ~' }
